@@ -1,0 +1,86 @@
+<div class="container">
+    <h2 class="center_decor">Main Page</h2>
+    <div ng-if="!logIn" class="body_body">
+        <h2> You Are Not Login ! Log in before use ! </h2>
+    </div>
+    <div ng-if="logIn" class="body_body">
+        <h4 class="center_decor"> Hóa Đơn Bán Hàng </h4>
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            MÃ SẢN PHẨM :
+                        </th>
+                        <td>
+                            <input type="text">
+                        </td>
+                        <td>
+                            <input type="number">
+                        </td>
+                        <td>
+                            <div class="btn_details btn-sm">
+                                <a href="#">Xác Nhận</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-sm-12">
+                <p class="center_decor">Chi Tiết Hoá Đơn</p>
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            Số Thứ Tự :
+                        </th>
+                        <th>
+                            Mã Sản Phẩm :
+                        </th>
+                        <th>
+                            Số Lượng :
+                        </th>
+                        <th>
+                            Giá Tiền :
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Số Thứ Tự :
+                        </th>
+                        <th>
+                            Mã Sản Phẩm :
+                        </th>
+                        <th>
+                            Số Lượng :
+                        </th>
+                        <th>
+                            Giá Tiền :
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+
+                        </th>
+                        <th>
+                            Tổng Tiền :
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-offset-3 col-sm-6 btn_details">
+                <a href="#"> Xác Nhận Đơn Hàng</a>
+            </div>
+
+
+        </div>
+    </div>
+</div>

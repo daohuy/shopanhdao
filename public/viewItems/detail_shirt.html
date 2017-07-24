@@ -1,0 +1,113 @@
+<!--DETAILS SAN PHAM-->
+<div class="container">
+    <div class="row body_bg_white">
+
+        <!--REVIEW IMAGE-->
+        <section class="col-sm-5">
+
+            <img class="xzoom img-thumbnail" src="{{shirt.image[0]}}" xoriginal="{{shirt.image[0]}}" />
+
+            <div class="xzoom-thumbs">
+                <a href="{{shirt.image[0]}}">
+                    <img class="xzoom-gallery" width="80" src="{{shirt.image[0]}}">
+                </a>
+                <a href="{{shirt.image[1]}}">
+                    <img class="xzoom-gallery" width="80" src="{{shirt.image[1]}}">
+                </a>
+                <a href="{{shirt.image[2]}}">
+                    <img class="xzoom-gallery" width="80" src="{{shirt.image[2]}}">
+                </a>
+                <a href="{{shirt.image[3]}}">
+                    <img class="xzoom-gallery" width="80" src="{{shirt.image[3]}}">
+                </a>
+            </div>
+
+        </section>
+        
+        <!--INFORMATION-->
+        <div class="col-sm-7">
+            <h2 style="text-align:center"> {{shirt.tittle}} </h2>
+            <!--TABLE RIGHT INFORMATION -->
+            <table class="table table-condensed">
+                <tr>
+                    <th>Mã Sản Phẩm</th>
+                    <td> {{shirt.MASO}} </td>
+                </tr>
+                <tr>
+                    <th>Giá Tiền</th>
+                    <td> 
+                        <span class="price">{{shirt.price | currency:"":0}} VND </span>  
+                    </td>
+                </tr>
+                <tr>
+                    <th>Màu Sắc</th>
+                    <td> {{shirt.color}} </td>
+                </tr>
+                <tr>
+                    <th>Chất Liệu</th>
+                    <td> {{shirt.material}} </td>
+                </tr>
+                <tr>
+                    <th>Size</th>
+                    <td> {{shirt.size}} </td>
+                </tr>
+                <tr>
+                    <th>Đánh Giá</th>
+                    <td>
+                        <i class="fa fa-star" aria-hidden="true" ng-repeat="star in rating"></i>
+                    </td>
+                </tr>
+            </table>
+            <!--./TABLE RIGHT INFORMATION-->
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-4 btn_details">
+                    <a href="#">CHO VÀO GIỎ HÀNG</a>
+                </div>
+                <div class="col-sm-offset-1 col-sm-4 btn_details">
+                    <a href="#">QUAY LẠI</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!--===BODY===-->
+        <div class="col-sm-9 body_details">
+            <ul class="nav nav-tabs nav_details">
+                <li class="active"><a data-toggle="tab" data-target="#thong_tin">Thông Tin Sản Phẩm</a></li>
+                <li><a data-toggle="tab" data-target="#danh_gia">Đánh Giá Khách Hàng</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <!--===THONG TIN===-->
+                <div id="thong_tin" class="tab-pane fade in active border_tab_detail">
+                    <p style="text-indent: 80px">{{shirt.description}}</p>
+                    <img class="img-thumbnail" ng-repeat="img in shirt.image" src="{{img}}
+                    ">
+                </div>
+                <!--===DANH GIA===-->
+                <div id="danh_gia" class="tab-pane fade">
+                    <h3>ĐÁNH GIÀ KHÁCH HÀNG</h3>
+                </div>
+
+            </div>
+
+        </div>
+        <!--===LINK===-->
+        <div class="col-sm-3 body_link">
+            <h4 style="text-align:center">Sản Phẩm Nổi Bật</h4>
+        </div>
+
+    </div>
+</div>
+<!--./DETAILS SAN PHAM-->
+
+<!--===SCRIPT FOR ZOOM===-->
+<script>
+    $('.xzoom, .xzoom-gallery').xzoom({
+        position: 'lens',
+        lensShape: 'circle',
+        sourceClass: 'xzoom-hidden'
+    });
+
+</script>
+<!--./===SCRIPT FOR ZOOM===-->

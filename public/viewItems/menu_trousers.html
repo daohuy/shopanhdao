@@ -1,0 +1,35 @@
+<!--TROUSERS-->
+<div class="container">
+    <div class="row body_body">
+
+        <span class="line">
+            <h3 class="center_decor">
+                <a ui-sref="home.trousers"> <span>QUẦN</span> </a>
+        </h3>
+        </span>
+
+        <div class="col-sm-3" ng-repeat="trouser in trousers">
+
+            <div class="menu_item">
+                <a ui-sref="home.trouser.detail({id: trouser._id})">
+
+                    <img class="img-thumbnail" src="{{trouser.image[0]}}">
+                </a>
+                <!--tittle-->
+                <a class="center_decor" ui-sref="home.trouser.detail({id: trouser._id})">
+                    <h4> {{trouser.tittle}} </h4>
+                </a>
+
+                <!--price-->
+
+                <p>
+                    <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
+                    <span class="price">{{trouser.price | currency:"":0}} VND </span>
+                    <span class="price_sale">{{trouser.price_sale | currency:"":0}} </span>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>

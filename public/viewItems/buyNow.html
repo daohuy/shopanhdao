@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 body_body">
+            <h4 class="center_decor"> <i class="fa fa-star-o" aria-hidden="true"></i> Thông Tin Khách Hàng <i class="fa fa-star-o" aria-hidden="true"></i> </h4>
+            <form>
+                <div class="form-group">
+                    <label>Họ Và Tên</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Số Điện Thoại Liên Lạc</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" max="11" required>
+                </div>
+                <div class="form-group">
+                    <label>Địa Chỉ Giao Hàng</label>
+                    <input type="text" class="form-control" id="add" placeholder="Address" required>
+                </div>
+                <div class="form-group">
+                    <label>Thành Phố</label>
+                    <input type="text" class="form-control" id="city" placeholder="Address" required>
+                </div>
+                <div class="form-group">
+                    <h4 class="center_decor"> <i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> Xác Nhận Đơn Hàng <i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </h4>
+                </div>
+                <div class="form-group">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Hình Ảnh</th>
+                            <th class="center_decor">Mã Sản Phẩm</th>
+                            <th class="center_decor">Thông Tin</th>
+                            <th class="center_decor">Số Lượng</th>
+                            <th class="center_decor">Giá</th>
+                        </tr>
+                        <tr ng-repeat="bag in items.BAG">
+                            <td> <img class="img-rounded img-bag center_decor" ng-src="{{bag.image}}"> </td>
+                            <td class="center_decor"> {{bag.MASO}} </td>
+                            <td class="center_decor"> {{bag.tittle}} </td>
+                            <td class="center_decor"> {{bag.quantity}} </td>
+                            <td class="center_decor"> {{bag.price | currency:"":0}} </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Tổng Tiền</td>
+                            <td> {{items.totalPrice | currency:"":0}} </td>
+                        </tr>
+                    </table>
+                </div>
+                <button type="submit" class="btn btn-primary">Xác Nhận</button>
+                <button type="submit" class="btn btn-danger">Hủy</button>
+            </form>
+        </div>
+    </div>
+</div>

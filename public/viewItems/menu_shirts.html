@@ -1,0 +1,35 @@
+<!--SHIRTS-->
+<div class="container">
+    <div class="row body_body">
+
+        <span class="line">
+            <h3 class="center_decor">
+                <a ui-sref="home.dress"> <span>ÁO</span> </a>
+        </h3>
+        </span>
+
+        <div class="col-sm-3" ng-repeat="shirt in shirts">
+
+            <div class="menu_item">
+                <a ui-sref="home.shirt.detail({id: shirt._id})">
+
+                    <img class="img-thumbnail" src="{{shirt.image[0]}}">
+                </a>
+                <!--tittle-->
+                <a class="center_decor" ui-sref="home.shirt.detail({id: shirt._id})">
+                    <h4> {{shirt.tittle}} </h4>
+                </a>
+
+                <!--price-->
+
+                <p>
+                    <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
+                    <span class="price">{{shirt.price | currency:"":0}} VND </span>
+                    <span class="price_sale">{{shirt.price_sale | currency:"":0}} </span>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>

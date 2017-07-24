@@ -1,0 +1,68 @@
+
+<html lang="vi" ng-app="myApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HuyK" content="HuyK">
+
+    <title>Shop Thời Trang SYLIEU</title>
+
+    <!--===BOOTSTRAP===-->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!--===/BOOTSTRAP===-->
+
+    <!--MY STYLE-->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link href="/styles/my_styles.css" rel="stylesheet">
+    <!--./MY STYLE-->
+
+    <!--GOOGLE FONT-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <!-- FONT FOR NAVBRAND-->
+        <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <!--./GOOGLE FONT-->
+
+    <!--SCRIPT-->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    
+    <script src="/bower_components/ngstorage/ngStorage.min.js"></script>
+    
+    <script src="/script/app.js"></script>
+    <script src="/script/items/itemService.js"></script>
+    <script src="/script/items/itemController.js"></script>
+    
+    <!-- <script src="/scripts/user/userService.js"></script>
+    <script src="/scripts/user/userController.js"></script> -->
+    <!--./SCRIPT-->
+
+    <!--ZOOM IMAGE-->
+    <script src="/script/xzoom/xzoom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/script/xzoom/xzoom.css" media="all">
+    <!--./ZOOM IMAGE-->
+</head>
+
+<body>
+
+    <div ui-view='header'></div>
+
+    <div ui-view='content'></div>
+
+    <div ui-view='footer'></div>
+
+</body>
+
+</html>

@@ -5,20 +5,20 @@
         <!--REVIEW IMAGE-->
         <section class="col-sm-5">
 
-            <img class="xzoom img-thumbnail" src="{{trouser.image[0]}}" xoriginal="{{trouser.image[0]}}" />
+            <img class="xzoom img-thumbnail" ng-src="{{trouser.image[0]}}" xoriginal="{{trouser.image[0]}}" />
 
             <div class="xzoom-thumbs">
                 <a href="{{trouser.image[0]}}">
-                    <img class="xzoom-gallery" width="80" src="{{trouser.image[0]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{trouser.image[0]}}">
                 </a>
                 <a href="{{trouser.image[1]}}">
-                    <img class="xzoom-gallery" width="80" src="{{trouser.image[1]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{trouser.image[1]}}">
                 </a>
                 <a href="{{trouser.image[2]}}">
-                    <img class="xzoom-gallery" width="80" src="{{trouser.image[2]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{trouser.image[2]}}">
                 </a>
                 <a href="{{trouser.image[3]}}">
-                    <img class="xzoom-gallery" width="80" src="{{trouser.image[3]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{trouser.image[3]}}">
                 </a>
             </div>
 
@@ -81,7 +81,7 @@
                 <!--===THONG TIN===-->
                 <div id="thong_tin" class="tab-pane fade in active border_tab_detail">
                     <p style="text-indent: 80px">{{trouser.description}}</p>
-                    <img class="img-thumbnail" ng-repeat="img in trouser.image" src="{{img}}
+                    <img class="img-thumbnail" ng-repeat="img in trouser.image" ng-src="{{img}}
                     ">
                 </div>
                 <!--===DANH GIA===-->

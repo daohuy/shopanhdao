@@ -7,12 +7,12 @@
             </h3>
         </span>
 
-        <div class="col-sm-3" ng-repeat="dres in dresses">
+        <div class="col-sm-3" ng-repeat="dres in items.dress">
 
             <div class="menu_item">
                 <a ui-sref="home.dress.detail({id: dres._id})">
 
-                    <img class="img-thumbnail" src="{{dres.image[0]}}">
+                    <img class="img-thumbnail" ng-src="{{dres.image[0]}}">
                 </a>
                 <!--tittle-->
                 <a class="center_decor" ui-sref="home.dress.detail({id: dres._id})">

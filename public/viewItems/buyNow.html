@@ -2,22 +2,22 @@
     <div class="row">
         <div class="col-sm-12 body_body">
             <h4 class="center_decor"> <i class="fa fa-star-o" aria-hidden="true"></i> Thông Tin Khách Hàng <i class="fa fa-star-o" aria-hidden="true"></i> </h4>
-            <form>
+            <form ng-submit="items.customerOrder()">
                 <div class="form-group">
                     <label>Họ Và Tên</label>
-                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" name="name" ng-model="items.info.name" required>
                 </div>
                 <div class="form-group">
                     <label>Số Điện Thoại Liên Lạc</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" max="11" required>
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" max="11" name="phone" ng-model="items.info.phone" required>
                 </div>
                 <div class="form-group">
                     <label>Địa Chỉ Giao Hàng</label>
-                    <input type="text" class="form-control" id="add" placeholder="Address" required>
+                    <input type="text" class="form-control" id="add" placeholder="Address" name="address" ng-model="items.info.address" required>
                 </div>
                 <div class="form-group">
                     <label>Thành Phố</label>
-                    <input type="text" class="form-control" id="city" placeholder="Address" required>
+                    <input type="text" class="form-control" id="city" placeholder="City" name="city" ng-model="items.info.city" required>
                 </div>
                 <div class="form-group">
                     <h4 class="center_decor"> <i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> Xác Nhận Đơn Hàng <i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </h4>
@@ -46,7 +46,7 @@
                     </table>
                 </div>
                 <button type="submit" class="btn btn-primary">Xác Nhận</button>
-                <button type="submit" class="btn btn-danger">Hủy</button>
+                <button class="btn btn-danger">Hủy</button>
             </form>
         </div>
     </div>

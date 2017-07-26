@@ -116,6 +116,7 @@
                     }
                 }
             })
+
             //BUY NOW
             .state('home.buynow', {
                 url: '/buy',
@@ -127,7 +128,15 @@
                     }
                 }
             })
-
+            //ORDER SUCCESS
+            .state('home.success', {
+                url : '/success',
+                views : {
+                    'content@' : {
+                        templateUrl : '/viewItems/orderSuccess.html'
+                    }
+                }
+            })
         ;
     }
 

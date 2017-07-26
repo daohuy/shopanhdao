@@ -12,6 +12,11 @@ var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var aodaiRouter = require('./routes/aodaiRouter');
+var dressRouter = require('./routes/dressRouter');
+var shirtsRouter = require('./routes/shirtsRouter');
+var trousersRouter = require('./routes/trousersRouter');
+var customerRouter = require('./routes/customerRouter');
 
 //DATABASE
 var dbUrl = require('./config/db.js');
@@ -30,28 +35,35 @@ var app = express();
 
 // OPEN DATABASE
 db.on('error', console.error.bind(console, 'Connection Error: '));
-db.once('open', function() {
+db.once('open', function () {
   console.log('Connect Database Server !');
 });
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/aodai', aodaiRouter);
+app.use('/dress', dressRouter);
+app.use('/shirts', shirtsRouter);
+app.use('/trousers', trousersRouter);
+app.use('/bill', customerRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

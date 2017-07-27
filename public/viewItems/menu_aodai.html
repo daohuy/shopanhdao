@@ -11,12 +11,11 @@
         <div class="col-sm-3" ng-repeat="aodai in items.aodais">
 
             <div class="menu_item">
-                <a ui-sref="home.detail({id: aodai._id})">
-
-                    <img class="img-thumbnail" src="{{aodai.image[0]}}">
+                <a ui-sref="home.aodai.detail({id: aodai._id})">
+                    <img class="img-thumbnail" ng-src="{{aodai.image[0]}}">
                 </a>
                 <!--tittle-->
-                <a class="center_decor" ui-sref="home.detail({id: aodai._id})">
+                <a class="center_decor" ui-sref="home.aodai.detail({id: aodai._id})">
                     <h4> {{aodai.tittle}} </h4>
                 </a>
 

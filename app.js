@@ -7,8 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
-
-//var authenticate = require('./config/authenticate.js');
+var authenticate = require('./config/authenticate.js');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -17,6 +16,7 @@ var dressRouter = require('./routes/dressRouter');
 var shirtsRouter = require('./routes/shirtsRouter');
 var trousersRouter = require('./routes/trousersRouter');
 var customerRouter = require('./routes/customerRouter');
+var userRouter = require('./routes/users');
 
 //DATABASE
 var dbUrl = require('./config/db.js');
@@ -45,6 +45,17 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
+
+// SESSION REQUIRED FOR PASSPORT
+app.use(session({
+  secret : '12345-67890-09876-54321-abcde',
+  resave : true,
+  saveUninitialized : true
+}));
+// PASSPORT
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
@@ -54,6 +65,7 @@ app.use('/dress', dressRouter);
 app.use('/shirts', shirtsRouter);
 app.use('/trousers', trousersRouter);
 app.use('/bill', customerRouter);
+app.use('/users', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

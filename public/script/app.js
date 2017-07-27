@@ -2,8 +2,12 @@
     'user strict';
 
     angular
-        .module('myApp', ['ui.router', 'ngResource', 'ngStorage'])
-        .config(config);
+        .module('myApp', ['ui.router', 'ngResource', 'ngStorage', 'permission', 'permission.ui'])
+        .run(run)
+        .config(config)
+
+    ;
+
 
     function config($stateProvider, $urlRouterProvider) {
 
@@ -126,19 +130,67 @@
                         controller: 'headerController',
                         controllerAs: 'items'
                     }
+                },
+                data: {
+                    permissions: {
+                        only: 'isBag'
+                    }
                 }
             })
             //ORDER SUCCESS
             .state('home.success', {
-                url : '/success',
-                views : {
-                    'content@' : {
-                        templateUrl : '/viewItems/orderSuccess.html'
+                url: '/success',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewItems/orderSuccess.html'
                     }
                 }
             })
-        ;
+            // USER 
+            .state('home.login', {
+                url: '/login',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/login.html',
+                        controller: 'userController',
+                        controllerAs: 'user'
+                    }
+                }
+            })
+            .state('home.mainPage', {
+                url: '/main',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/mainPage.html',
+                        controller: 'userController',
+                        controllerAs: 'user'
+                    }
+                },
+                data : {
+                    permissions : {
+                        only : 'signIn'
+                    }
+                }
+            })
     }
 
+    function run(PermPermissionStore, $localStorage) {
+        PermPermissionStore.definePermission('isBag', function () {
+            if ($localStorage.BAG) {
+                return true
+            } else {
+                return false
+            }
+        });
+
+        PermPermissionStore.definePermission('signIn', function () {
+            if ($localStorage.userToken) {
+                return true
+            } else {
+                return false
+            }
+        });
+
+    }
 
 })();

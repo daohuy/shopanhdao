@@ -25,7 +25,7 @@
             .dressResource()
             .query(function (res) {
                 items.dress = res;
-                console.log(items.dress);
+                //console.log(items.dress);
             }, function (res) {
                 console.log(res);
             });
@@ -51,13 +51,21 @@
 
     function headerCont($localStorage, itemsFactory) {
         var items = this;
+
         items.info = {};
         items.customerOrder = customerOrder;
         items.remove = remove;
+        $localStorage.haveBag = false;
+        
+        //USER
+        items.signIn = false;
+        
         //console.log(items.info);
+        //check local BAG
         if ($localStorage.BAG) {
             //co local BAG
-            console.log('Local BAG', $localStorage.BAG);
+            console.log('Have Local BAG', $localStorage.BAG);
+            $localStorage.haveBag = true;
             items.BAG = $localStorage.BAG;
             var total = [];
             for (var i = 0; i < items.BAG.length; i++) {
@@ -68,18 +76,25 @@
             items.totalPrice = $localStorage.totalPrice;
             //console.log(items.BAG);
         } else {
-            $localStorage.BAG = [];
+            // khong co local BAG
             console.log('Not Data In BAG', $localStorage.BAG);
         }
+        //check user login
+        if ($localStorage.userToken) {
+            items.signIn = true;
+            items.username = $localStorage.userToken.User.username;
+        } else {
+            items.signIn = false;
+        };
         
         function remove() {
             itemsFactory.remove();
         }
-        
+
         function customerOrder() {
             itemsFactory.customerOrder(items.info);
         }
-        
+
     }
     /*CONTROLLER AODAI*/
     function aodaiCont(itemsFactory, $stateParams, $localStorage, $state) {
@@ -95,16 +110,16 @@
             });
         //console.log(items.aodai);
         items.shopping = shopping;
-        items.buyNow =  buyNow; 
-        
+        items.buyNow = buyNow;
+
         function shopping() {
             itemsFactory.shopping(items.aodai);
         }
-        
+
         function buyNow() {
-            itemsFactory.buyNow(items.aodai);   
+            itemsFactory.buyNow(items.aodai);
         }
-        
+
     }
     /*CONTROLLER DRESS*/
     function dressCont(itemsFactory, $stateParams, $localStorage, $state) {
@@ -121,15 +136,15 @@
         //console.log(items.aodai);
         items.shopping = shopping;
         items.buyNow = buyNow;
-        
+
         function shopping() {
             itemsFactory.shopping(items.dres);
         }
-        
+
         function buyNow() {
             itemsFactory.buyNow(items.dres);
         }
-        
+
     }
     /*CONTROLLER SHIRTS*/
     function shirtsCont(itemsFactory, $stateParams, $localStorage, $state) {
@@ -146,15 +161,15 @@
         //console.log(items.aodai);
         items.shopping = shopping;
         items.buyNow = buyNow;
-        
+
         function shopping() {
             itemsFactory.shopping(items.shirt);
         }
-        
+
         function buyNow() {
             itemsFactory.buyNow(items.shirt);
         }
-        
+
     }
     /*CONTROLLER TROUSERS*/
     function trousersCont(itemsFactory, $stateParams, $localStorage, $state) {
@@ -171,14 +186,14 @@
         //console.log(items.aodai);
         items.shopping = shopping;
         items.buyNow = buyNow;
-        
+
         function shopping() {
             itemsFactory.shopping(items.trouser);
         }
-        
+
         function buyNow() {
-            itemsFactory.buyNow(items.trouser);    
+            itemsFactory.buyNow(items.trouser);
         }
-        
+
     }
 })();

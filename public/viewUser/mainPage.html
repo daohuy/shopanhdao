@@ -1,149 +1,15 @@
 <div class="container">
     <h2 class="center_decor">Main Page</h2>
 
-    <div ng-if="!logIn" class="body_body">
-        <h2> You Are Not Login ! Log in before use ! </h2>
-    </div>
-
-    <div ng-if="logIn" class="body_body">
+    <div class="body_body">
         <p style="padding:10xp"></p>
-        <h4 class="center_decor"> Welcome : {{user.username}} </h4>
+        <h4 class="center_decor"> Welcome : {{user.userLocal.username}} </h4>
         <p style="padding:10xp"></p>
         <div class="row">
 
-            <div class="col-sm-12">
-
-                <div>
-
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a data-target="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                        <li role="presentation"><a data-target="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                        <!-- <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li> -->
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="home">
-                            <p style="padding:10px"></p>
-                            <div class="col-sm-12">
-                                <table class="table table-striped">
-                                    <!-- <tr>
-                                        <th>
-                                            Dò : 
-                                        </th>
-                                        <th>
-                                            <input type="text" ng-model="search._id" placeholder="Do San Pham">
-                                        </th>
-                                        <th>
-                                            
-                                        </th>
-                                        <th>
-                                            
-                                        </th>
-                                    </tr> -->
-                                    <tr>
-                                        <td>
-                                            <div class="input-group">
-                                                <span class="input-group-addon" id="basic-addon1">Mã Sản Phẩm</span>
-                                                <input type="text" class="form-control" placeholder="Mã Sản Phẩm" aria-describedby="basic-addon1" ng-model="bill1.MASO">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <span class="input-group-addon" id="basic-addon1">Số Lượng</span>
-                                                <input type="number" min="0" class="form-control" aria-describedby="basic-addon1" ng-model="bill1.quantity">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <span class="input-group-addon" id="basic-addon1">$</span>
-                                                <input type="number" min="0" class="form-control" aria-describedby="basic-addon1" ng-model="bill1.price">
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="btn_details btn-sm">
-                                                <a ng-click="addItem()">Xác Nhận</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div class="col-sm-12">
-                                <p class="center_decor">Chi Tiết Hoá Đơn</p>
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th>
-                                            Mã Sản Phẩm :
-                                        </th>
-                                        <th>
-                                            Số Lượng :
-                                        </th>
-                                        <th>
-                                            Giá Tiền :
-                                        </th>
-                                    </tr>
-                                    <tr ng-repeat="bill in bill2">
-                                        <th>
-                                            <p style="text-transform: uppercase;">{{bill.MASO}}</p>
-                                        </th>
-                                        <th>
-                                            {{bill.quantitySell}}
-                                        </th>
-                                        <th>
-                                            {{bill.totalPrice | currency:"":0}}
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>
-
-                                        </th>
-                                        <th>
-                                            Tổng Tiền :
-                                        </th>
-                                        <th>
-                                            {{totalPrice}}
-                                        </th>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="col-sm-offset-3 col-sm-6 btn_details" data-toggle="modal" data-target="#myModal">
-                                <a> Xác Nhận Đơn Hàng</a>
-                            </div>
-
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="profile">...</div>
-                        <!-- <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                        <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
-                    </div>
-
-                </div>
-
-            </div>
+        <button type="button" ng-click="user.logout()">Log Out</button>
 
         </div>
 
-    </div>
-</div>
-
-<!-- Modal Xac Nhan Don Hang -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Đơn Hàng</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Huỷ </button>
-                <button type="button" class="btn btn-primary">Thanh Toán</button>
-            </div>
-        </div>
     </div>
 </div>

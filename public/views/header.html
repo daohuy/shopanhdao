@@ -10,45 +10,49 @@
                 <span class="navBrand">A</span>
                 <span class="navBrand">O</span>
             </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
         </div>
 
-        <ul class="nav navbar-nav">
-            <li>
-                <a ui-sref="home.aodai"> ÁO DÀI </a>
-            </li>
-            <li>
-                <a ui-sref="home.dress"> ĐẦM </a>
-            </li>
-            <li>
-                <a ui-sref="home.trousers"> QUẦN </a>
-            </li>
-            <li>
-                <a ui-sref="home.shirts"> ÁO </a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a ui-sref="home.aodai"> ÁO DÀI </a>
+                </li>
+                <li>
+                    <a ui-sref="home.dress"> ĐẦM </a>
+                </li>
+                <li>
+                    <a ui-sref="home.trousers"> QUẦN </a>
+                </li>
+                <li>
+                    <a ui-sref="home.shirts"> ÁO </a>
+                </li>
+            </ul>
+            <!--BAG-->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a role="button" data-toggle="modal" data-target="#bag">
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i> Giỏ Hàng
+                        <span class="badge"> {{items.BAG.length}} </span>
+                    </a>
+                </li>
+            </ul>
+            <!--USER-->
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-show="!items.signIn">
+                    <a ui-sref="home.login">
+                        <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+                <li ng-show="items.signIn">
+                    <a ui-sref="home.mainPage"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{items.username}} </a>
+                </li>
+            </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a role="button" data-toggle="modal" data-target="#bag">
-                    <i class="fa fa-shopping-basket" aria-hidden="true"></i> Giỏ Hàng
-                    <span class="badge"> {{items.BAG.length}} </span>
-                </a>
-            </li>
-        </ul>
-        
-        <!-- <ul class="nav navbar-nav navbar-right">
-            <li ng-if="!logIn">
-                <a ui-sref="home.login">
-                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
-            </li>
-            <li ng-if="logIn">
-                <a ui-sref="home.mainPage"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{username}}</a>
-            </li>
-            <li ng-if="logIn">
-                <a ng-click="logOut()">
-                    <span class="glyphicon glyphicon-log-in"></span> Logout</a>
-            </li>
-        </ul> -->
+        </div>
 
     </div>
 
@@ -103,11 +107,11 @@
                         <th class="center_decor"> {{bag.quantity}} </th>
                         <th class="center_decor"> {{bag.price | currency:"":0}} </th>
                     </tr>
-                    <tr>  
-                            <td></td>
-                            <td>Tổng Tiền</td>
-                            <td> {{items.totalPrice | currency:"":0}} </td>
-                        </tr>
+                    <tr>
+                        <td></td>
+                        <td>Tổng Tiền</td>
+                        <td> {{items.totalPrice | currency:"":0}} </td>
+                    </tr>
                 </table>
             </div>
             <div class="modal-footer">
@@ -117,3 +121,5 @@
         </div>
     </div>
 </div>
+
+<!--User Modal-->

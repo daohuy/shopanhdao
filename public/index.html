@@ -34,6 +34,10 @@
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="/bower_components/angular/angular.min.js"></script>
+    
+    <script src="bower_components/angular-permission/dist/angular-permission.min.js"></script>
+    
+    <script src="bower_components/angular-permission/dist/angular-permission-ui.min.js"></script>
 
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
@@ -45,8 +49,9 @@
     <script src="/script/items/itemService.js"></script>
     <script src="/script/items/itemController.js"></script>
     
-    <!-- <script src="/scripts/user/userService.js"></script>
-    <script src="/scripts/user/userController.js"></script> -->
+    <script src="script/users/userService.js"></script>
+    <script src="script/users/userController.js"></script>
+        
     <!--./SCRIPT-->
 
     <!--ZOOM IMAGE-->
@@ -57,6 +62,8 @@
 
 <body>
 
+    <h1 class="sr-only"> Shop Anh Dao. Thoi Trang Gia Re </h1>
+   
     <div ui-view='header'></div>
 
     <div ui-view='content'></div>

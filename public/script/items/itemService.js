@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('myApp')
-        .constant("baseURL", "https://shopanhdao-174606.appspot.com/") // url api server mongodb
+        // URL : https://shopanhdao-174606.appspot.com/
+        .constant("baseURL", "http://localhost:3000/") // url api server mongodb
         .factory('itemsFactory', itemsFac);
 
     function itemsFac($localStorage, $resource, $state, baseURL) {
@@ -91,18 +92,34 @@
         }
 
         function shopping(items) {
-            var bag = {
-                MASO: items._id,
-                tittle: items.tittle,
-                image: items.image[0],
-                price: items.price,
-                quantity: 1
-            };
-            $localStorage.BAG.push(bag);
+            if (!$localStorage.BAG) {
+                $localStorage.BAG = [];
+                var bag = {
+                    MASO: items._id,
+                    tittle: items.tittle,
+                    image: items.image[0],
+                    price: items.price,
+                    quantity: 1
+                };
+                $localStorage.BAG.push(bag);
+                $localStorage.haveBag = true;
+            } else {
+                var bag = {
+                    MASO: items._id,
+                    tittle: items.tittle,
+                    image: items.image[0],
+                    price: items.price,
+                    quantity: 1
+                };
+                $localStorage.BAG.push(bag);
+                $localStorage.haveBag = true;
+            }
+
+
         }
 
         function buyNow(items) {
-            if ($localStorage.BAG.length == 0) {
+            if (!$localStorage.BAG) {
 
                 console.log('No Item In BAG')
 
@@ -113,7 +130,7 @@
                     price: items.price,
                     quantity: 1
                 };
-
+                $localStorage.BAG = [];
                 $localStorage.BAG.push(bag);
 
                 $state.go('home.buynow');
@@ -124,7 +141,8 @@
         }
 
         function remove() {
-            $localStorage.$reset();
+            delete $localStorage.BAG;
+            $localStorage.haveBag = false;
             location.reload();
         }
 

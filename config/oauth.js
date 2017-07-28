@@ -1,7 +1,7 @@
 module.exports = {
     'facebook' : {
-        clientID        : '1906138326335497',
-        clientSecret    : 'faa6c9083117d2a2290a8a3a3c80fc85',
-        callbackURL     : 'https://localhost:3443/users/facebook/callback'
+        clientID        : '907525526089636',
+        clientSecret    : '087dbd10a4514aafe287d79fdd4ad77e',
+        callbackURL     : 'http://localhost:3000/users/facebook/callback'
     }
 };

@@ -1,16 +1,13 @@
-var passport            = require('passport');
-var localStrategy       = require('passport-local').Strategy;
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
 // Oauth facebook
-var FacebookStrategy    = require('passport-facebook').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
-var users               = require('../models/users.js');
-var oauth               = require('../config/oauth.js');
+var users = require('../models/users.js');
+var oauth = require('../config/oauth.js');
 
 // LOGIN LOCAL
 exports.local = passport.use(new localStrategy(users.authenticate()));
-passport.serializeUser(users.serializeUser());
-passport.deserializeUser(users.deserializeUser());
-
 // OAUTH FACEBOOK
 exports.facebook = passport.use(new FacebookStrategy({
     // CONNECT DEV FB
@@ -43,3 +40,6 @@ exports.facebook = passport.use(new FacebookStrategy({
         }
     });
 }));
+
+passport.serializeUser(users.serializeUser());
+passport.deserializeUser(users.deserializeUser());

@@ -85,7 +85,7 @@
                 for (var i = 0; i < files.length; i++) {
                     Upload.rename(files[i], select + '_' + id + '_' + i)
                     Upload.upload({
-                        url: 'http://localhost:3000/upload',
+                        url: 'https://shopanhdao-174606.appspot.com/upload',
                         data: {
                             file: files[i]
                         }

@@ -11,6 +11,7 @@ aodaiRouter.use(bodyParser.json());
 aodaiRouter.route('/')
 
     .get(function (req, res, next) {
+        console.log('Router AoDai');
         aodai.find({}, function (err, ao_dai) {
             if (err) return next(err);
             console.log('Get all the collection Ao Dai !');
@@ -18,7 +19,8 @@ aodaiRouter.route('/')
         });
     })
     // tam xoa verify admin de chinh, add vo sau
-    .post(function (req, res, next) {
+    .post(verify.verifyAdminUser, function (req, res, next) {
+        console.log(req.headers);
         aodai.create(req.body, function (err, ao_dai) {
             if (err) return next(err);
             console.log('AODAI create with the id :' + ao_dai._id);

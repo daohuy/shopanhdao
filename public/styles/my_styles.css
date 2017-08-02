@@ -4,7 +4,7 @@ body {
     font-size: 14px;
 }
 
-h3 {
+.part {
     font-weight: bold;
     letter-spacing: 4px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -25,6 +25,7 @@ a:hover {
 a:active {
     text-decoration: underline;
 }
+
 
 /*BORDER TITTLE*/
 
@@ -50,10 +51,6 @@ a:active {
     top: 25px;
     padding: 0 20px;
     color: #9e9e9e;
-}
-
-.jumbotron {
-    background: white;
 }
 
 .navBrand {
@@ -206,8 +203,9 @@ strong {
 }
 
 .jumbotron {
+    background: white;
     background-image: url(/img/jumpotron.jpg);
-    height: 50%;
+    height: 30%;
     width: 100%;
 }
 
@@ -223,10 +221,21 @@ strong {
     font-size: 13px;
     color: #b71c1c;
 }
+
 .font-brand {
     font-family: 'Gloria Hallelujah', cursive;
 }
+
 .img-bag {
     max-width: 60px;
     border: 1px groove;
+}
+.img-file {
+    max-width: 100px;
+}
+.form-group {
+    padding: 5px;
+}
+.boder-right {
+    border-right: 2px ridge;
 }

@@ -3,10 +3,11 @@
 
     angular.module('myApp')
         // URL : https://shopanhdao-174606.appspot.com/
-        .constant("baseURL", "http://localhost:3000/") // url api server mongodb
+        //.constant("baseURL", "http://localhost:3000/") // url api server mongodb
+        .constant("baseURL", "https://shopanhdao-174606.appspot.com/") // url api server mongodb
         .factory('itemsFactory', itemsFac);
 
-    function itemsFac($localStorage, $resource, $state, baseURL) {
+    function itemsFac($localStorage, $resource, $state, baseURL, Upload) {
         var itemService = {};
 
         itemService.aodaiResource = aodaiResource;
@@ -18,6 +19,7 @@
         itemService.buyNow = buyNow;
         itemService.remove = remove;
         itemService.customerOrder = customerOrder;
+        itemService.uploadResource = uploadResource;
 
         return itemService;
 
@@ -163,6 +165,16 @@
                 }, function (res) {
                     console.log(res);
                 });
+        }
+
+        
+        
+        function uploadResource() {
+            return $resource(baseURL + "upload", {
+                save: {
+                    method: "POST",
+                }
+            })
         }
 
     }

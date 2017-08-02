@@ -7,7 +7,8 @@
         .controller('aodaiController', aodaiCont)
         .controller('dressController', dressCont)
         .controller('shirtsController', shirtsCont)
-        .controller('trousersController', trousersCont);
+        .controller('trousersController', trousersCont)
+    ;
 
     function itemCont(itemsFactory) {
         var items = this;
@@ -16,7 +17,7 @@
             .aodaiResource()
             .query(function (res) {
                 items.aodais = res;
-                //console.log(items.aodais);
+                console.log(items.aodais);
             }, function (res) {
                 console.log(res);
             });
@@ -56,10 +57,10 @@
         items.customerOrder = customerOrder;
         items.remove = remove;
         $localStorage.haveBag = false;
-        
+
         //USER
         items.signIn = false;
-        
+
         //console.log(items.info);
         //check local BAG
         if ($localStorage.BAG) {
@@ -86,7 +87,7 @@
         } else {
             items.signIn = false;
         };
-        
+
         function remove() {
             itemsFactory.remove();
         }
@@ -196,4 +197,5 @@
         }
 
     }
+
 })();

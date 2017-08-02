@@ -3,16 +3,18 @@
 
     angular
         .module('myApp')
-        .constant("baseURL", "http://localhost:3000/")
+        //.constant("baseURL", "http://localhost:3000/")
+        .constant("baseURL", "https://shopanhdao-174606.appspot.com/")
         .factory('userFactory', userFac);
 
-    function userFac(baseURL, $resource, $localStorage, $http, $state) {
+    function userFac(baseURL, $resource, $localStorage, $http, $state, Upload) {
         var userService = {};
         var authToken = undefined;
 
         userService.login = login;
         userService.logout = logout;
         userService.loadUserCredentials = loadUserCredentials;
+        userService.uploadItem = uploadItem;
 
         return userService;
 
@@ -25,7 +27,7 @@
 
         function useCredentials(data) {
             authToken = data.token;
-            $http.defaults.headers['x-access-token'] = authToken;
+            $http.defaults.headers.common['authentication'] = authToken;
         }
         // store Data User
         function storeUserCredentials(data) {
@@ -46,7 +48,7 @@
         //clear Data User
         function clearCredentitals() {
             authToken = undefined;
-            $http.defaults.headers.common['x-access-token'] = authToken;
+            $http.defaults.headers.common['authentication'] = authToken;
             delete $localStorage.userToken;
             $state.go('home');
             window.location.replace('/');
@@ -57,6 +59,43 @@
                 .get(function (res) {
                     clearCredentitals();
                 });
+        }
+
+        function uploadItem(files, select, form, id) {
+            var image = [];
+            var a = '/img/items/' + select + '_' + id + '_';
+            for (var i = 0; i < files.length; i++) {
+                image.push(a + i + '.jpg');
+            }
+            form.image = image;
+            $resource(baseURL + select)
+                .save(form, function (res) {
+                    alert('UPLOAD SUCCESS !');
+                    uploadFile(files, select, id);
+                    $state.go('home.uploadSuccess');
+                }, function (res) {
+                    console.log(res);
+                    alert('UPLOAD FAIL !');
+                })
+
+        }
+
+        function uploadFile(files, select, id) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    Upload.rename(files[i], select + '_' + id + '_' + i)
+                    Upload.upload({
+                        url: 'http://localhost:3000/upload',
+                        data: {
+                            file: files[i]
+                        }
+                    }).then(function (res) {
+                        console.log('Upload File Success');
+                    }, function (res) {
+                        console.log('Upload File Fail', res);
+                    })
+                }
+            };
         }
 
         loadUserCredentials();

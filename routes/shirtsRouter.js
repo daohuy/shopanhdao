@@ -18,7 +18,7 @@ shirtRouter.route('/')
         });
     })
 
-    .post(function (req, res, next) {
+    .post(verify.verifyAdminUser, function (req, res, next) {
         shirts.create(req.body, function (err, shirt) {
             if (err) return next(err);
 

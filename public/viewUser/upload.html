@@ -1,0 +1,75 @@
+<header class="jumbotron">
+
+</header>
+
+<div class="container">
+    <div class="row body_bg_white">
+        <h4 class="center_decor">
+            <i class="fa fa-star-o" aria-hidden="true"></i> Upload Sản Phẩm
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+        </h4>
+
+        <form ng-submit="user.uploadItems()" name="form">
+            <select class="form-control" ng-model="user.select">
+                  <option value="aodai">ÁO DÀI</option>
+                  <option value="shirts">ÁO</option>
+                  <option value="trousers">QUẦN</option>
+                  <option value="dress">ĐẦM</option>
+            </select>
+            <div class="form-group">
+                <label>Mã Sản Phẩm :</label>
+                <input type="text" class="form-control" ng-model="user.form._id">
+            </div>
+            <div class="form-group">
+                <label>Tiêu Đề :</label>
+                <input type="text" class="form-control" ng-model="user.form.tittle">
+            </div>
+            <div class="form-group">
+                <label>Giá Bán Sản Phẩm :</label>
+                <input type="text" class="form-control" ng-model="user.form.price">
+            </div>
+            <div class="form-group">
+                <label>Màu Sắc :</label>
+                <input type="text" class="form-control" ng-model="user.form.color">
+            </div>
+            <div class="form-group">
+                <label>Chất Liệu :</label>
+                <input type="text" class="form-control" ng-model="user.form.material">
+            </div>
+            <div class="form-group">
+                <label>Size :</label>
+                <input type="text" class="form-control" ng-model="user.form.size">
+            </div>
+            <div class="form-group">
+                <label>Mô Tả :</label>
+                <textarea class="form-control" rows="3" ng-model="user.form.description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Upload Hình Ảnh</label><br>
+
+                <button class="button btn btn-default" ngf-select ng-model="user.files" ngf-multiple="true">Chọn Hình Ảnh</button>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Tên</th>
+                        <th>Hình Ảnh</th>
+                    </tr>
+                    <tr ng-repeat="f in user.files">
+                        <th> {{f.name}} </th>
+                        <th>
+                            <img class="img-rounded img-file" ngf-thumbnail="f">
+                        </th>
+                    </tr>
+                </table>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Xác Nhận</button>
+            <button class="btn btn-danger" ui-sref="home">Huỷ</button>
+           
+        </form>
+
+ <button class="btn btn-danger" ng-click="user.test()">test</button>   
+   
+    </div>
+</div>

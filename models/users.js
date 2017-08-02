@@ -8,9 +8,6 @@ var userSchema = new Schema({
     password: String,
     firstname: String,
     lastname: String,
-    //facebook OAuth
-    OauthId: String,
-    OauthToken: String,
     admin: {
         type: Boolean,
         default: false

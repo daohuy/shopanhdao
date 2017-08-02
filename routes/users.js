@@ -23,7 +23,7 @@ userRouter.post('/register', function (req, res, next) {
       if (err) {
         return res.status(500).json({
           err: err
-        }); //??
+        });
       };
       // name
       if (req.body.firstname) {
@@ -33,11 +33,10 @@ userRouter.post('/register', function (req, res, next) {
         user.lastname = req.body.lastname;
       };
       user.save(function (err, user) {
-        //??
         passport.authenticate('local')(req, res, function () {
           return res.status(200).json({
             status: 'Registration Successfull'
-          }); //??
+          });
         });
       });
     });
@@ -81,39 +80,5 @@ userRouter.get('/logout', function (req, res) {
     status: 'Bye !'
   })
 });
-
-//Route Facebook
-userRouter.get('/facebook', passport.authenticate('facebook'), function (req, res) {
-  console.log('get data facebook');
-});
-
-userRouter.get('/facebook/callback', function (req, res, next) {
-
-  passport.authenticate('facebook', function (err, user, info) {
-    if (err) return next(err);
-    if (!err) {
-      return res.status(401).json({
-        err: info
-      });
-    };
-
-    req.logIn(user, function (err) {
-      if (err) {
-        return res.status(500).json({
-          err: 'could not log in user !'
-        });
-      }
-
-      var token = verify.getToken(user);
-      res.status(200).json({
-        status: 'Login Successful!',
-        success: true,
-        token: token
-      });
-    });
-  })(req, res, next);
-
-});
-
 
 module.exports = userRouter;

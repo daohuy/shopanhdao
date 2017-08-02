@@ -9,40 +9,34 @@ var trouserSchema = new Schema({
         required: true
     },
     price: {
-        type: Currency,
-        required: true
+        type: Currency
     },
     price_fake: {
         type: Currency
     },
     tittle: {
-        type: String,
-        required: true
+        type: String
     },
     material: {
-        type: String,
-        required: true
+        type: String
     },
     color: {
-        type: String,
-        required: true
+        type: String
     },
     rate: {
         type: Number,
         min: 0,
         max: 5,
-        required: true
+        default : 5
     },
     size: {
-        type: String,
-        required: true
+        type: String
     },
     image: {
         type: Array
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     createAt: {
         type: Date,

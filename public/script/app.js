@@ -2,7 +2,7 @@
     'user strict';
 
     angular
-        .module('myApp', ['ui.router', 'ngResource', 'ngStorage', 'permission', 'permission.ui'])
+        .module('myApp', ['ui.router', 'ngResource', 'ngStorage', 'permission', 'permission.ui', 'ngFileUpload'])
         .run(run)
         .config(config)
 
@@ -155,6 +155,11 @@
                         controller: 'userController',
                         controllerAs: 'user'
                     }
+                },
+                data: {
+                    permissions: {
+                        only: 'signOut'
+                    }
                 }
             })
             .state('home.mainPage', {
@@ -166,6 +171,34 @@
                         controllerAs: 'user'
                     }
                 },
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+            .state('home.upload', {
+                url: '/upload',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/upload.html',
+                        controller: 'uploadController',
+                        controllerAs: 'user'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+            .state('home.uploadSuccess', {
+                url : '/uploadSuccess',
+                views : {
+                    'content@' : {
+                        templateUrl : '/viewUser/uploadSuccess.html'
+                    }
+                },
                 data : {
                     permissions : {
                         only : 'signIn'
@@ -174,7 +207,7 @@
             })
     }
 
-    function run(PermPermissionStore, $localStorage) {
+    function run(PermPermissionStore, $localStorage, $http) {
         PermPermissionStore.definePermission('isBag', function () {
             if ($localStorage.BAG) {
                 return true
@@ -191,6 +224,21 @@
             }
         });
 
+        PermPermissionStore.definePermission('signOut', function () {
+            if ($localStorage.userToken) {
+                return false
+            } else {
+                return true
+            }
+        });
+        
+        if ($localStorage.userToken) {
+            $http.defaults.headers.common['authentication'] = $localStorage.userToken.token;
+            console.log('Token after add $http authentication : ', $http.defaults.headers.common['authentication']);
+        }
+        
+        
+        
     }
 
 })();

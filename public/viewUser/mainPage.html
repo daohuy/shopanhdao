@@ -1,14 +1,35 @@
+<header class="jumbotron">
+
+</header>
 <div class="container">
-    <h2 class="center_decor">Main Page</h2>
+    <div class="row body_body">
+        <span class="line">
+            <h3 class="center_decor part">
+            <span>THÔNG TIN</span>
+            </h3>
+        </span>
 
-    <div class="body_body">
-        <p style="padding:10xp"></p>
-        <h4 class="center_decor"> Welcome : {{user.userLocal.username}} </h4>
-        <p style="padding:10xp"></p>
-        <div class="row">
+        <div class="col-sm-3 center_decor boder-right">
+            <img class="img-thumbnail" src="/img/avatar/NhaHan.jpg">
+        </div>
 
-        <button type="button" ng-click="user.logout()">Log Out</button>
+        <div class="col-sm-9">
+            <table class="table">
+                <tr>
+                    <th class="col-sm-4"> Họ : </th>
+                    <td class="col-sm-8"> {{user.user.firstname}} </td>
+                </tr>
+                <tr>
+                    <th class="col-sm-4"> Tên : </th>
+                    <td class="col-sm-8"> {{user.user.lastname}} </td>
+                </tr> 
+                <tr>
+                    <th> <a ui-sref=""> Đổi Mật Khẩu </a> </th>
 
+                </tr>        
+            </table>
+            <button class="btn btn-primary btn-sm" ui-sref="home.upload">Upload Sản Phẩm</button>
+            <button class="btn btn-danger btn-sm" ng-click="user.logout()">Log Out</button>
         </div>
 
     </div>

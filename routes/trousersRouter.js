@@ -18,7 +18,7 @@ trouserRouter.route('/')
         });
     })
 
-    .post(function (req, res, next) {
+    .post(verify.verifyAdminUser, function (req, res, next) {
         trousers.create(req.body, function (err, trouser) {
             if (err) return next(err);
             console.log('Create the trouser with ID : ' + trouser._id);

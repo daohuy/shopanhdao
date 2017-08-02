@@ -18,7 +18,7 @@ dressRouter.route('/')
         });
     })
 
-    .post( function (req, res, next) {
+    .post(verify.verifyAdminUser, function (req, res, next) {
         dress.create(req.body, function (err, dres) {
             if (err) return next(err);
             console.log('Create the dress with id : ' + dres._id);

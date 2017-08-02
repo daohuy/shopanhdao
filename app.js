@@ -8,6 +8,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var authenticate = require('./config/authenticate.js');
+//var dropbox = require('dropbox-node');
+var multer = require('multer');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -16,6 +18,8 @@ var dressRouter = require('./routes/dressRouter');
 var shirtsRouter = require('./routes/shirtsRouter');
 var trousersRouter = require('./routes/trousersRouter');
 var customerRouter = require('./routes/customerRouter');
+//var dropboxRouter = require('./routes/dropboxRouter');
+var uploadRouter = require('./routes/uploadRouter');
 var userRouter = require('./routes/users');
 
 //DATABASE
@@ -27,8 +31,8 @@ var db = mongoose.connection;
 var app = express();
 
 // view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -66,6 +70,8 @@ app.use('/shirts', shirtsRouter);
 app.use('/trousers', trousersRouter);
 app.use('/bill', customerRouter);
 app.use('/users', userRouter);
+app.use('/upload', uploadRouter);
+//app.use('/dropbox', dropboxRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -4,7 +4,7 @@
     angular
         .module('myApp')
         //.constant("baseURL", "http://localhost:3000/")
-        .constant("baseURL", "https://shopanhdao-174606.appspot.com/")
+        .constant("baseURL", "http://130.211.160.135:3000/")
         .factory('userFactory', userFac);
 
     function userFac(baseURL, $resource, $localStorage, $http, $state, Upload) {
@@ -85,7 +85,7 @@
                 for (var i = 0; i < files.length; i++) {
                     Upload.rename(files[i], select + '_' + id + '_' + i)
                     Upload.upload({
-                        url: 'https://shopanhdao-174606.appspot.com/upload',
+                        url: baseURL + 'upload',
                         data: {
                             file: files[i]
                         }

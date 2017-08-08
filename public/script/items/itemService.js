@@ -4,7 +4,7 @@
     angular.module('myApp')
         // URL : https://shopanhdao-174606.appspot.com/
         //.constant("baseURL", "http://localhost:3000/") // url api server mongodb
-        .constant("baseURL", "https://shopanhdao-174606.appspot.com/") // url api server mongodb
+        .constant("baseURL", "http://130.211.160.135:3000/") // url api server mongodb
         .factory('itemsFactory', itemsFac);
 
     function itemsFac($localStorage, $resource, $state, baseURL, Upload) {

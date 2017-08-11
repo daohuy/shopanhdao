@@ -9,9 +9,10 @@
     ;
 
 
-    function config($stateProvider, $urlRouterProvider) {
+    function config($stateProvider, $urlRouterProvider, ) {
 
         $urlRouterProvider.otherwise('/home');
+
 
         $stateProvider
             .state('home', {
@@ -92,7 +93,7 @@
                 url: '/:id',
                 views: {
                     'content@': {
-                        templateUrl: '/viewItems/detail_shirts.html',
+                        templateUrl: '/viewItems/detail_shirt.html',
                         controller: 'shirtsController',
                         controllerAs: 'items'
                     }
@@ -114,7 +115,7 @@
                 url: '/:id',
                 views: {
                     'content@': {
-                        templateUrl: '/viewItems/detail_trousers.html',
+                        templateUrl: '/viewItems/detail_trouser.html',
                         controller: 'trousersController',
                         controllerAs: 'items'
                     }
@@ -193,21 +194,21 @@
                 }
             })
             .state('home.uploadSuccess', {
-                url : '/uploadSuccess',
-                views : {
-                    'content@' : {
-                        templateUrl : '/viewUser/uploadSuccess.html'
+                url: '/uploadSuccess',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/uploadSuccess.html'
                     }
                 },
-                data : {
-                    permissions : {
-                        only : 'signIn'
+                data: {
+                    permissions: {
+                        only: 'signIn'
                     }
                 }
             })
     }
 
-    function run(PermPermissionStore, $localStorage, $http) {
+    function run(PermPermissionStore, $localStorage, $http, $rootScope, $state, $anchorScroll) {
         PermPermissionStore.definePermission('isBag', function () {
             if ($localStorage.BAG) {
                 return true
@@ -231,13 +232,24 @@
                 return true
             }
         });
-        
+
         if ($localStorage.userToken) {
             $http.defaults.headers.common['authentication'] = $localStorage.userToken.token;
-            console.log('Token after add $http authentication : ', $http.defaults.headers.common['authentication']);
+            //console.log('Token after add $http authentication : ', $http.defaults.headers.common['authentication']);
         }
-        
-        
+
+        $rootScope.checkState = function () {
+            //console.log($state.current.name);
+            if ($state.current.name === 'home') {
+                $state.go('home', {}, {
+                    reload: true
+                });
+            }
+        }
+        // auto scroll toppage
+        $rootScope.$on("$locationChangeSuccess", function() {
+            $anchorScroll();
+        });
         
     }
 

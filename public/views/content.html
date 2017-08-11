@@ -36,7 +36,6 @@
 </div>
 <!--./CHANGE PAGE-->
 
-
 <!--HOME PAGE-->
 <div class="container">
     <div class="row">
@@ -57,6 +56,7 @@
                 </div>
             </div> -->
             <!--====KHUYEN MAI====-->
+
             <!--====AODAI====-->
             <div class="col-sm-12 body_body">
                 <!-- TITTLE AODAI -->
@@ -75,7 +75,7 @@
                                 <h4> {{ad.tittle}} </h4>
                             </a>
                             <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
+                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
                                 <span class="price">{{ad.price | currency:"":0}} VND </span>
                                 <span class="price_sale">{{ad.price_sale | currency:"":0}} </span>
                             </p>
@@ -84,6 +84,7 @@
                 </div>
             </div>
             <!--====AODAI====-->
+
             <!--====DRESS====-->
             <div class="col-sm-12 body_body">
                 <span class="line">
@@ -101,7 +102,7 @@
                                 <h4> {{dres.tittle}} </h4>
                             </a>
                             <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
+                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
                                 <span class="price">{{dres.price | currency:"":0}} VND </span>
                                 <span class="price_sale">{{dres.price_sale | currency:"":0}} </span>
                             </p>
@@ -110,12 +111,13 @@
                 </div>
             </div>
             <!--====DRESS====-->
+
             <!--====SHIRTS====-->
             <div class="col-sm-12 body_body">
                 <span class="line">
                     <h3 class="center_decor part">
                         <a ui-sref="home.shirts"> <span>ÁO</span> </a>
-                </h3>
+                    </h3>
                 </span>
                 <div class="row">
                     <div class="col-sm-3" ng-repeat="shirt in items.shirts | limitTo:20">
@@ -123,13 +125,13 @@
                             <a ui-sref="home.shirts.detail({id: shirt._id})">
                                 <img class="img-thumbnail" ng-src="{{shirt.image[0]}}">
                             </a>
-                            tittle
+                            
                             <a class="center_decor" ui-sref="home.shirts.detail({id: shirt._id})">
                                 <h4> {{shirt.tittle}} </h4>
                             </a>
-                            price
+                            
                             <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
+                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
                                 <span class="price">{{shirt.price | currency:"":0}} VND </span>
                                 <span class="price_sale">{{shirt.price_sale | currency:"":0}} </span>
                             </p>
@@ -138,6 +140,7 @@
                 </div>
             </div>
             <!--====SHIRTS====-->
+
             <!--===TROUSERS===-->
             <div class="col-sm-12 body_body">
                 <span class="line">
@@ -155,7 +158,7 @@
                                 <h4> {{trouser.tittle}} </h4>
                             </a>
                             <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
+                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
                                 <span class="price">{{trouser.price | currency:"":0}} VND </span>
                                 <span class="price_sale">{{trouser.price_sale | currency:"":0}} </span>
                             </p>

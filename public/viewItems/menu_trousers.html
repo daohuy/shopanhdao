@@ -6,7 +6,7 @@
     <div class="row body_body">
 
         <span class="line">
-            <h3 class="center_decor">
+            <h3 class="center_decor part">
                 <a ui-sref="home.trousers"> <span>QUẦN</span> </a>
         </h3>
         </span>
@@ -14,12 +14,12 @@
         <div class="col-sm-3" ng-repeat="trouser in items.trousers">
 
             <div class="menu_item">
-                <a ui-sref="home.trouser.detail({id: trouser._id})">
+                <a ui-sref="home.trousers.detail({id: trouser._id})">
 
                     <img class="img-thumbnail" ng-src="{{trouser.image[0]}}">
                 </a>
                 <!--tittle-->
-                <a class="center_decor" ui-sref="home.trouser.detail({id: trouser._id})">
+                <a class="center_decor" ui-sref="home.trousers.detail({id: trouser._id})">
                     <h4> {{trouser.tittle}} </h4>
                 </a>
 

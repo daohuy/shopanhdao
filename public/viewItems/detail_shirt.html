@@ -8,20 +8,20 @@
         <!--REVIEW IMAGE-->
         <section class="col-sm-5">
 
-            <img class="xzoom img-thumbnail" ng-src="{{shirt.image[0]}}" xoriginal="{{shirt.image[0]}}" />
+            <img class="xzoom img-thumbnail" ng-src="{{items.shirt.image[0]}}" xoriginal="{{items.shirt.image[0]}}" />
 
             <div class="xzoom-thumbs">
-                <a href="{{shirt.image[0]}}">
-                    <img class="xzoom-gallery" width="80" ng-src="{{shirt.image[0]}}">
+                <a href="{{items.shirt.image[0]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{items.shirt.image[0]}}">
                 </a>
-                <a href="{{shirt.image[1]}}">
-                    <img class="xzoom-gallery" width="80" ng-src="{{shirt.image[1]}}">
+                <a href="{{items.shirt.image[1]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{items.shirt.image[1]}}">
                 </a>
-                <a href="{{shirt.image[2]}}">
-                    <img class="xzoom-gallery" width="80" ng-src="{{shirt.image[2]}}">
+                <a href="{{items.shirt.image[2]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{items.shirt.image[2]}}">
                 </a>
-                <a href="{{shirt.image[3]}}">
-                    <img class="xzoom-gallery" width="80" ng-src="{{shirt.image[3]}}">
+                <a href="{{items.shirt.image[3]}}">
+                    <img class="xzoom-gallery" width="80" ng-src="{{items.shirt.image[3]}}">
                 </a>
             </div>
 
@@ -29,30 +29,30 @@
 
         <!--INFORMATION-->
         <div class="col-sm-7">
-            <h2 style="text-align:center"> {{shirt.tittle}} </h2>
+            <h2 style="text-align:center"> {{items.shirt.tittle}} </h2>
             <!--TABLE RIGHT INFORMATION -->
             <table class="table table-condensed">
                 <tr>
                     <th>Mã Sản Phẩm</th>
-                    <td> {{shirt.MASO}} </td>
+                    <td> {{items.shirt.MASO}} </td>
                 </tr>
                 <tr>
                     <th>Giá Tiền</th>
                     <td>
-                        <span class="price">{{shirt.price | currency:"":0}} VND </span>
+                        <span class="price">{{items.shirt.price | currency:"":0}} VND </span>
                     </td>
                 </tr>
                 <tr>
                     <th>Màu Sắc</th>
-                    <td> {{shirt.color}} </td>
+                    <td> {{items.shirt.color}} </td>
                 </tr>
                 <tr>
                     <th>Chất Liệu</th>
-                    <td> {{shirt.material}} </td>
+                    <td> {{items.shirt.material}} </td>
                 </tr>
                 <tr>
                     <th>Size</th>
-                    <td> {{shirt.size}} </td>
+                    <td> {{items.shirt.size}} </td>
                 </tr>
                 <tr>
                     <th>Đánh Giá</th>
@@ -63,12 +63,9 @@
             </table>
             <!--./TABLE RIGHT INFORMATION-->
             <div class="row">
-                <div class="col-sm-offset-2 col-sm-4 btn_details">
-                    <a href="#">CHO VÀO GIỎ HÀNG</a>
-                </div>
-                <div class="col-sm-offset-1 col-sm-4 btn_details">
-                    <a href="#">QUAY LẠI</a>
-                </div>
+                <button type="button" class="col-sm-offset-2 btn btn-default" ng-click="items.shopping()"> <p class="center_decor">CHO VÀO GIỎ HÀNG</p> </button>
+                
+                <button type="button" class="col-sm-offset-1 btn btn-default" ng-click="items.buyNow()"><p class="center_decor">MUA NGAY</p></button>
             </div>
 
         </div>
@@ -83,8 +80,8 @@
             <div class="tab-content">
                 <!--===THONG TIN===-->
                 <div id="thong_tin" class="tab-pane fade in active border_tab_detail">
-                    <p style="text-indent: 80px">{{shirt.description}}</p>
-                    <img class="img-thumbnail" ng-repeat="img in shirt.image" ng-src="{{img}}
+                    <p style="text-indent: 80px">{{items.shirt.description}}</p>
+                    <img class="img-thumbnail" ng-repeat="img in items.shirt.image" ng-src="{{img}}
                     ">
                 </div>
                 <!--===DANH GIA===-->

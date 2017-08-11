@@ -7,8 +7,7 @@
         .controller('aodaiController', aodaiCont)
         .controller('dressController', dressCont)
         .controller('shirtsController', shirtsCont)
-        .controller('trousersController', trousersCont)
-    ;
+        .controller('trousersController', trousersCont);
 
     function itemCont(itemsFactory) {
         var items = this;
@@ -56,6 +55,8 @@
         items.info = {};
         items.customerOrder = customerOrder;
         items.remove = remove;
+        items.haveBag = false;
+        
         $localStorage.haveBag = false;
 
         //USER
@@ -67,6 +68,7 @@
             //co local BAG
             console.log('Have Local BAG', $localStorage.BAG);
             $localStorage.haveBag = true;
+            items.haveBag = true;
             items.BAG = $localStorage.BAG;
             var total = [];
             for (var i = 0; i < items.BAG.length; i++) {
@@ -95,6 +97,7 @@
         function customerOrder() {
             itemsFactory.customerOrder(items.info);
         }
+        
 
     }
     /*CONTROLLER AODAI*/

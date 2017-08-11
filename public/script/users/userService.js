@@ -3,8 +3,8 @@
 
     angular
         .module('myApp')
-        //.constant("baseURL", "http://localhost:3000/")
-        .constant("baseURL", "http://130.211.160.135:3000/")
+        //.constant("baseURL", "http://localhost:8080/")
+        .constant("baseURL", "http://35.202.183.187:8080/")
         .factory('userFactory', userFac);
 
     function userFac(baseURL, $resource, $localStorage, $http, $state, Upload) {
@@ -39,8 +39,7 @@
             $resource(baseURL + "users/login")
                 .save(loginData, function (res) {
                     storeUserCredentials(res);
-                    $state.go('home.mainPage');
-                    location.reload();
+                    $state.transitionTo("home.mainPage", {}, {reload: true});
                 }, function (res) {
                     alert('Wrong Password');
                 });
@@ -70,7 +69,6 @@
             form.image = image;
             $resource(baseURL + select)
                 .save(form, function (res) {
-                    alert('UPLOAD SUCCESS !');
                     uploadFile(files, select, id);
                     $state.go('home.uploadSuccess');
                 }, function (res) {

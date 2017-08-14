@@ -4,7 +4,9 @@
     angular
         .module('myApp')
         .controller('userController', userCont)
-        .controller('uploadController', uploadCont);
+        .controller('uploadController', uploadCont)
+        .controller('customerController', customerCont)
+    ;
 
     function userCont(userFactory, $resource, $localStorage) {
         var user = this;
@@ -51,5 +53,29 @@
         }
     }
 
-
+    function customerCont(userFactory, $stateParams) {
+        var user = this;
+        
+        user.customers = userFactory
+            .customerResource()
+            .query(function(res) {
+                user.customers = res;
+                console.log(user.customers);
+            }, function(res) {
+                console.log(res);
+            });
+        
+        user.customer = userFactory
+            .customerResource()
+            .get({
+                cusId : $stateParams.id 
+            }, function(res) {
+                user.customer = res;
+                console.log(user.customer);
+            }, function(res) {
+                console.log(res)
+            })
+        
+    }
+    
 })();

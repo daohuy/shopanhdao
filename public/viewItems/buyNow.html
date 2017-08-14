@@ -1,8 +1,19 @@
 <header class="jumbotron">
 
 </header>
+
+
+
 <div class="container">
     <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> Trang Chủ </a>
+            </li>
+            <li>
+                <a ui-sref="home.buynow"> Đặt Hàng </a>
+            </li>
+        </ol>
         <div class="col-sm-12 body_body">
             <h4 class="center_decor"> <i class="fa fa-star-o" aria-hidden="true"></i> Thông Tin Khách Hàng <i class="fa fa-star-o" aria-hidden="true"></i> </h4>
             <form ng-submit="items.customerOrder()">

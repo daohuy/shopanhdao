@@ -3,8 +3,8 @@
 
     angular
         .module('myApp')
-        //.constant("baseURL", "http://localhost:8080/")
-        .constant("baseURL", "http://35.202.183.187:8080/")
+        .constant("baseURL", "http://localhost:8080/")
+        //.constant("baseURL", "http://35.202.183.187:8080/")
         .factory('userFactory', userFac);
 
     function userFac(baseURL, $resource, $localStorage, $http, $state, Upload) {
@@ -15,9 +15,10 @@
         userService.logout = logout;
         userService.loadUserCredentials = loadUserCredentials;
         userService.uploadItem = uploadItem;
-
+        userService.customerResource = customerResource;
+        
         return userService;
-
+        
         // load data user before start page
         function loadUserCredentials() {
             if ($localStorage.userToken) {
@@ -50,7 +51,7 @@
             $http.defaults.headers.common['authentication'] = authToken;
             delete $localStorage.userToken;
             $state.go('home');
-            window.location.replace('/');
+            window.location.replace('/'); 
         }
         //logout user
         function logout() {
@@ -95,7 +96,18 @@
                 }
             };
         }
-
+        
+        function customerResource() {
+            return $resource(baseURL + "customer/:cusId", {
+                cusId : "@cusId"    
+            }, {
+                query : {
+                    method : "GET",
+                    isArray : true
+                }
+            })
+        }
+        
         loadUserCredentials();
 
     }

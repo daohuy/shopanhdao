@@ -36,6 +36,17 @@ aodaiRouter.route('/')
             res.json(resp);
         });
     });
+//Khuyen Mai
+
+aodaiRouter.route('/khuyenmai')
+    .get(function(req, res, next) {
+
+        aodai.findOne({featured:true}, function(err,ad) {
+            if (err) return next(err);
+            res.json(ad);
+        })
+
+    });
 
 aodaiRouter.route('/:aodaiId')
 

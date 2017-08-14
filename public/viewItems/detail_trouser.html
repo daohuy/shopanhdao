@@ -1,15 +1,22 @@
 <header class="jumbotron">
-
 </header>
 <!--DETAILS SAN PHAM-->
 <div class="container">
-    <div class="row body_bg_white">
-
+    <div class="row body_body">
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> Trang Chủ </a>
+            </li>
+            <li>
+                <a ui-sref="home.trousers"> Đầm </a>
+            </li>
+            <li>
+                <a ui-sref="home.trousers.detail({id : items.trouser._id})"> {{items.trouser._id}} </a>
+            </li>
+        </ol>
         <!--REVIEW IMAGE-->
         <section class="col-sm-5">
-
             <img class="xzoom img-thumbnail" ng-src="{{items.trouser.image[0]}}" xoriginal="{{items.trouser.image[0]}}" />
-
             <div class="xzoom-thumbs">
                 <a href="{{items.trouser.image[0]}}">
                     <img class="xzoom-gallery" width="80" ng-src="{{items.trouser.image[0]}}">
@@ -24,9 +31,7 @@
                     <img class="xzoom-gallery" width="80" ng-src="{{items.trouser.image[3]}}">
                 </a>
             </div>
-
         </section>
-        
         <!--INFORMATION-->
         <div class="col-sm-7">
             <h2 style="text-align:center"> {{items.trouser.tittle}} </h2>
@@ -38,8 +43,8 @@
                 </tr>
                 <tr>
                     <th>Giá Tiền</th>
-                    <td> 
-                        <span class="price">{{items.trouser.price | currency:"":0}} VND </span>  
+                    <td>
+                        <span class="price">{{items.trouser.price | currency:"":0}} VND </span>
                     </td>
                 </tr>
                 <tr>
@@ -64,23 +69,19 @@
             <!--./TABLE RIGHT INFORMATION-->
             <div class="row">
                 <button type="button" class="col-sm-offset-2 btn btn-default" ng-click="items.shopping()"> <p class="center_decor">CHO VÀO GIỎ HÀNG</p> </button>
-                
                 <button type="button" class="col-sm-offset-1 btn btn-default" ng-click="items.buyNow()"><p class="center_decor">MUA NGAY</p></button>
             </div>
-
         </div>
-
         <!--===BODY===-->
         <div class="col-sm-9 body_details">
             <ul class="nav nav-tabs nav_details">
                 <li class="active"><a data-toggle="tab" data-target="#thong_tin">Thông Tin Sản Phẩm</a></li>
                 <li><a data-toggle="tab" data-target="#danh_gia">Đánh Giá Khách Hàng</a></li>
             </ul>
-
             <div class="tab-content">
                 <!--===THONG TIN===-->
                 <div id="thong_tin" class="tab-pane fade in active border_tab_detail">
-                    <p style="text-indent: 80px">{{items.trouser.description}}</p>
+                    <p class="description">{{items.trouser.description}}</p>
                     <img class="img-thumbnail" ng-repeat="img in items.trouser.image" ng-src="{{img}}
                     ">
                 </div>
@@ -88,19 +89,15 @@
                 <div id="danh_gia" class="tab-pane fade">
                     <h3>ĐÁNH GIÀ KHÁCH HÀNG</h3>
                 </div>
-
             </div>
-
         </div>
         <!--===LINK===-->
         <div class="col-sm-3 body_link">
             <h4 style="text-align:center">Sản Phẩm Nổi Bật</h4>
         </div>
-
     </div>
 </div>
 <!--./DETAILS SAN PHAM-->
-
 <!--===SCRIPT FOR ZOOM===-->
 <script>
     $('.xzoom, .xzoom-gallery').xzoom({
@@ -108,6 +105,5 @@
         lensShape: 'circle',
         sourceClass: 'xzoom-hidden'
     });
-
 </script>
 <!--./===SCRIPT FOR ZOOM===-->

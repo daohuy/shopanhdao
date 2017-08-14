@@ -8,6 +8,10 @@ var dressSchema = new Schema({
         type: String,
         required: true
     },
+    class : {
+        type : String,
+        default : 'Đầm'
+    },
     price: {
         type: Currency
     },

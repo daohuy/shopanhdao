@@ -3,8 +3,8 @@
 
     angular.module('myApp')
         // URL : https://shopanhdao-174606.appspot.com/
-        //.constant("baseURL", "http://localhost:8080/") // url api server mongodb
-        .constant("baseURL", "http://35.202.183.187:8080/") // url api server mongodb
+        .constant("baseURL", "http://localhost:8080/") // url api server mongodb
+        //.constant("baseURL", "http://35.202.183.187:8080/") // url api server mongodb
         .factory('itemsFactory', itemsFac);
 
     function itemsFac($localStorage, $resource, $state, baseURL, Upload) {
@@ -17,9 +17,10 @@
         itemService.orderResource = orderResource;
         itemService.shopping = shopping;
         itemService.buyNow = buyNow;
-        itemService.remove = remove;
+        itemService.remove = remove; //remove item in local
         itemService.customerOrder = customerOrder;
         itemService.uploadResource = uploadResource;
+        itemService.removeItem = removeItem;
 
         return itemService;
 
@@ -33,7 +34,7 @@
                 query: {
                     method: 'GET',
                     isArray: true
-                },
+                }
             });
         }
 
@@ -47,7 +48,7 @@
                 query: {
                     method: 'GET',
                     isArray: true
-                },
+                }
             })
         }
 
@@ -61,7 +62,7 @@
                 query: {
                     method: 'GET',
                     isArray: true
-                },
+                }
             });
         }
 
@@ -75,7 +76,7 @@
                 query: {
                     method: 'GET',
                     isArray: true
-                },
+                }
             });
         }
 
@@ -162,19 +163,43 @@
             //console.log(order);
             $resource(baseURL + "bill")
                 .save(order, function (res) {
-                    $localStorage.$reset();
+                    delete $localStorage.BAG;
+                    delete $localStorage.totalPrice;
                     $state.go('home.success');
                 }, function (res) {
                     console.log(res);
                 });
         }
 
-        
-        
         function uploadResource() {
             return $resource(baseURL + "upload", {
                 save: {
                     method: "POST",
+                }
+            })
+        }
+
+        function removeItem(item) {
+
+            bootbox.confirm({
+                size: "small",
+                message: " Bạn Có Chắc Muốn Xoá Chứ ?",
+                buttons: {
+                    confirm: {
+                        label: 'Đồng Ý !',
+                        className: 'btn-primary'
+                    },
+                    cancel: {
+                        label: 'Suy Nghĩ Lại !',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result == true) {
+                        console.log(item)
+                    } else {
+                        console.log('No')
+                    }
                 }
             })
         }

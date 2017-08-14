@@ -36,13 +36,19 @@
 </div>
 <!--./CHANGE PAGE-->
 
+
 <!--HOME PAGE-->
 <div class="container">
-    <div class="row">
+    <div class="row body_body">
+        <!--BREADCRUMB-->
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> Trang Chủ </a>
+            </li>
+        </ol>
         <!--====Body===-->
-        <div>
-            <!--====KHUYEN MAI====-->
-            <!-- <div class="col-sm-12 body_body">
+        <!--====KHUYEN MAI====-->
+        <!-- <div class="col-sm-12 body_body">
                 <h3 class="center_decor"> Khuyến Mãi Mùa Hè </h3>
                 <div class="row">
                     san pham
@@ -55,119 +61,118 @@
                     </div>
                 </div>
             </div> -->
-            <!--====KHUYEN MAI====-->
+        <!--====KHUYEN MAI====-->
 
-            <!--====AODAI====-->
-            <div class="col-sm-12 body_body">
-                <!-- TITTLE AODAI -->
-                <span class="line">
+        <!--====AODAI====-->
+        <div class="col-sm-12">
+            <!-- TITTLE AODAI -->
+            <span class="line">
                     <h3 class="center_decor part">
                         <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
-                    </h3>
-                </span>
-                <div class="row">
-                    <div class="col-sm-3" ng-repeat="ad in items.aodais | limitTo:20">
-                        <div class="menu_item">
-                            <a ui-sref="home.aodai.detail({id: ad._id})">
-                                <img class="img-thumbnail" ng-src="{{ad.image[0]}}" src="">
-                            </a>
-                            <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
-                                <h4> {{ad.tittle}} </h4>
-                            </a>
-                            <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
-                                <span class="price">{{ad.price | currency:"":0}} VND </span>
-                                <span class="price_sale">{{ad.price_sale | currency:"":0}} </span>
-                            </p>
-                        </div>
+            </h3>
+            </span>
+            <div class="row">
+                <div class="col-sm-3" ng-repeat="ad in items.aodais | limitTo:20">
+                    <div class="menu_item">
+                        <a ui-sref="home.aodai.detail({id: ad._id})">
+                            <img class="img-thumbnail" ng-src="{{ad.image[0]}}" src="">
+                        </a>
+                        <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
+                            <h4> {{ad.tittle}} </h4>
+                        </a>
+                        <p>
+                            <span><i class="fa fa-money" aria-hidden="true"></i></span>
+                            <span class="price">{{ad.price | currency:"":0}} VND </span>
+                            <span class="price_sale">{{ad.price_sale | currency:"":0}} </span>
+                        </p>
                     </div>
                 </div>
             </div>
-            <!--====AODAI====-->
+        </div>
+        <!--====AODAI====-->
 
-            <!--====DRESS====-->
-            <div class="col-sm-12 body_body">
-                <span class="line">
+        <!--====DRESS====-->
+        <div class="col-sm-12">
+            <span class="line">
                     <h3 class="center_decor part">
                         <a ui-sref="home.dress"> <span>Đầm</span> </a>
-                </h3>
-                </span>
-                <div class="row">
-                    <div class="col-sm-3" ng-repeat="dres in items.dress | limitTo:20">
-                        <div class="menu_item">
-                            <a ui-sref="home.dress.detail({id: dres._id})">
-                                <img class="img-thumbnail" ng-src="{{dres.image[0]}}">
-                            </a>
-                            <a class="center_decor" ui-sref="home.dress.detail({id: dres._id})">
-                                <h4> {{dres.tittle}} </h4>
-                            </a>
-                            <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
-                                <span class="price">{{dres.price | currency:"":0}} VND </span>
-                                <span class="price_sale">{{dres.price_sale | currency:"":0}} </span>
-                            </p>
-                        </div>
+            </h3>
+            </span>
+            <div class="row">
+                <div class="col-sm-3" ng-repeat="dres in items.dress | limitTo:20">
+                    <div class="menu_item">
+                        <a ui-sref="home.dress.detail({id: dres._id})">
+                            <img class="img-thumbnail" ng-src="{{dres.image[0]}}">
+                        </a>
+                        <a class="center_decor" ui-sref="home.dress.detail({id: dres._id})">
+                            <h4> {{dres.tittle}} </h4>
+                        </a>
+                        <p>
+                            <span><i class="fa fa-money" aria-hidden="true"></i></span>
+                            <span class="price">{{dres.price | currency:"":0}} VND </span>
+                            <span class="price_sale">{{dres.price_sale | currency:"":0}} </span>
+                        </p>
                     </div>
                 </div>
             </div>
-            <!--====DRESS====-->
+        </div>
+        <!--====DRESS====-->
 
-            <!--====SHIRTS====-->
-            <div class="col-sm-12 body_body">
-                <span class="line">
+        <!--====SHIRTS====-->
+        <div class="col-sm-12">
+            <span class="line">
                     <h3 class="center_decor part">
                         <a ui-sref="home.shirts"> <span>ÁO</span> </a>
-                    </h3>
-                </span>
-                <div class="row">
-                    <div class="col-sm-3" ng-repeat="shirt in items.shirts | limitTo:20">
-                        <div class="menu_item">
-                            <a ui-sref="home.shirts.detail({id: shirt._id})">
-                                <img class="img-thumbnail" ng-src="{{shirt.image[0]}}">
-                            </a>
-                            
-                            <a class="center_decor" ui-sref="home.shirts.detail({id: shirt._id})">
-                                <h4> {{shirt.tittle}} </h4>
-                            </a>
-                            
-                            <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
-                                <span class="price">{{shirt.price | currency:"":0}} VND </span>
-                                <span class="price_sale">{{shirt.price_sale | currency:"":0}} </span>
-                            </p>
-                        </div>
+            </h3>
+            </span>
+            <div class="row">
+                <div class="col-sm-3" ng-repeat="shirt in items.shirts | limitTo:20">
+                    <div class="menu_item">
+                        <a ui-sref="home.shirts.detail({id: shirt._id})">
+                            <img class="img-thumbnail" ng-src="{{shirt.image[0]}}">
+                        </a>
+
+                        <a class="center_decor" ui-sref="home.shirts.detail({id: shirt._id})">
+                            <h4> {{shirt.tittle}} </h4>
+                        </a>
+
+                        <p>
+                            <span><i class="fa fa-money" aria-hidden="true"></i></span>
+                            <span class="price">{{shirt.price | currency:"":0}} VND </span>
+                            <span class="price_sale">{{shirt.price_sale | currency:"":0}} </span>
+                        </p>
                     </div>
                 </div>
             </div>
-            <!--====SHIRTS====-->
+        </div>
+        <!--====SHIRTS====-->
 
-            <!--===TROUSERS===-->
-            <div class="col-sm-12 body_body">
-                <span class="line">
+        <!--===TROUSERS===-->
+        <div class="col-sm-12">
+            <span class="line">
                     <h3 class="center_decor part">
                         <a ui-sref="home.trousers"> <span>QUẦN</span> </a>
-                </h3>
-                </span>
-                <div class="row">
-                    <div class="col-sm-3" ng-repeat="trouser in items.trousers | limitTo:20">
-                        <div class="menu_item">
-                            <a ui-sref="home.trousers.detail({id: trouser._id})">
-                                <img class="img-thumbnail" ng-src="{{trouser.image[0]}}">
-                            </a>
-                            <a class="center_decor" ui-sref="home.trousers.detail({id: trouser._id})">
-                                <h4> {{trouser.tittle}} </h4>
-                            </a>
-                            <p>
-                                <span><i class="fa fa-money" aria-hidden="true"></i></span>
-                                <span class="price">{{trouser.price | currency:"":0}} VND </span>
-                                <span class="price_sale">{{trouser.price_sale | currency:"":0}} </span>
-                            </p>
-                        </div>
+            </h3>
+            </span>
+            <div class="row">
+                <div class="col-sm-3" ng-repeat="trouser in items.trousers | limitTo:20">
+                    <div class="menu_item">
+                        <a ui-sref="home.trousers.detail({id: trouser._id})">
+                            <img class="img-thumbnail" ng-src="{{trouser.image[0]}}">
+                        </a>
+                        <a class="center_decor" ui-sref="home.trousers.detail({id: trouser._id})">
+                            <h4> {{trouser.tittle}} </h4>
+                        </a>
+                        <p>
+                            <span><i class="fa fa-money" aria-hidden="true"></i></span>
+                            <span class="price">{{trouser.price | currency:"":0}} VND </span>
+                            <span class="price_sale">{{trouser.price_sale | currency:"":0}} </span>
+                        </p>
                     </div>
                 </div>
             </div>
-            <!--===TROUSERS===-->
         </div>
+        <!--===TROUSERS===-->
         <!--===./body===-->
         <!--./Row-->
     </div>

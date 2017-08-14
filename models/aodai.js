@@ -8,6 +8,10 @@ var aodaiSchema = new Schema({
         type: String,
         required: true
     },
+    class : {
+        type : String,
+        default : 'Áo Dài'
+    },
     price: {
         type: Currency
     },

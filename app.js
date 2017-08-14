@@ -71,6 +71,7 @@ app.use('/trousers', trousersRouter);
 app.use('/bill', customerRouter);
 app.use('/users', userRouter);
 app.use('/upload', uploadRouter);
+app.use('/customer', customerRouter);
 //app.use('/dropbox', dropboxRouter);
 
 // catch 404 and forward to error handler

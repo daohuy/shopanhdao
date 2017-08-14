@@ -1,0 +1,51 @@
+<header class="jumbotron">
+
+</header>
+<div class="container">
+    <div class="row body_body">
+       
+        <!--BREADCRUMB-->
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> Trang Chủ </a>
+            </li>
+            
+            <li>
+                <a ui-sref="home.customer"> Danh Sách Hoá Đơn </a>
+            </li>
+        </ol>
+        <span class="line">
+            <h3 class="center_decor part">
+            <span>ĐƠN ĐẶT HÀNG</span>
+        </h3>
+        </span>
+
+        <table class="table">
+            <tr>
+                <th>
+                    <strong> Thứ Tự </strong>
+                </th>
+                <th>
+                    <strong> Tên </strong>
+                </th>
+                <th>
+                    <strong> Mã Đơn Hàng </strong>
+                </th>
+                <th>
+                    <strong> Ngày Đặt Hàng </strong>
+                </th>
+            </tr>
+            <tr ng-repeat="i in user.customers">
+                <td> {{$index + 1}} </td>
+                
+                <td><a ui-sref="home.customer.detail({ id: i._id})">{{i.name}}</a></td>
+                
+                <td><a ui-sref="home.customer.detail({ id: i._id})">{{i._id}}</a></td>
+                
+                <td> {{i.date | date : 'short'}} </td>
+                
+            </tr>
+        </table>
+
+    </div>
+</div>

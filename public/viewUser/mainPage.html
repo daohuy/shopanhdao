@@ -1,13 +1,29 @@
 <header class="jumbotron">
 
 </header>
+
+
+
 <div class="container">
     <div class="row body_body">
+
+
+        <!--BREADCRUMB-->
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> Trang Chủ </a>
+            </li>
+            <li>
+                <a ui-sref="home.mainPage"> {{user.user.username}} </a>
+            </li>
+        </ol>
+
         <span class="line">
             <h3 class="center_decor part">
             <span>THÔNG TIN</span>
-            </h3>
+        </h3>
         </span>
+
 
         <div class="col-sm-3 center_decor boder-right">
             <img class="img-thumbnail" src="/img/avatar/NhaHan.jpg">
@@ -22,14 +38,24 @@
                 <tr>
                     <th class="col-sm-4"> Tên : </th>
                     <td class="col-sm-8"> {{user.user.lastname}} </td>
-                </tr> 
+                </tr>
                 <tr>
                     <th> <a ui-sref=""> Đổi Mật Khẩu </a> </th>
-
-                </tr>        
+                    <th>  </th>
+                </tr>
             </table>
-            <button class="btn btn-primary btn-sm" ui-sref="home.upload">Upload Sản Phẩm</button>
-            <button class="btn btn-danger btn-sm" ng-click="user.logout()">Log Out</button>
+
+            <div class="list-group">
+                <a class="list-group-item list-group-item-info">
+                    Chức Năng
+                </a>
+                <a ui-sref="home.upload" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Upload Sản Phẩm </a>
+                <a ui-sref="home.listItems" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Danh Sách Mặt Hàng </a>
+                <a ui-sref="home.customer" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Những Đơn Đặt Hàng </a>
+            </div>
+
+            <button class="btn btn-danger btn-sm" ng-click="user.logout()"> Thoát </button>
+
         </div>
 
     </div>

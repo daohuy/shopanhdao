@@ -36,6 +36,16 @@ trouserRouter.route('/')
         });
     });
 
+trouserRouter.route('/khuyenmai')
+    .get(function(req, res, next) {
+
+        trousers.findOne({featured:true}, function(err,trouser) {
+            if (err) return next(err);
+            res.json(trouser);
+        })
+
+    });
+
 trouserRouter.route('/:trouserId')
 
     .get(function (req, res, next) {

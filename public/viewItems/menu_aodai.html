@@ -1,18 +1,23 @@
 <header class="jumbotron">
-
 </header>
 <!--AO DAI-->
 <div class="container">
     <div class="row body_body">
-
+        <!--BREADCRUMB-->
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> Trang Chủ </a>
+            </li>
+            <li>
+                <a ui-sref="home.aodai"> Áo Dài </a>
+            </li>
+        </ol>
         <span class="line">
             <h3 class="center_decor part">
                 <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
-            </h3>
+        </h3>
         </span>
-
         <div class="col-sm-3" ng-repeat="aodai in items.aodais">
-
             <div class="menu_item">
                 <a ui-sref="home.aodai.detail({id: aodai._id})">
                     <img class="img-thumbnail" ng-src="{{aodai.image[0]}}">
@@ -21,17 +26,13 @@
                 <a class="center_decor" ui-sref="home.aodai.detail({id: aodai._id})">
                     <h4> {{aodai.tittle}} </h4>
                 </a>
-
                 <!--price-->
-
                 <p>
                     <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
                     <span class="price">{{aodai.price | currency:"":0}} VND </span>
                     <span class="price_sale">{{aodai.price_sale | currency:"":0}} </span>
                 </p>
             </div>
-
         </div>
-
     </div>
 </div>

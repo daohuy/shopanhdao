@@ -8,6 +8,10 @@ var trouserSchema = new Schema({
         type: String,
         required: true
     },
+    class : {
+        type : String,
+        default : 'Quần'
+    },
     price: {
         type: Currency
     },

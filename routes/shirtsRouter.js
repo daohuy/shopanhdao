@@ -38,6 +38,16 @@ shirtRouter.route('/')
         });
     });
 
+shirtRouter.route('/khuyenmai')
+    .get(function(req, res, next) {
+
+        shirts.findOne({featured:true}, function(err,shirt) {
+            if (err) return next(err);
+            res.json(shirt);
+        })
+
+    });
+
 shirtRouter.route('/:shirtId')
 
     .get(function (req, res, next) {

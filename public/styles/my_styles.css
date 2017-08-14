@@ -47,7 +47,7 @@ a:active {
 }
 
 .line h3 span {
-    background-color: #f5f5f5;
+    background-color: white;
     position: relative;
     top: 25px;
     padding: 0 20px;
@@ -113,7 +113,7 @@ a:active {
 }
 
 .body_body {
-    background: #f5f5f5;
+    background: white;
     margin: 5px;
     padding: 10px;
     border: 2px ridge;
@@ -238,4 +238,8 @@ strong {
 }
 .boder-right {
     border-right: 2px ridge;
+}
+.description {
+    font-size: 18px;
+    text-indent: 8px;
 }

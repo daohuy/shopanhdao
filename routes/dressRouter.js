@@ -36,6 +36,16 @@ dressRouter.route('/')
         });
     });
 
+dressRouter.route('/khuyenmai')
+    .get(function(req, res, next) {
+
+        dress.findOne({featured:true}, function(err,dres) {
+            if (err) return next(err);
+            res.json(dres);
+        })
+
+    });
+
 dressRouter.route('/:dressId')
 
     .get(function (req, res, next) {

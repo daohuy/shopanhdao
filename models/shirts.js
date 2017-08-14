@@ -10,6 +10,10 @@ var shirtSchema = new Schema({
         type: String,
         required: true
     },
+    class : {
+        type : String,
+        default : 'Áo'
+    },
     price: {
         type: Currency
     },

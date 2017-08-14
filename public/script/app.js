@@ -178,6 +178,66 @@
                     }
                 }
             })
+        
+            .state('home.listItems', {
+                url : '/list',
+                views : {
+                    'content@' : {
+                        templateUrl : '/viewUser/menu_items.html',
+                        controller : 'itemsController',
+                        controllerAs : 'items'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+            
+            .state('home.listItems.detail', {
+                url : '/:id',
+                views : {
+                    'content@' : {
+                        templateUrl : '/viewUser/detail_item.html',
+                        controller : 'itemController',
+                        controllerAs : 'items'
+                    }
+                }
+            })
+        
+            .state('home.customer', {
+                url : '/customer',
+                views : {
+                    'content@' : {
+                        templateUrl : '/viewUser/menu_customer.html',
+                        controller : 'customerController',
+                        controllerAs : 'user'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+        
+            .state('home.customer.detail', {
+                url : '/:id',
+                views : {
+                    'content@' : {
+                        templateUrl : '/viewUser/detail_customer.html',
+                        controller : 'customerController',
+                        controllerAs : 'user'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+        
             .state('home.upload', {
                 url: '/upload',
                 views: {

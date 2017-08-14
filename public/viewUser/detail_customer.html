@@ -1,0 +1,83 @@
+<header class="jumbotron">
+</header>
+<div class="container">
+    <div class="row body_body">
+       <!--BREADCRUMB-->
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> Trang Chủ </a>
+            </li>
+            <li>
+                <a ui-sref="home.mainPage"> {{user.user.username}} </a>
+            </li>
+            <li>
+                <a ui-sref="home.customer"> Danh Sách Hoá Đơn </a>
+            </li>
+            <li>
+                <a ui-sref="home.customer.detail({id: user.customer._id})"> {{user.customer._id}} </a>
+            </li>
+        </ol>
+        <span class="line">
+            <h3 class="center_decor part">
+            <span>THÔNG TIN ĐƠN ĐẶT HÀNG</span>
+        </h3>
+        </span>
+        <table class="table">
+            <tr>
+                <th>
+                    <strong>Tên</strong>
+                </th>
+                <th>
+                    <strong>Địa Chỉ</strong>
+                </th>
+                <th>
+                    <strong>Thành Phố</strong>
+                </th>
+                <th>
+                    <strong>Điện Thoại</strong>
+                </th>
+                <th>
+                    <strong>Ngày Đặt Hàng</strong>
+                </th>
+            </tr>
+            <tr>
+                <td> {{user.customer.name}} </td>    
+                <td> {{user.customer.address}} </td>    
+                <td> {{user.customer.city}} </td>    
+                <td> {{user.customer.phone}} </td> 
+                <td> {{user.customer.date | date : 'short'}} </td> 
+            </tr>
+        </table>
+        <h4 class="center_decor">SẢN PHẨM ĐẶT HÀNG</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    <strong>MÃ SỐ</strong>
+                </th>
+                <th>
+                    <strong>Tiêu Đề</strong>
+                </th>
+                <th>
+                    <strong>Hình Ảnh Minh Hoạ</strong>
+                </th>
+                <th>
+                    <strong>Số Lượng</strong>
+                </th>
+                <th>
+                    <strong>Giá</strong>
+                </th>
+            </tr>
+            <tr ng-repeat="i in user.customer.bill">
+                <td> {{i.MASO}} </td>
+                <td> {{i.tittle}} </td>
+                <td> {{i.image[0]}} </td>
+                <td> {{i.quantity}} </td>
+                <td> {{i.price}} </td>
+            </tr>
+            <tr>
+                <th>Tổng Cộng : </th>
+                <th> {{user.customer.total}} </th>
+            </tr>
+        </table>
+    </div>
+</div>

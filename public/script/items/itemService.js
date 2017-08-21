@@ -3,8 +3,8 @@
 
     angular.module('myApp')
         // URL : https://shopanhdao-174606.appspot.com/
-        .constant("baseURL", "http://localhost:8080/") // url api server mongodb
-        //.constant("baseURL", "http://35.202.183.187:8080/") // url api server mongodb
+        //.constant("baseURL", "http://localhost:8080/") // url api server mongodb
+        .constant("baseURL", "http://35.202.183.187:8080/") // url api server mongodb
         .factory('itemsFactory', itemsFac);
 
     function itemsFac($localStorage, $resource, $state, baseURL, Upload) {
@@ -28,10 +28,10 @@
             return $resource(baseURL + "aodai/:aodaiId", {
                 aodaiId: "@aodaiId"
             }, {
-                update: {
+                'update': {
                     method: "PUT"
                 },
-                query: {
+                'query': {
                     method: 'GET',
                     isArray: true
                 }
@@ -42,10 +42,10 @@
             return $resource(baseURL + "dress/:dressId", {
                 dressId: "@dressId"
             }, {
-                update: {
+                'update': {
                     method: "PUT"
                 },
-                query: {
+                'query': {
                     method: 'GET',
                     isArray: true
                 }
@@ -56,10 +56,10 @@
             return $resource(baseURL + "shirts/:shirtId", {
                 shirtId: "@shirtId"
             }, {
-                update: {
+                'update': {
                     method: "PUT"
                 },
-                query: {
+                'query': {
                     method: 'GET',
                     isArray: true
                 }
@@ -70,10 +70,10 @@
             return $resource(baseURL + "trousers/:trouserId", {
                 trouserId: "@trouserId"
             }, {
-                update: {
+                'update': {
                     method: "PUT"
                 },
-                query: {
+                'query': {
                     method: 'GET',
                     isArray: true
                 }
@@ -84,10 +84,10 @@
             return $resource(baseURL + "bill/:billId", {
                 billId: "@billId"
             }, {
-                update: {
+                'update': {
                     method: "PUT"
                 },
-                query: {
+                'query': {
                     method: "GET",
                     isArray: true
                 }
@@ -179,11 +179,11 @@
             })
         }
 
-        function removeItem(item) {
+        function removeItem(item, id) {
 
             bootbox.confirm({
                 size: "small",
-                message: " Bạn Có Chắc Muốn Xoá Chứ ?",
+                message: "<strong> Bạn Có Chắc Muốn Xoá Chứ ? </strong>",
                 buttons: {
                     confirm: {
                         label: 'Đồng Ý !',
@@ -195,14 +195,96 @@
                     }
                 },
                 callback: function (result) {
+                    
                     if (result == true) {
-                        console.log(item)
+                        console.log(item, id)
+                        // aodai
+                        if (item === 'Áo Dài') {
+                            aodaiResource().delete({
+                                aodaiId: id
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: "Đã Xoá Sản Phẩm Với Mã Số : " + id,
+                                    backdrop: true
+                                });
+                                $state.transitionTo('home.listItems', {}, {
+                                    reload: true
+                                });
+                            }, function (res) {
+                                bootbox.alert({
+                                    message: "Xoá Sản Phẩm Thất Bại, Xin Mời Thử Lại Vào Dịp Khác !",
+                                    backdrop: true
+                                });
+                            });
+                        // ao
+                        } else if (item === 'Áo') {
+                            shirtsResource().delete({
+                                shirtId: id
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: "Đã Xoá Sản Phẩm Với Mã Số : " + id,
+                                    backdrop: true
+                                });
+                                $state.transitionTo('home.listItems', {}, {
+                                    reload: true
+                                });
+                            }, function (res) {
+                                bootbox.alert({
+                                    message: "Xoa That Bai, Moi Thu laiXoá Sản Phẩm Thất Bại, Xin Mời Thử Lại Vào Dịp Khác !",
+                                    backdrop: true
+                                });
+                            });       
+                        } else if (item === 'Quần') {
+                            trousersResource().delete({
+                                trouserId: id
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: "Đã Xoá Sản Phẩm Với Mã Số : " + id,
+                                    backdrop: true
+                                });
+                                $state.transitionTo('home.listItems', {}, {
+                                    reload: true
+                                });
+                            }, function (res) {
+                                bootbox.alert({
+                                    message: "Xoá Sản Phẩm Thất Bại, Xin Mời Thử Lại Vào Dịp Khác !",
+                                    backdrop: true
+                                });
+                            });  
+                        } else if ( item === 'Đầm' ) {
+                            dressResource().delete({
+                                dressId: id
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: "Đã Xoá Sản Phẩm Với Mã Số : " + id,
+                                    backdrop: true
+                                });
+                                $state.transitionTo('home.listItems', {}, {
+                                    reload: true
+                                });
+                            }, function (res) {
+                                bootbox.alert({
+                                    message: "Xoá Sản Phẩm Thất Bại, Xin Mời Thử Lại Vào Dịp Khác !",
+                                    backdrop: true
+                                });
+                            });  
+                        }
+
                     } else {
                         console.log('No')
                     }
                 }
             })
+
+
+
         }
+
+
 
     }
 

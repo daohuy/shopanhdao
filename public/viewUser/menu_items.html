@@ -5,7 +5,7 @@
     <div class="row body_body">
         <ol class="breadcrumb">
             <li>
-                <a ui-sref="home"> Trang Chủ </a>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
             </li>
             <li>
                 <a ui-sref="home.listItems"> Danh Sách Mặt Hàng </a>
@@ -31,13 +31,20 @@
             <!--AODAI-->
             <tr ng-repeat="i in items.aodais">
 
-                <td> {{i._id}} </td>
+                <td>
+                    <a ui-sref="home.listItems.aodaiDetail({id : i._id})"> {{i._id}}  </a>
+                </td>
                 <td> {{i.class}} </td>
                 <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
-                <td> {{i.featured}} </td>
-                <td ng-click="items.removeItem(i.class)"><span class="glyphicon glyphicon-remove"></span></td>
+                <td>
+                    <p style="color:blue" ng-show="i.featured"> Có </p>
+                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                </td>
+
+                </td>
+                <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
             <!--SHIRTS-->
             <tr ng-repeat="i in items.shirts">
@@ -47,8 +54,11 @@
                 <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
-                <td> {{i.featured}} </td>
-                <td> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </td>
+                <td>
+                    <p style="color:blue" ng-show="i.featured"> Có </p>
+                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                </td>
+                <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
             <!--TROUSERS-->
             <tr ng-repeat="i in items.trousers">
@@ -58,8 +68,11 @@
                 <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
-                <td> {{i.featured}} </td>
-                <td> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </td>
+                <td>
+                    <p style="color:blue" ng-show="i.featured"> Có </p>
+                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                </td>
+                <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
             <!--DRESS-->
             <tr ng-repeat="i in items.dress">
@@ -69,8 +82,11 @@
                 <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
-                <td> {{i.featured}} </td>
-                <td> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> </td>
+                <td>
+                    <p style="color:blue" ng-show="i.featured"> Có </p>
+                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                </td>
+                <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
         </table>
     </div>

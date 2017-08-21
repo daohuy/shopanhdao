@@ -199,7 +199,7 @@ strong {
     padding: 10px;
     margin-bottom: 30px;
     background-color: white;
-    border: 2px ridge;
+    /*border: 2px ridge;*/
 }
 
 .jumbotron {

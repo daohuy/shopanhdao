@@ -43,6 +43,14 @@ customerRouter.route('/:cusId')
     })
 })
 
+.delete(function(req, res, next) {
+    customer.findByIdAndRemove(req.params.cusId, function(err, cus) {
+        if (err) return next(err);
+        console.log('Delete Bill With Id : ', req.params.cusId);
+        res.json(cus);
+    });
+})
+
 ;
 
 module.exports = customerRouter;

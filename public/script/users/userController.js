@@ -55,6 +55,8 @@
 
     function customerCont(userFactory, $stateParams) {
         var user = this;
+        user.removeItem = removeItem;
+        user.delivery = delivery;
         
         user.customers = userFactory
             .customerResource()
@@ -75,6 +77,15 @@
             }, function(res) {
                 console.log(res)
             })
+        
+        function removeItem (id) {
+            userFactory.removeBill(id);
+        }
+        
+        function delivery (id) {
+            console.log(id);
+            userFactory.delivery(id);
+        }
         
     }
     

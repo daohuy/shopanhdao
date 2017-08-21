@@ -9,7 +9,7 @@
         <!--BREADCRUMB-->
         <ol class="breadcrumb">
             <li>
-                <a ui-sref="home"> Trang Chủ </a>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
             </li>
             <li>
                 <a ui-sref="home.dress"> Đầm </a>
@@ -17,7 +17,7 @@
         </ol>
         <span class="line">
             <h3 class="center_decor part">
-                <a ui-sref="home.dress"> <span>Đầm</span> </a>
+                <a ui-sref="home.dress"> <span> ĐẦM </span> </a>
         </h3>
         </span>
 
@@ -35,7 +35,7 @@
 
                 <!--price-->
 
-                <p>
+                <p style="text-align:center">
                     <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
                     <span class="price">{{dres.price | currency:"":0}} VND </span>
                     <span class="price_sale">{{dres.price_sale | currency:"":0}} </span>

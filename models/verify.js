@@ -5,9 +5,7 @@ var config = require('../config/db.js');
 // create token
 exports.getToken = function (user) {
 
-    return jwt.sign(user, config.secretKey, {
-        expiresIn: 86400
-    });
+    return jwt.sign(user, config.secretKey);
 
 };
 

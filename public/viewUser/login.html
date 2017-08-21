@@ -2,22 +2,25 @@
 
 </header>
 
-<!--BREADCRUMB-->
-<ol class="breadcrumb">
-    <li>
-        <a ui-sref="home"> Trang Chủ </a>
-    </li>
-    <li>
-        <a ui-sref="home.login"> Đăng Nhập </a>
-    </li>    
-</ol>
 
 <div class="container">
     <div class="row body_body">
+
+
+        <!--BREADCRUMB-->
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
+            </li>
+            <li>
+                <a ui-sref="home.login"> Đăng Nhập </a>
+            </li>
+        </ol>
+
         <span class="line">
             <h3 class="center_decor part">
                         <a> <span>ĐĂNG NHẬP</span> </a>
-            </h3>
+        </h3>
         </span>
         <form method="post" ng-submit="user.login()">
             <div class="form-group">

@@ -7,7 +7,7 @@
         <!--BREADCRUMB-->
         <ol class="breadcrumb">
             <li>
-                <a ui-sref="home"> Trang Chủ </a>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
             </li>
             
             <li>
@@ -34,8 +34,10 @@
                 <th>
                     <strong> Ngày Đặt Hàng </strong>
                 </th>
+                <th><strong> Tình Trạng Giao Hàng </strong></th>
+                <th> <strong> Xoá </strong> </th>
             </tr>
-            <tr ng-repeat="i in user.customers">
+            <tr ng-repeat="i in user.customers | orderBy:-date">
                 <td> {{$index + 1}} </td>
                 
                 <td><a ui-sref="home.customer.detail({ id: i._id})">{{i.name}}</a></td>
@@ -43,7 +45,11 @@
                 <td><a ui-sref="home.customer.detail({ id: i._id})">{{i._id}}</a></td>
                 
                 <td> {{i.date | date : 'short'}} </td>
-                
+                <td>
+                    <p style="color:blue" ng-show="i.done"> Đã Giao </p> 
+                    <p style="color:red" ng-hide="i.done"> Chưa Giao </p> 
+                </td>
+                <td ng-click="user.removeItem(i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
         </table>
 

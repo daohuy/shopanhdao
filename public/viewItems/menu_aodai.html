@@ -6,7 +6,7 @@
         <!--BREADCRUMB-->
         <ol class="breadcrumb">
             <li>
-                <a ui-sref="home"> Trang Chủ </a>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
             </li>
             <li>
                 <a ui-sref="home.aodai"> Áo Dài </a>
@@ -27,7 +27,7 @@
                     <h4> {{aodai.tittle}} </h4>
                 </a>
                 <!--price-->
-                <p>
+                <p style="text-align:center">
                     <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
                     <span class="price">{{aodai.price | currency:"":0}} VND </span>
                     <span class="price_sale">{{aodai.price_sale | currency:"":0}} </span>

@@ -2,13 +2,10 @@
 </header>
 <div class="container">
     <div class="row body_body">
-       <!--BREADCRUMB-->
+        <!--BREADCRUMB-->
         <ol class="breadcrumb">
             <li>
-                <a ui-sref="home"> Trang Chủ </a>
-            </li>
-            <li>
-                <a ui-sref="home.mainPage"> {{user.user.username}} </a>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
             </li>
             <li>
                 <a ui-sref="home.customer"> Danh Sách Hoá Đơn </a>
@@ -39,13 +36,18 @@
                 <th>
                     <strong>Ngày Đặt Hàng</strong>
                 </th>
+                <th><strong> Tình Trạng Giao Hàng </strong></th>
             </tr>
             <tr>
-                <td> {{user.customer.name}} </td>    
-                <td> {{user.customer.address}} </td>    
-                <td> {{user.customer.city}} </td>    
-                <td> {{user.customer.phone}} </td> 
-                <td> {{user.customer.date | date : 'short'}} </td> 
+                <td> {{user.customer.name}} </td>
+                <td> {{user.customer.address}} </td>
+                <td> {{user.customer.city}} </td>
+                <td> {{user.customer.phone}} </td>
+                <td> {{user.customer.date | date : 'short'}} </td>
+                <td>
+                    <p style="color:blue" ng-show="user.customer.done"> Đã Giao </p> 
+                    <p style="color:red" ng-hide="user.customer.done"> Chưa Giao </p> 
+                </td>
             </tr>
         </table>
         <h4 class="center_decor">SẢN PHẨM ĐẶT HÀNG</h4>
@@ -66,18 +68,23 @@
                 <th>
                     <strong>Giá</strong>
                 </th>
+
             </tr>
             <tr ng-repeat="i in user.customer.bill">
                 <td> {{i.MASO}} </td>
                 <td> {{i.tittle}} </td>
-                <td> {{i.image[0]}} </td>
+                <td> <img class="img-rounded img-bag" ng-src="{{i.image}}"> </td>
                 <td> {{i.quantity}} </td>
-                <td> {{i.price}} </td>
+                <td> {{i.price | currency:"":0}} </td>
+
+
             </tr>
             <tr>
                 <th>Tổng Cộng : </th>
-                <th> {{user.customer.total}} </th>
+                <th> {{user.customer.total | currency:"":0}} </th>
             </tr>
         </table>
+        <button ng-click="user.delivery(user.customer._id)" class="btn btn-info btn-sm">Xác Nhận Đã Giao</button>
+        <button ng-click="user.removeItem(user.customer._id)" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> Xoá Đơn Hàng</button>
     </div>
 </div>

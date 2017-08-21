@@ -1,0 +1,91 @@
+<header class="jumbotron">
+
+</header>
+<div class="container">
+    <div class="row body_body">
+ 
+        <!--BREADCRUMB-->
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
+            </li>
+            <li>
+                <a ui-sref="home.listItems"> Danh Sách Mặt Hàng </a>
+            </li>
+            <li>
+                {{items.aodai._id}}
+            </li>
+        </ol>
+        <span class="line">
+            <h3 class="center_decor part">
+            <span> SẢN PHẨM {{items.aodai._id}} </span>
+        </h3>
+        </span>
+        <form>
+            <div class="form-group">
+                <label> MÃ SỐ </label>
+                <input type="text" class="form-control" placeholder="{{items.aodai._id}}">
+            </div>
+            <div class="form-group">
+                <label> Tiêu Đề </label>
+                <input type="text" class="form-control" placeholder="{{items.aodai.tittle}}">
+            </div>
+            <div class="form-group">
+                <label> Phân Loại </label>
+                <input type="text" class="form-control" placeholder="{{items.aodai.class}}">
+            </div>
+            <div class="form-group">
+                <label> Giá Tiền </label>
+                <input type="number" class="form-control" placeholder="{{items.aodai.price}}">
+            </div>
+            <div class="form-group">
+                <label> Màu Sắc </label>
+                <input type="text" class="form-control" placeholder="{{items.aodai.color}}">
+            </div>
+            <div class="form-group">
+                <label> Chất Liệu </label>
+                <input type="text" class="form-control" placeholder="{{items.aodai.material}}">
+            </div>
+            <div class="form-group">
+                <label> Size </label>
+                <input type="text" class="form-control" placeholder="{{items.aodai.size}}">
+            </div>
+            <div class="form-group">
+                <label> Thông Tin </label>
+                <textarea class="form-control" rows="3" placeholder="{{items.aodai.description}}"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                <label> Hình Ảnh Sản Phẩm </label><br>
+
+                <button class="button btn btn-default" ngf-select ng-model="user.files" ngf-multiple="true">Chọn Hình Ảnh Khác </button>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Tên</th>
+                        <th>Hình Ảnh</th>
+                    </tr>
+                    
+                    <tr ng-repeat="f in user.files">
+                        <th> {{f.name}} </th>
+                        <th>
+                            <img class="img-rounded img-file" ngf-thumbnail="f">
+                        </th>
+                    </tr>
+                    
+                    <tr ng-repeat="i in items.aodai.image">
+                        <th> {{$index+1}} </th>
+                        <th>
+                            <img class="img-rounded img-file" ng-src="{{i}}">
+                        </th>
+                    </tr>
+                    
+                </table>
+
+            </div>
+            </div>
+            <button type="submit" class="btn btn-info"> Cập Nhật Sản Phẩm </button>
+            <button ui-sref="home.mainPage" class="btn btn-default"> Quay Lại </button>
+        </form>
+    </div>
+</div>

@@ -51,8 +51,9 @@
                 console.log(res);
             });
         
-        function removeItem(item) {
-            itemsFactory.removeItem(item);
+        function removeItem(item,id) {
+            console.log(item,id);
+            itemsFactory.removeItem(item,id);
         }
         
     }
@@ -117,6 +118,7 @@
                 aodaiId: $stateParams.id
             }, function (res) {
                 items.aodai = res;
+                console.log(items.aodai);
             }, function (res) {
                 console.log(res);
             });

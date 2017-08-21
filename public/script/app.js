@@ -195,12 +195,12 @@
                 }
             })
             
-            .state('home.listItems.detail', {
+            .state('home.listItems.aodaiDetail', {
                 url : '/:id',
                 views : {
                     'content@' : {
-                        templateUrl : '/viewUser/detail_item.html',
-                        controller : 'itemController',
+                        templateUrl : '/viewUser/detail_aodai.html',
+                        controller : 'aodaiController',
                         controllerAs : 'items'
                     }
                 }

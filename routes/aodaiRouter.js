@@ -41,7 +41,18 @@ aodaiRouter.route('/')
 aodaiRouter.route('/khuyenmai')
     .get(function(req, res, next) {
 
-        aodai.findOne({featured:true}, function(err,ad) {
+        aodai.find({featured:true}, function(err,ad) {
+            if (err) return next(err);
+            res.json(ad);
+        })
+
+    });
+// onsale
+
+aodaiRouter.route('/onsale')
+    .get(function(req, res, next) {
+
+        aodai.find({onSale:true}, function(err,ad) {
             if (err) return next(err);
             res.json(ad);
         })

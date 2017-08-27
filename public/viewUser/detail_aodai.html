@@ -1,91 +1,96 @@
-<header class="jumbotron">
-
-</header>
+<!--BREADCRUMB-->
+<ol class="breadcrumb">
+    <li>
+        <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
+    </li>
+    <li>
+        <a ui-sref="home.listItems"> Danh Sách Mặt Hàng </a>
+    </li>
+</ol>
 <div class="container">
-    <div class="row body_body">
- 
-        <!--BREADCRUMB-->
-        <ol class="breadcrumb">
-            <li>
-                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
-            </li>
-            <li>
-                <a ui-sref="home.listItems"> Danh Sách Mặt Hàng </a>
-            </li>
-            <li>
-                {{items.aodai._id}}
-            </li>
-        </ol>
+    <div class="row border_10">
+
         <span class="line">
-            <h3 class="center_decor part">
+            <h3 class="center_decor">
             <span> SẢN PHẨM {{items.aodai._id}} </span>
         </h3>
         </span>
-        <form>
+        <span class="line">
+            <h4 class="center_decor">
+            <span> Phân Loại :  <span class="text_under"> {{items.aodai.class}} </span></span>
+        </h4>
+        </span>
+
+        <form class="col-sm-8" ng-submit="items.changeInfoItem(items.aodai._id,items.infoItem, items.aodai.class)">
             <div class="form-group">
                 <label> MÃ SỐ </label>
-                <input type="text" class="form-control" placeholder="{{items.aodai._id}}">
+                <input type="text" class="form-control" placeholder="{{items.aodai._id}}" ng-model="items.infoItem._id">
             </div>
             <div class="form-group">
                 <label> Tiêu Đề </label>
-                <input type="text" class="form-control" placeholder="{{items.aodai.tittle}}">
-            </div>
-            <div class="form-group">
-                <label> Phân Loại </label>
-                <input type="text" class="form-control" placeholder="{{items.aodai.class}}">
+                <input type="text" class="form-control" placeholder="{{items.aodai.tittle}}" ng-model="items.infoItem.tittle">
             </div>
             <div class="form-group">
                 <label> Giá Tiền </label>
-                <input type="number" class="form-control" placeholder="{{items.aodai.price}}">
+                <input type="number" class="form-control" placeholder="{{items.aodai.price}}" ng-model="items.infoItem.price">
+            </div>
+            <div class="form-group">
+                <label> Giá Khuyến Mãi </label>
+                <input type="number" class="form-control" placeholder="{{items.aodai.price_sale}}" ng-model="items.infoItem.price_sale">
             </div>
             <div class="form-group">
                 <label> Màu Sắc </label>
-                <input type="text" class="form-control" placeholder="{{items.aodai.color}}">
+                <input type="text" class="form-control" placeholder="{{items.aodai.color}}" ng-model="items.infoItem.color">
             </div>
             <div class="form-group">
                 <label> Chất Liệu </label>
-                <input type="text" class="form-control" placeholder="{{items.aodai.material}}">
+                <input type="text" class="form-control" placeholder="{{items.aodai.material}}" ng-model="items.infoItem.material">
             </div>
             <div class="form-group">
                 <label> Size </label>
-                <input type="text" class="form-control" placeholder="{{items.aodai.size}}">
+                <input type="text" class="form-control" placeholder="{{items.aodai.size}}" ng-model="items.infoItem.size">
             </div>
             <div class="form-group">
                 <label> Thông Tin </label>
-                <textarea class="form-control" rows="3" placeholder="{{items.aodai.description}}"></textarea>
+                <textarea class="form-control" rows="3" placeholder="{{items.aodai.description}}" ng-model="items.infoItem.description"></textarea>
             </div>
-            <div class="form-group">
-                <div class="form-group">
-                <label> Hình Ảnh Sản Phẩm </label><br>
+            <div class="form-group center">
+                <button type="submit" class="btn btn-black"> Cập Nhật </button>
+                <button ui-sref="home.mainPage" class="btn btn-white"> Quay Lại </button>
+            </div>
 
-                <button class="button btn btn-default" ngf-select ng-model="user.files" ngf-multiple="true">Chọn Hình Ảnh Khác </button>
+        </form>
+        <div class="col-sm-4">
+                <label> Hình Ảnh </label><br>
 
-                <table class="table table-striped">
+                <!--  <button class="button btn btn-black" ngf-select ng-model="user.files" ngf-multiple="true">Chọn Hình </button> -->
+
+                <table class="table table-striped col-sm-6">
                     <tr>
                         <th>Tên</th>
                         <th>Hình Ảnh</th>
                     </tr>
-                    
-                    <tr ng-repeat="f in user.files">
-                        <th> {{f.name}} </th>
-                        <th>
-                            <img class="img-rounded img-file" ngf-thumbnail="f">
-                        </th>
-                    </tr>
-                    
+
                     <tr ng-repeat="i in items.aodai.image">
                         <th> {{$index+1}} </th>
                         <th>
                             <img class="img-rounded img-file" ng-src="{{i}}">
                         </th>
                     </tr>
-                    
-                </table>
 
+                </table>
+                <!-- <table class="table col-sm-6">
+                    <tr>
+                        <th>Tên</th>
+                        <th>Hình Ảnh</th>
+                    </tr>
+                    <tr ng-repeat="f in user.files">
+                        <th> {{f.name}} </th>
+                        <th>
+                            <img class="img-rounded img-file" ngf-thumbnail="f">
+                        </th>
+                    </tr>
+                </table> -->
             </div>
-            </div>
-            <button type="submit" class="btn btn-info"> Cập Nhật Sản Phẩm </button>
-            <button ui-sref="home.mainPage" class="btn btn-default"> Quay Lại </button>
-        </form>
     </div>
 </div>

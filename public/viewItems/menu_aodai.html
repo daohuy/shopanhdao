@@ -1,38 +1,36 @@
-<header class="jumbotron">
-</header>
-<!--AO DAI-->
+<ol class="breadcrumb">
+    <li>
+        <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Về Trang Chủ </a>
+    </li>
+</ol>
 <div class="container">
     <div class="row body_body">
         <!--BREADCRUMB-->
-        <ol class="breadcrumb">
-            <li>
-                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
-            </li>
-            <li>
-                <a ui-sref="home.aodai"> Áo Dài </a>
-            </li>
-        </ol>
+
         <span class="line">
-            <h3 class="center_decor part">
-                <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
+                <h3 class="center_decor">
+                        <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
         </h3>
         </span>
-        <div class="col-sm-3" ng-repeat="aodai in items.aodais">
-            <div class="menu_item">
-                <a ui-sref="home.aodai.detail({id: aodai._id})">
-                    <img class="img-thumbnail" ng-src="{{aodai.image[0]}}">
+        <div class="animated fadeIn col-sm-3 center" ng-repeat="ad in items.aodaisOSale | limitTo:20">
+            <div class="border_10 div_item">
+                <div class="landscape">
+                    <a ui-sref="home.aodai.detail({id: ad._id})">
+                        <img class="img-thumbnail" ng-src="{{ad.image[0]}}" src="">
+                    </a>
+                </div>
+
+                <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
+                    <h4> {{ad.tittle}} </h4>
                 </a>
-                <!--tittle-->
-                <a class="center_decor" ui-sref="home.aodai.detail({id: aodai._id})">
-                    <h4> {{aodai.tittle}} </h4>
-                </a>
-                <!--price-->
                 <p style="text-align:center">
-                    <span><i class="fa fa-money" aria-hidden="true"></i> Giá: </span>
-                    <span class="price">{{aodai.price | currency:"":0}} VND </span>
-                    <span class="price_sale">{{aodai.price_sale | currency:"":0}} </span>
+
+                    <i class="fa fa-money" aria-hidden="true"></i> : <span class="price">{{ad.price | currency:"":0}} VND </span>
+
                 </p>
             </div>
+
         </div>
+
     </div>
 </div>

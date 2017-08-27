@@ -8,7 +8,6 @@
 
     ;
 
-
     function config($stateProvider, $urlRouterProvider, ) {
 
         $urlRouterProvider.otherwise('/home');
@@ -178,14 +177,14 @@
                     }
                 }
             })
-        
+
             .state('home.listItems', {
-                url : '/list',
-                views : {
-                    'content@' : {
-                        templateUrl : '/viewUser/menu_items.html',
-                        controller : 'itemsController',
-                        controllerAs : 'items'
+                url: '/list',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/menu_items.html',
+                        controller: 'itemsController',
+                        controllerAs: 'items'
                     }
                 },
                 data: {
@@ -195,24 +194,93 @@
                 }
             })
             
-            .state('home.listItems.aodaiDetail', {
-                url : '/:id',
-                views : {
-                    'content@' : {
-                        templateUrl : '/viewUser/detail_aodai.html',
-                        controller : 'aodaiController',
-                        controllerAs : 'items'
+            .state('home.listItems.aodai', {
+                url: '/aodai',
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+        
+            .state('home.listItems.aodai.detail', {
+                url: '/:id',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/detail_aodai.html',
+                        controller: 'aodaiController',
+                        controllerAs: 'items'
+                    }
+                }
+            })
+            
+            .state('home.listItems.dress', {
+                url: '/dress',
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+        
+            .state('home.listItems.dress.detail', {
+                url: '/:id',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/detail_dress.html',
+                        controller: 'dressController',
+                        controllerAs: 'items'
+                    }
+                }
+            })
+            
+            .state('home.listItems.shirts', {
+                url: '/shirts',
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+        
+            .state('home.listItems.shirts.detail', {
+                url: '/:id',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/detail_shirt.html',
+                        controller: 'shirtsController',
+                        controllerAs: 'items'
+                    }
+                }
+            })
+        
+            .state('home.listItems.trousers', {
+                url: '/trousers',
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
+                }
+            })
+        
+            .state('home.listItems.trousers.detail', {
+                url: '/:id',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/detail_trouser.html',
+                        controller: 'trousersController',
+                        controllerAs: 'items'
                     }
                 }
             })
         
             .state('home.customer', {
-                url : '/customer',
-                views : {
-                    'content@' : {
-                        templateUrl : '/viewUser/menu_customer.html',
-                        controller : 'customerController',
-                        controllerAs : 'user'
+                url: '/customer',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/menu_customer.html',
+                        controller: 'customerController',
+                        controllerAs: 'user'
                     }
                 },
                 data: {
@@ -221,14 +289,14 @@
                     }
                 }
             })
-        
+
             .state('home.customer.detail', {
-                url : '/:id',
-                views : {
-                    'content@' : {
-                        templateUrl : '/viewUser/detail_customer.html',
-                        controller : 'customerController',
-                        controllerAs : 'user'
+                url: '/:id',
+                views: {
+                    'content@': {
+                        templateUrl: '/viewUser/detail_customer.html',
+                        controller: 'customerController',
+                        controllerAs: 'user'
                     }
                 },
                 data: {
@@ -237,7 +305,7 @@
                     }
                 }
             })
-        
+
             .state('home.upload', {
                 url: '/upload',
                 views: {
@@ -298,7 +366,7 @@
             //console.log('Token after add $http authentication : ', $http.defaults.headers.common['authentication']);
         }
 
-        $rootScope.checkState = function () {
+        /*$rootScope.checkState = function () {
             //console.log($state.current.name);
             if ($state.current.name === 'home') {
                 $state.go('home', {}, {
@@ -306,11 +374,12 @@
                 });
             }
         }
+        */
         // auto scroll toppage
-        $rootScope.$on("$locationChangeSuccess", function() {
+        $rootScope.$on("$locationChangeSuccess", function () {
             $anchorScroll();
         });
-        
+
     }
 
 })();

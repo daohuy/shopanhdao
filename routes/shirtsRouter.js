@@ -41,7 +41,19 @@ shirtRouter.route('/')
 shirtRouter.route('/khuyenmai')
     .get(function(req, res, next) {
 
-        shirts.findOne({featured:true}, function(err,shirt) {
+        shirts.find({featured:true}, function(err,shirt) {
+            if (err) return next(err);
+            res.json(shirt);
+        })
+
+    });
+
+// onsale
+
+shirtRouter.route('/onsale')
+    .get(function(req, res, next) {
+
+        shirts.find({onSale:true}, function(err,shirt) {
             if (err) return next(err);
             res.json(shirt);
         })

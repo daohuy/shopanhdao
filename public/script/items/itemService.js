@@ -12,6 +12,7 @@
         var itemService = {};
 
         itemService.aodaiResource = aodaiResource;
+        itemService.itemResourceKMOS = itemResourceKMOS;
         itemService.dressResource = dressResource;
         itemService.shirtsResource = shirtsResource;
         itemService.trousersResource = trousersResource;
@@ -22,6 +23,10 @@
         itemService.customerOrder = customerOrder;
         itemService.uploadResource = uploadResource;
         itemService.removeItem = removeItem;
+        itemService.routeItem = routeItem;
+        itemService.changeOnSale = changeOnSale;
+        itemService.changeKM = changeKM;
+        itemService.changeInfoItem = changeInfoItem;
 
         return itemService;
 
@@ -29,26 +34,47 @@
             return $resource(baseURL + "aodai/:aodaiId", {
                 aodaiId: "@aodaiId"
             }, {
-                'update': {
-                    method: "PUT"
+                update: {
+                    method: 'PUT'
                 },
+                query: {
+                    method: 'GET',
+                    isArray: true
+                },
+                get: {
+                    method: 'GET'
+                },
+                delete: {
+                    method: 'DELETE'
+                }
+            });
+        }
+
+        function itemResourceKMOS(kmOros, data) {
+            return $resource(baseURL + kmOros + "/" + data, {}, {
                 'query': {
                     method: 'GET',
                     isArray: true
                 }
-            });
+            })
         }
 
         function dressResource() {
             return $resource(baseURL + "dress/:dressId", {
                 dressId: "@dressId"
             }, {
-                'update': {
-                    method: "PUT"
+                update: {
+                    method: 'PUT'
                 },
-                'query': {
+                query: {
                     method: 'GET',
                     isArray: true
+                },
+                get: {
+                    method: 'GET'
+                },
+                delete: {
+                    method: 'DELETE'
                 }
             })
         }
@@ -57,12 +83,18 @@
             return $resource(baseURL + "shirts/:shirtId", {
                 shirtId: "@shirtId"
             }, {
-                'update': {
-                    method: "PUT"
+                update: {
+                    method: 'PUT'
                 },
-                'query': {
+                query: {
                     method: 'GET',
                     isArray: true
+                },
+                get: {
+                    method: 'GET'
+                },
+                delete: {
+                    method: 'DELETE'
                 }
             });
         }
@@ -71,12 +103,18 @@
             return $resource(baseURL + "trousers/:trouserId", {
                 trouserId: "@trouserId"
             }, {
-                'update': {
-                    method: "PUT"
+                update: {
+                    method: 'PUT'
                 },
-                'query': {
+                query: {
                     method: 'GET',
                     isArray: true
+                },
+                get: {
+                    method: 'GET'
+                },
+                delete: {
+                    method: 'DELETE'
                 }
             });
         }
@@ -85,12 +123,18 @@
             return $resource(baseURL + "bill/:billId", {
                 billId: "@billId"
             }, {
-                'update': {
-                    method: "PUT"
+                update: {
+                    method: 'PUT'
                 },
-                'query': {
-                    method: "GET",
+                query: {
+                    method: 'GET',
                     isArray: true
+                },
+                get: {
+                    method: 'GET'
+                },
+                delete: {
+                    method: 'DELETE'
                 }
             })
         }
@@ -108,7 +152,7 @@
                 $localStorage.BAG.push(bag);
                 $localStorage.haveBag = true;
                 $state.reload();
-            } else {
+            } else if ($localStorage.BAG) {
                 var bag = {
                     MASO: items._id,
                     tittle: items.tittle,
@@ -119,15 +163,15 @@
                 $localStorage.BAG.push(bag);
                 $localStorage.haveBag = true;
                 $state.reload();
-            }
 
+            }
 
         }
 
         function buyNow(items) {
             if (!$localStorage.BAG) {
 
-                console.log('No Item In BAG')
+                //console.log('No Item In BAG')
 
                 var bag = {
                     MASO: items._id,
@@ -141,7 +185,7 @@
 
                 $state.go('home.buynow');
             } else {
-                console.log('Have Item In BAG');
+                //console.log('Have Item In BAG');
                 $state.go('home.buynow')
             }
         }
@@ -196,7 +240,7 @@
                     }
                 },
                 callback: function (result) {
-                    
+
                     if (result == true) {
                         console.log(item, id)
                         // aodai
@@ -218,7 +262,7 @@
                                     backdrop: true
                                 });
                             });
-                        // ao
+                            // ao
                         } else if (item === 'Áo') {
                             shirtsResource().delete({
                                 shirtId: id
@@ -236,7 +280,7 @@
                                     message: "Xoa That Bai, Moi Thu laiXoá Sản Phẩm Thất Bại, Xin Mời Thử Lại Vào Dịp Khác !",
                                     backdrop: true
                                 });
-                            });       
+                            });
                         } else if (item === 'Quần') {
                             trousersResource().delete({
                                 trouserId: id
@@ -254,8 +298,8 @@
                                     message: "Xoá Sản Phẩm Thất Bại, Xin Mời Thử Lại Vào Dịp Khác !",
                                     backdrop: true
                                 });
-                            });  
-                        } else if ( item === 'Đầm' ) {
+                            });
+                        } else if (item === 'Đầm') {
                             dressResource().delete({
                                 dressId: id
                             }, function (res) {
@@ -272,7 +316,7 @@
                                     message: "Xoá Sản Phẩm Thất Bại, Xin Mời Thử Lại Vào Dịp Khác !",
                                     backdrop: true
                                 });
-                            });  
+                            });
                         }
 
                     } else {
@@ -285,7 +329,350 @@
 
         }
 
+        function routeItem(clas, _id) {
+            if (clas == 'Áo Dài') {
+                //console.log('Route Aodai', clas);
+                $state.go('home.aodai.detail', {
+                    id: _id
+                }, {
+                    reload: true
+                });
+            } else if (clas == 'Áo') {
+                $state.go('home.shirts.detail', {
+                    id: _id
+                }, {
+                    reload: true
+                });
+            } else if (clas == 'Đầm') {
+                $state.go('home.dress.detail', {
+                    id: _id
+                }, {
+                    reload: true
+                });
+            } else if (clas == 'Quần') {
+                $state.go('home.trousers.detail', {
+                    id: _id
+                }, {
+                    reload: true
+                });
+            }
+        }
 
+        function changeOnSale(_id, clas, onsale) {
+            if (clas == 'Áo Dài') {
+                //console.log('Route Aodai', clas);
+                //console.log(onsale);
+                aodaiResource().update({
+                    aodaiId: _id
+                }, {
+                    onSale: !onsale
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+
+            } else if (clas == 'Áo') {
+                shirtsResource().update({
+                    shirtId: _id
+                }, {
+                    onSale: !onsale
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+            } else if (clas == 'Đầm') {
+                dressResource().update({
+                    dressId: _id
+                }, {
+                    onSale: !onsale
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+            } else if (clas == 'Quần') {
+                trousersResource().update({
+                    trouserId: _id
+                }, {
+                    onSale: !onsale
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+            }
+        }
+
+        function changeKM(_id, clas, featured) {
+            if (clas == 'Áo Dài') {
+                //console.log('Route Aodai', clas);
+                //console.log(onsale);
+                aodaiResource().update({
+                    aodaiId: _id
+                }, {
+                    featured: !featured
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Khuyến Mãi Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+
+            } else if (clas == 'Áo') {
+                shirtsResource().update({
+                    shirtId: _id
+                }, {
+                    featured: !featured
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Khuyến Mãi Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+            } else if (clas == 'Đầm') {
+                dressResource().update({
+                    dressId: _id
+                }, {
+                    featured: !featured
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Khuyến Mãi Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+            } else if (clas == 'Quần') {
+                trousersResource().update({
+                    trouserId: _id
+                }, {
+                    featured: !featured
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Đã Thay Đổi Trạng Thái Khuyến Mãi Sản Phẩm !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                }, function (res) {
+                    //console.log(res);
+                    bootbox.alert({
+                        message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                        backdrop: true
+                    });
+                    $state.transitionTo('home.listItems', {}, {
+                        reload: true
+                    });
+                })
+            }
+        }
+
+        function changeInfoItem(_id, item, clas) {
+            //console.log(_id, item, clas);
+
+            bootbox.confirm({
+                size: 'smaill',
+                message: 'Bạn Có Chắc Muốn Thay Đổi Chứ !',
+                buttons: {
+                    confirm: {
+                        label: 'Đồng Ý !',
+                        className: 'btn-primary'
+                    },
+                    cancel: {
+                        label: 'Chưa !',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result == true) {
+                        if (clas == 'Áo Dài') {
+                            //console.log('Route Aodai', clas);
+                            //console.log(onsale);
+                            aodaiResource().update({
+                                aodaiId: _id
+                            }, item, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Đã Cập Nhật Sản Phẩm !',
+                                    backdrop: true
+                                });
+                                $state.go('home.listItems.aodaiDetail', {
+                                    id: _id
+                                }, {
+                                    reload: true
+                                });
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                                    backdrop: true
+                                });
+                                $state.go('home.listItems.aodaiDetail', {
+                                    id: _id
+                                }, {
+                                    reload: true
+                                });
+                            })
+
+                        } else if (clas == 'Áo') {
+                            shirtsResource().update({
+                                shirtId: _id
+                            }, item, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Đã Cập Nhật Sản Phẩm !',
+                                    backdrop: true
+                                });
+                                location.reload();
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                                    backdrop: true
+                                });
+                                location.reload();
+                            })
+                        } else if (clas == 'Đầm') {
+                            dressResource().update({
+                                dressId: _id
+                            }, item, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Đã Cập Nhật Sản Phẩm !',
+                                    backdrop: true
+                                });
+                                location.reload();
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                                    backdrop: true
+                                });
+                                location.reload();
+                            })
+                        } else if (clas == 'Quần') {
+                            trousersResource().update({
+                                trouserId: _id
+                            }, item, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Đã Cập Nhật Sản Phẩm !',
+                                    backdrop: true
+                                });
+                                location.reload();
+                            }, function (res) {
+                                console.log(res);
+                                bootbox.alert({
+                                    message: 'Thay Đổi Thất Bại Mời Thử Lại !',
+                                    backdrop: true
+                                });
+                                location.reload();
+                            })
+                        }
+                    } else {
+                        console.log(result);
+                    }
+                }
+            });
+
+        }
 
     }
 

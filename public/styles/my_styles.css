@@ -1,9 +1,10 @@
 body {
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 14px;
-    background-image: url(/img/b-g.jpg);
-    background-repeat: repeat;
+    font-size: 20px;
 }
+
+
+/*shadow text*/
 
 .part {
     font-weight: bold;
@@ -12,19 +13,23 @@ body {
 }
 
 a:link {
+    color: black;
     text-decoration: none;
 }
 
 a:visited {
+    color: black;
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: black;
+    text-decoration: none;
 }
 
 a:active {
-    text-decoration: underline;
+    color: black;
+    text-decoration: none;
 }
 
 
@@ -32,7 +37,7 @@ a:active {
 
 .line {
     display: block;
-    margin: 0px 0px 35px 0px;
+    margin-bottom: 50px;
 }
 
 .line h3 {
@@ -40,6 +45,7 @@ a:active {
     text-align: center;
     border-bottom: 4px dotted #757575;
     position: relative;
+    font-family: 'Lobster', cursive;
 }
 
 .line h3 a:hover {
@@ -50,8 +56,15 @@ a:active {
     background-color: white;
     position: relative;
     top: 25px;
-    padding: 0 20px;
-    color: #9e9e9e;
+    color: #2E2E2E;
+    letter-spacing: 3px;
+}
+
+.line h4 {
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+    font-family: 'Lobster', cursive;
 }
 
 .navBrand {
@@ -61,6 +74,8 @@ a:active {
     margin: 5px 7px 5px 7px;
 }
 
+
+/*
 .navbar-inverse .navbar-nav>li {
     margin-left: 10px;
 }
@@ -78,6 +93,7 @@ a:active {
 .navbar-nav {
     margin-left: 5px;
 }
+*/
 
 .ship {
     font-family: 'Lobster', cursive;
@@ -100,32 +116,35 @@ a:active {
 }
 
 .border_10 {
-    padding: 10px;
+    padding: 15px;
     border: 1px ridge;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .footer {
     color: white;
+    background: #212121;
+    padding: 30px;
 }
 
 .copy_right {
     text-align: center;
 }
 
-.body_body {
-    background: white;
-    margin: 5px;
-    padding: 10px;
-    border: 2px ridge;
-}
-
 
 /*text for border*/
-
+.center {
+    text-align: center;
+}
 .center_decor {
     margin: 0px;
     text-align: center;
     font-family: 'Arima Madurai', cursive;
+}
+
+.center_decor>h4 {
+    font-weight: 900;
 }
 
 ul {
@@ -145,6 +164,16 @@ img {
     max-height: 100%;
 }
 
+
+.landscape {
+    margin-top: 10px;
+    height: 260px;
+    width: 200px;
+    display: inline-block;
+}
+.div_item {
+    margin: 10px;
+}
 .square {
     height: 75px;
     width: 75px;
@@ -169,14 +198,6 @@ img {
     margin: 20px 0px 20px 0px;
 }
 
-.body_bg_white {
-    margin: 20px;
-    padding: 20px;
-    background-color: white;
-    border-bottom-color: white;
-    border: 2px ridge;
-}
-
 .upload_body {
     padding: 10px;
     border: 1px groove;
@@ -187,20 +208,12 @@ img {
     font-size: 16px;
 }
 
-strong {
-    font-size: 17px;
-}
-
 .xzoom {
     margin: 10px;
 }
 
-.menu_item {
-    padding: 10px;
-    margin-bottom: 30px;
-    background-color: white;
-    /*border: 2px ridge;*/
-}
+
+/*set size image*/
 
 .jumbotron {
     background: white;
@@ -210,16 +223,14 @@ strong {
 }
 
 .price {
+    font-weight: bold;
     font-size: 20px;
-    color: #b71c1c;
+    color: brown;
 }
 
 .price_sale {
-    padding: 6px;
     text-decoration: line-through;
-    float: right;
-    font-size: 13px;
-    color: #b71c1c;
+    font-size: 18px;
 }
 
 .font-brand {
@@ -230,16 +241,176 @@ strong {
     max-width: 60px;
     border: 1px groove;
 }
+
 .img-file {
     max-width: 100px;
 }
+
 .form-group {
     padding: 5px;
 }
+
 .boder-right {
     border-right: 2px ridge;
 }
+
 .description {
     font-size: 18px;
     text-indent: 8px;
+}
+
+.header {
+    height: 80px;
+    background: #212121;
+    color: white;
+}
+
+.navbar-header {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 50px;
+}
+
+.log_in {
+    float: right;
+    position: relative;
+    top: 60%;
+    transform: translateY(-60%);
+    margin-right: 100px;
+}
+
+#lo_gin {
+    color: #fafafa;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px 5px 10px;
+    margin: 5px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    font-family: 'Baloo Bhaijaan', cursive;
+    font-size: 15px;
+}
+
+#lo_gin:hover {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+ul li {
+    display: inline;
+}
+
+#item_bag {
+    color: white;
+    margin: 20px;
+}
+
+#login {
+    color: #fafafa;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px 5px 10px;
+    letter-spacing: 3px;
+    font-size: 15px;
+}
+
+#out {
+    text-align: center;
+}
+
+#in {
+    display: inline-block;
+    border-bottom: 1px ridge;
+    margin: 20px 0px 20px 0px;
+}
+
+#in>ul>li>a {
+    color: #212121;
+    text-decoration: none;
+    margin: 10px;
+    padding: 15px 40px 15px 40px;
+    font-size: 23px;
+    letter-spacing: 3px;
+}
+
+#in>ul>li>a:hover {
+    color: #212121;
+    text-decoration: none;
+}
+
+.breadcrumb {
+    background: white;
+    margin-left: 100px;
+}
+
+.breadcrumb>li>a {
+    border: 1px solid;
+    padding: 5px 10px 5px 10px;
+    color: black;
+}
+
+.breadcrumb>li>a:hover {
+    text-decoration: none;
+}
+
+.border_bottom {
+    border-bottom: 1px ridge;
+}
+
+.btn-black {
+    background: #212121;
+    color: aliceblue;
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
+.btn-black:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.btn-white {
+    background: white;
+    color: #212121;
+    width: 100px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.font_size_th {
+    font-size: 20px;
+}
+.btn-white-xs {
+    background: white;
+    color: #212121;
+    margin: 5px;
+    border: 1px solid black;
+}
+.btn-black-xs {
+    background: #212121;
+    color: aliceblue;
+    margin: 5px;
+    border: 1px solid black;
+}
+.btn-black-xs:hover {
+    color: white;
+    text-decoration: none;
+}
+.text_under {
+    text-decoration: underline;
+    color: brown;
+}
+.footer_font {
+    font-family: 'Lobster', cursive;
+    letter-spacing: 3px;
+    text-align: center;
+}
+.footer_text_under {
+    text-decoration: underline;
 }

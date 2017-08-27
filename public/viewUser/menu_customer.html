@@ -1,21 +1,15 @@
-<header class="jumbotron">
-
-</header>
+<ol class="breadcrumb">
+    <li>
+        <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
+    </li>
+</ol>
 <div class="container">
     <div class="row body_body">
-       
+
         <!--BREADCRUMB-->
-        <ol class="breadcrumb">
-            <li>
-                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
-            </li>
-            
-            <li>
-                <a ui-sref="home.customer"> Danh Sách Hoá Đơn </a>
-            </li>
-        </ol>
+
         <span class="line">
-            <h3 class="center_decor part">
+            <h3 class="center_decor">
             <span>ĐƠN ĐẶT HÀNG</span>
         </h3>
         </span>
@@ -39,15 +33,15 @@
             </tr>
             <tr ng-repeat="i in user.customers | orderBy:-date">
                 <td> {{$index + 1}} </td>
-                
+
                 <td><a ui-sref="home.customer.detail({ id: i._id})">{{i.name}}</a></td>
-                
+
                 <td><a ui-sref="home.customer.detail({ id: i._id})">{{i._id}}</a></td>
-                
+
                 <td> {{i.date | date : 'short'}} </td>
                 <td>
-                    <p style="color:blue" ng-show="i.done"> Đã Giao </p> 
-                    <p style="color:red" ng-hide="i.done"> Chưa Giao </p> 
+                    <p style="color:blue" ng-show="i.done"> Đã Giao </p>
+                    <p style="color:red" ng-hide="i.done"> Chưa Giao </p>
                 </td>
                 <td ng-click="user.removeItem(i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>

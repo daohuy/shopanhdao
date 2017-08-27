@@ -1,90 +1,123 @@
-<header class="jumbotron">
+<ol class="breadcrumb">
+    <li>
+        <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
+    </li>
+</ol>
 
-</header>
 <div class="container">
-    <div class="row body_body">
-        <ol class="breadcrumb">
-            <li>
-                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
-            </li>
-            <li>
-                <a ui-sref="home.listItems"> Danh Sách Mặt Hàng </a>
-            </li>
-        </ol>
+    <div class="row border_10">
+
         <span class="line">
-            <h3 class="center_decor part">
-            <span>DANH SÁCH MẶT HÀNG</span>
-        </h3>
+            <h3 class="center_decor">
+                <span>DANH SÁCH MẶT HÀNG</span>
+            </h3>
         </span>
+        <p style="padding:15px"></p>
+        <table class="table table-striped">
 
-        <table class="table">
-
-            <tr>
-                <th><strong>Mã Sản Phẩm</strong></th>
-                <th><strong>Phân Loại</strong></th>
-                <th><strong>Hình Ảnh</strong></th>
-                <th><strong>Tiêu Đề</strong></th>
-                <th><strong>Giá Tiền</strong></th>
-                <th><strong>Khuyến Mãi</strong></th>
-                <th><strong> Xóa </strong></th>
+            <tr class="font_size_th">
+                <th>Mã Sản Phẩm</th>
+                <th>Phân Loại</th>
+                <th>Hình Ảnh</th>
+                <th>Tiêu Đề</th>
+                <th>Giá Tiền</th>
+                <th>Treo Bán</th>
+                <th>Khuyến Mãi</th>
+                <th> Xóa </th>
             </tr>
             <!--AODAI-->
             <tr ng-repeat="i in items.aodais">
 
                 <td>
-                    <a ui-sref="home.listItems.aodaiDetail({id : i._id})"> {{i._id}}  </a>
+                    <a ui-sref="home.listItems.aodai.detail({id : i._id})"> {{i._id}}  </a>
                 </td>
                 <td> {{i.class}} </td>
-                <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
+                <td>
+                    <a ui-sref="home.listItems.aodai.detail({id : i._id})"> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </a>
+                </td>
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
+                <!--On Shop-->
                 <td>
-                    <p style="color:blue" ng-show="i.featured"> Có </p>
-                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Không </button>
+                </td>
+                <!--Khuyen Mai-->
+                <td>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Không </button>
                 </td>
 
                 </td>
                 <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
+            
             <!--SHIRTS-->
             <tr ng-repeat="i in items.shirts">
 
-                <td> {{i._id}} </td>
+                <td>
+                    <a ui-sref="home.listItems.shirts.detail({id : i._id})"> {{i._id}}  </a>
+                </td>
+                
                 <td> {{i.class}} </td>
-                <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
+                
+                <td>
+                    <a ui-sref="home.listItems.shirts.detail({id : i._id})"> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </a>
+                </td>
+                
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
                 <td>
-                    <p style="color:blue" ng-show="i.featured"> Có </p>
-                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Không </button>
+                </td>
+                <td>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Không </button>
                 </td>
                 <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
             <!--TROUSERS-->
             <tr ng-repeat="i in items.trousers">
 
-                <td> {{i._id}} </td>
+                <td>
+                    <a ui-sref="home.listItems.trousers.detail({id : i._id})"> {{i._id}}  </a>
+                </td>
                 <td> {{i.class}} </td>
-                <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
+                <td>
+                    <a ui-sref="home.listItems.trousers.detail({id : i._id})"> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </a>
+                </td>
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
                 <td>
-                    <p style="color:blue" ng-show="i.featured"> Có </p>
-                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Không </button>
+                </td>
+                <td>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Không </button>
                 </td>
                 <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>
             <!--DRESS-->
             <tr ng-repeat="i in items.dress">
 
-                <td> {{i._id}} </td>
+                <td>
+                    <a ui-sref="home.listItems.dress.detail({id : i._id})"> {{i._id}}  </a>
+                </td>
                 <td> {{i.class}} </td>
-                <td> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </td>
+                <td>
+                    <a ui-sref="home.listItems.dress.detail({id : i._id})"> <img class="img-rounded img-bag center_decor" ng-src="{{i.image[0]}}"> </a>
+                </td>
                 <td> {{i.tittle}} </td>
                 <td> {{i.price | currency:"":0}} </td>
                 <td>
-                    <p style="color:blue" ng-show="i.featured"> Có </p>
-                    <p style="color:red" ng-hide="i.featured"> Không </p>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.onSale" ng-click="items.changeOnSale(i._id,i.class,i.onSale)">Không </button>
+                </td>
+                <td>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Không </button>
                 </td>
                 <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>

@@ -1,9 +1,3 @@
-<header class="jumbotron">
-
-</header>
-
-
-
 <div class="container">
     <div class="row body_body">
 
@@ -11,15 +5,12 @@
         <!--BREADCRUMB-->
         <ol class="breadcrumb">
             <li>
-                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
-            </li>
-            <li>
-                <a ui-sref="home.mainPage"> {{user.user.username}} </a>
+                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Về Trang Chủ </a>
             </li>
         </ol>
 
         <span class="line">
-            <h3 class="center_decor part">
+            <h3 class="center_decor">
             <span>THÔNG TIN</span>
         </h3>
         </span>
@@ -40,22 +31,23 @@
                     <td class="col-sm-8"> {{user.user.lastname}} </td>
                 </tr>
                 <tr>
-                    <th> <a ui-sref=""> Đổi Mật Khẩu </a> </th>
-                    <th>  </th>
+                    <th>
+                        <button class="btn btn-white">  Đổi Mật Khẩu </button>
+                    </th>
+                    <th>
+                        <button class="btn btn-black btn-sm" ng-click="user.logout()"> Thoát </button>
+                    </th>
                 </tr>
             </table>
+        </div>
 
-            <div class="list-group">
-                <a class="list-group-item list-group-item-info">
+        <div class="list-group col-sm-4 col-sm-offset-3">
+            <a class="list-group-item">
                     Chức Năng
                 </a>
-                <a ui-sref="home.upload" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Upload Sản Phẩm </a>
-                <a ui-sref="home.listItems" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Danh Sách Mặt Hàng </a>
-                <a ui-sref="home.customer" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Những Đơn Đặt Hàng </a>
-            </div>
-
-            <button class="btn btn-danger btn-sm" ng-click="user.logout()"> Thoát </button>
-
+            <a ui-sref="home.upload" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Upload Sản Phẩm </a>
+            <a ui-sref="home.listItems" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Danh Sách Mặt Hàng </a>
+            <a ui-sref="home.customer" class="list-group-item"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> Những Đơn Đặt Hàng </a>
         </div>
 
     </div>

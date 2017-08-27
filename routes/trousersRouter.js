@@ -39,7 +39,19 @@ trouserRouter.route('/')
 trouserRouter.route('/khuyenmai')
     .get(function(req, res, next) {
 
-        trousers.findOne({featured:true}, function(err,trouser) {
+        trousers.find({featured:true}, function(err,trouser) {
+            if (err) return next(err);
+            res.json(trouser);
+        })
+
+    });
+
+// onsale
+
+trouserRouter.route('/onsale')
+    .get(function(req, res, next) {
+
+        trousers.find({onSale:true}, function(err,trouser) {
             if (err) return next(err);
             res.json(trouser);
         })

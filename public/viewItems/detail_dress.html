@@ -1,19 +1,13 @@
-<header class="jumbotron">
-</header>
+<ol class="breadcrumb">
+    <li>
+        <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
+    </li>
+
+</ol>
 <!--DETAILS SAN PHAM-->
-<div class="container">
-    <div class="row body_body">
-        <ol class="breadcrumb">
-            <li>
-                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
-            </li>
-            <li>
-                <a ui-sref="home.dress"> Đầm </a>
-            </li>
-            <li>
-                <a ui-sref="home.dress.detail({id : items.dres._id})"> {{items.dres._id}} </a>
-            </li>
-        </ol>
+<div class="animated fadeIn container">
+    <div class="row border_10">
+
         <!--REVIEW IMAGE-->
         <section class="col-sm-5">
             <img class="xzoom img-thumbnail" ng-src="{{items.dres.image[0]}}" xoriginal="{{items.dres.image[0]}}" />
@@ -67,9 +61,12 @@
                 </tr>
             </table>
             <!--./TABLE RIGHT INFORMATION-->
-            <div class="row">
-                <button type="button" class="col-sm-offset-2 btn btn-default" ng-click="items.shopping()"> <p class="center_decor">CHO VÀO GIỎ HÀNG</p> </button>
-                <button type="button" class="col-sm-offset-1 btn btn-default" ng-click="items.buyNow()"><p class="center_decor">MUA NGAY</p></button>
+            <div class="row center_decor">
+
+                <button type="button" class="btn btn-black" ng-click="items.shopping()"> <p class="center_decor">GIỎ HÀNG</p> </button>
+
+                <button type="button" class="btn btn-white" ng-click="items.buyNow()"><p class="center_decor">MUA NGAY</p></button>
+
             </div>
         </div>
         <!--===BODY===-->
@@ -103,7 +100,8 @@
     $('.xzoom, .xzoom-gallery').xzoom({
         position: 'lens',
         lensShape: 'circle',
-        sourceClass: 'xzoom-hidden'
+        tint: '#333', Xoffset: 5
     });
-</script>
+
+</script>>
 <!--./===SCRIPT FOR ZOOM===-->

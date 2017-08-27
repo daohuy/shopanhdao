@@ -39,7 +39,19 @@ dressRouter.route('/')
 dressRouter.route('/khuyenmai')
     .get(function(req, res, next) {
 
-        dress.findOne({featured:true}, function(err,dres) {
+        dress.find({featured:true}, function(err,dres) {
+            if (err) return next(err);
+            res.json(dres);
+        })
+
+    });
+
+// onsale
+
+dressRouter.route('/onsale')
+    .get(function(req, res, next) {
+
+        dress.find({onSale:true}, function(err,dres) {
             if (err) return next(err);
             res.json(dres);
         })

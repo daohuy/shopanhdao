@@ -17,7 +17,7 @@ var shirtSchema = new Schema({
     price: {
         type: Currency
     },
-    price_fake: {
+    price_sale: {
         type: Currency
     },
     tittle: {
@@ -59,6 +59,10 @@ var shirtSchema = new Schema({
     featured: {
         type: Boolean,
         default: false
+    },
+    onSale: {
+        type : Boolean,
+        default : false
     }
 });
 

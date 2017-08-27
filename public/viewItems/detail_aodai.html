@@ -1,19 +1,12 @@
-<header class="jumbotron">
-</header>
+<ol class="breadcrumb">
+    <li>
+        <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Về Trang Chủ </a>
+    </li>
+</ol>
 <!--DETAILS SAN PHAM-->
-<div class="container">
-    <div class="row body_body">
-        <ol class="breadcrumb">
-            <li>
-                <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
-            </li>
-            <li>
-                <a ui-sref="home.aodai"> Áo Dài </a>
-            </li>
-            <li>
-                <a ui-sref="home.aodai.detail({id : items.aodai._id})"> {{items.aodai._id}} </a>
-            </li>
-        </ol>
+<div class="container animated fadeIn">
+    <div class="row border_10">
+        <!--image Zoom-->
         <section class="col-sm-5">
             <img class="xzoom img-thumbnail" ng-src="{{items.aodai.image[0]}}" xoriginal="{{items.aodai.image[0]}}" />
             <div class="xzoom-thumbs">
@@ -57,9 +50,12 @@
                     <td> {{items.aodai.size}} </td>
                 </tr>
             </table>
-            <div class="row">
-                <button type="button" class="col-sm-offset-2 btn btn-default" ng-click="items.shopping()"> <p class="center_decor">CHO VÀO GIỎ HÀNG</p> </button>
-                <button type="button" class="col-sm-offset-1 btn btn-default" ng-click="items.buyNow()"><p class="center_decor">MUA NGAY</p></button>
+            <div class="row center_decor">
+
+                <button type="button" class="btn btn-black" ng-click="items.shopping()"> <p class="center_decor">GIỎ HÀNG</p> </button>
+
+                <button type="button" class="btn btn-white" ng-click="items.buyNow()"><p class="center_decor">MUA NGAY</p></button>
+
             </div>
         </div>
         <div class="col-sm-9 body_details">
@@ -89,7 +85,8 @@
     $('.xzoom, .xzoom-gallery').xzoom({
         position: 'lens',
         lensShape: 'circle',
-        sourceClass: 'xzoom-hidden'
+        tint: '#333', Xoffset: 5
     });
+
 </script>
 <!--./===SCRIPT FOR ZOOM===-->

@@ -35,7 +35,7 @@
                 <input type="number" class="form-control" placeholder="{{items.aodai.price}}" ng-model="items.infoItem.price">
             </div>
             <div class="form-group">
-                <label> Giá Khuyến Mãi </label>
+                <label> Giá Khuyến Mãi ( Giá Sẽ Gạch Ngang Nên Cao Hơn Giá Bán ) </label>
                 <input type="number" class="form-control" placeholder="{{items.aodai.price_sale}}" ng-model="items.infoItem.price_sale">
             </div>
             <div class="form-group">
@@ -51,6 +51,16 @@
                 <input type="text" class="form-control" placeholder="{{items.aodai.size}}" ng-model="items.infoItem.size">
             </div>
             <div class="form-group">
+                <label> Chấm Sao ( Đang Chấm <span style="color:red"> {{items.aodai.rate}} </span> ) </label>
+                <select class="form-control" ng-model="items.infoItem.rate">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>    
+                </select>
+            </div>
+            <div class="form-group">
                 <label> Thông Tin </label>
                 <textarea class="form-control" rows="3" placeholder="{{items.aodai.description}}" ng-model="items.infoItem.description"></textarea>
             </div>
@@ -61,25 +71,25 @@
 
         </form>
         <div class="col-sm-4">
-                <label> Hình Ảnh </label><br>
+            <label> Hình Ảnh </label><br>
 
-                <!--  <button class="button btn btn-black" ngf-select ng-model="user.files" ngf-multiple="true">Chọn Hình </button> -->
+            <!--  <button class="button btn btn-black" ngf-select ng-model="user.files" ngf-multiple="true">Chọn Hình </button> -->
 
-                <table class="table table-striped col-sm-6">
-                    <tr>
-                        <th>Tên</th>
-                        <th>Hình Ảnh</th>
-                    </tr>
+            <table class="table table-striped col-sm-6">
+                <tr>
+                    <th>Tên</th>
+                    <th>Hình Ảnh</th>
+                </tr>
 
-                    <tr ng-repeat="i in items.aodai.image">
-                        <th> {{$index+1}} </th>
-                        <th>
-                            <img class="img-rounded img-file" ng-src="{{i}}">
-                        </th>
-                    </tr>
+                <tr ng-repeat="i in items.aodai.image">
+                    <th> {{$index+1}} </th>
+                    <th>
+                        <img class="img-rounded img-file" ng-src="{{i}}">
+                    </th>
+                </tr>
 
-                </table>
-                <!-- <table class="table col-sm-6">
+            </table>
+            <!-- <table class="table col-sm-6">
                     <tr>
                         <th>Tên</th>
                         <th>Hình Ảnh</th>
@@ -91,6 +101,6 @@
                         </th>
                     </tr>
                 </table> -->
-            </div>
+        </div>
     </div>
 </div>

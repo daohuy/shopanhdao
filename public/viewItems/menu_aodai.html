@@ -5,32 +5,34 @@
 </ol>
 <div class="container">
     <div class="row body_body">
-        <!--BREADCRUMB-->
-
+        <!--TITTLE-->
         <span class="line">
                 <h3 class="center_decor">
-                        <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
+                    <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
         </h3>
         </span>
-        <div class="animated fadeIn col-sm-3 center" ng-repeat="ad in items.aodaisOSale | limitTo:20">
-            <div class="border_10 div_item">
+        <!--./TITTLE-->
+        <!--ITEM-->
+        <div class="animated fadeIn col-sm-3" ng-repeat="ad in items.aodaisOSale | limitTo:20">
+            <div class="border_10 center">
+                <!--IMAGE-->
                 <div class="landscape">
                     <a ui-sref="home.aodai.detail({id: ad._id})">
                         <img class="img-thumbnail" ng-src="{{ad.image[0]}}" src="">
                     </a>
                 </div>
-
+                <!--./IMAGE-->
+                <!--TITTLE AND PRICE-->
                 <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
                     <h4> {{ad.tittle}} </h4>
                 </a>
                 <p style="text-align:center">
-
+                    <!--Featured : false-->
                     <i class="fa fa-money" aria-hidden="true"></i> : <span class="price">{{ad.price | currency:"":0}} VND </span>
-
                 </p>
+                <!--TITTLE AND PRICE-->
             </div>
-
         </div>
-
+        <!--./ITEM-->
     </div>
 </div>

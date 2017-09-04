@@ -38,7 +38,7 @@
                 <input type="number" class="form-control" placeholder="{{items.trouser.price}}" ng-model="items.infoItem.price">
             </div>
             <div class="form-group">
-                <label> Giá Khuyến Mãi </label>
+                <label> Giá Khuyến Mãi ( Giá Sẽ Gạch Ngang Nên Cao Hơn Giá Bán ) </label>
                 <input type="number" class="form-control" placeholder="{{items.trouser.price_sale}}" ng-model="items.infoItem.price_sale">
             </div>
             <div class="form-group">
@@ -52,6 +52,16 @@
             <div class="form-group">
                 <label> Size </label>
                 <input type="text" class="form-control" placeholder="{{items.trouser.size}}" ng-model="items.infoItem.size">
+            </div>
+            <div class="form-group">
+                <label> Chấm Sao ( Đang Chấm <span style="color:red"> {{items.trouser.rate}} </span> ) </label>
+                <select class="form-control" ng-model="items.infoItem.rate">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>    
+                </select>
             </div>
             <div class="form-group">
                 <label> Thông Tin </label>

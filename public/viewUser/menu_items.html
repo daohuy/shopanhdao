@@ -23,6 +23,7 @@
                 <th>Giá Tiền</th>
                 <th>Treo Bán</th>
                 <th>Khuyến Mãi</th>
+                <!-- <th>Chạy Ads</th> -->
                 <th> Xóa </th>
             </tr>
             <!--AODAI-->
@@ -47,7 +48,13 @@
                     <button class="btn btn-xs btn-black-xs" ng-show="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Có</button>
                     <button class="btn btn-xs btn-white-xs" ng-hide="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Không </button>
                 </td>
-
+                
+                <!--Chay Ads-->
+                <!-- <td>
+                    <button class="btn btn-xs btn-black-xs" ng-show="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Có</button>
+                    <button class="btn btn-xs btn-white-xs" ng-hide="i.featured" ng-click="items.changeKM(i._id,i.class,i.featured)">Không </button>
+                </td> -->
+                
                 </td>
                 <td ng-click="items.removeItem(i.class, i._id)"><span class="glyphicon glyphicon-remove"></span></td>
             </tr>

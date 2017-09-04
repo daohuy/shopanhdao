@@ -7,8 +7,7 @@
         .controller('aodaiController', aodaiCont)
         .controller('dressController', dressCont)
         .controller('shirtsController', shirtsCont)
-        .controller('trousersController', trousersCont)
-    ;
+        .controller('trousersController', trousersCont);
 
     function itemCont(itemsFactory) {
         var items = this;
@@ -17,8 +16,8 @@
         items.routeItem = routeItem;
         items.changeOnSale = changeOnSale;
         items.changeKM = changeKM;
+
         // get all items
-        
         items.aodais = itemsFactory
             .aodaiResource()
             .query(function (res) {
@@ -27,8 +26,8 @@
             }, function (res) {
                 console.log(res);
             });
-        
-        items.dress = itemsFactory 
+
+        items.dress = itemsFactory
             .dressResource()
             .query(function (res) {
                 items.dress = res;
@@ -36,7 +35,7 @@
             }, function (res) {
                 console.log(res);
             });
-        
+
         items.shirts = itemsFactory
             .shirtsResource()
             .query(function (res) {
@@ -45,7 +44,7 @@
             }, function (res) {
                 console.log(res);
             });
-        
+
         items.trousers = itemsFactory
             .trousersResource()
             .query(function (res) {
@@ -54,115 +53,117 @@
             }, function (res) {
                 console.log(res);
             });
-        
-        function removeItem(item,id) {
-            //console.log(item,id);
-            itemsFactory.removeItem(item,id);
-        }
+
+
         // sale tren trang chu
         items.aodaisOSale = itemsFactory
-            .itemResourceKMOS('aodai','onsale')
-            .query(function(res) {
+            .itemResourceKMOS('aodai', 'onsale')
+            .query(function (res) {
                 //console.log(res);
                 items.aodaisOSale = res;
-            }, function(res) {
+            }, function (res) {
                 console.log(res)
             });
         items.dressOSale = itemsFactory
-            .itemResourceKMOS('dress','onsale')
-            .query(function(res) {
+            .itemResourceKMOS('dress', 'onsale')
+            .query(function (res) {
                 //console.log(res);
-            items.dressOSale = res;
-            }, function(res) {
+                items.dressOSale = res;
+            }, function (res) {
                 console.log(res)
             });
         items.shirtsOSale = itemsFactory
-            .itemResourceKMOS('shirts','onsale')
-            .query(function(res) {
+            .itemResourceKMOS('shirts', 'onsale')
+            .query(function (res) {
                 //console.log(res);
                 items.shirtsOSale = res;
-            }, function(res) {
+            }, function (res) {
                 console.log(res)
             });
         items.trousersOSale = itemsFactory
-            .itemResourceKMOS('trousers','onsale')
-            .query(function(res) {
+            .itemResourceKMOS('trousers', 'onsale')
+            .query(function (res) {
                 //console.log(res);
                 items.trousersOSale = res;
-            }, function(res) {
+            }, function (res) {
                 console.log(res)
             });
         // Danh Muc Khuyen Mai
         items.aodaisKM = itemsFactory
-            .itemResourceKMOS('aodai','khuyenmai')
-            .query(function(res) {
-            
+            .itemResourceKMOS('aodai', 'khuyenmai')
+            .query(function (res) {
+
                 //console.log('Get Ao Dai KM', res)
-                for ( var i = 0; i < res.length ; i++ ) {
+                for (var i = 0; i < res.length; i++) {
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('AODAI items push ',items.itemsKM);
-            
-            }, function(res) {
+
+            }, function (res) {
                 console.log(res)
             });
         items.dressKM = itemsFactory
-            .itemResourceKMOS('dress','khuyenmai')
-            .query(function(res) {
+            .itemResourceKMOS('dress', 'khuyenmai')
+            .query(function (res) {
                 //console.log(res);
-                
-                for ( var i = 0; i < res.length ; i++ ) {
+
+                for (var i = 0; i < res.length; i++) {
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('Dress items push ',items.itemsKM);
-            
-            }, function(res) {
+
+            }, function (res) {
                 console.log(res)
             });
         items.shirtsKM = itemsFactory
-            .itemResourceKMOS('shirts','khuyenmai')
-            .query(function(res) {
+            .itemResourceKMOS('shirts', 'khuyenmai')
+            .query(function (res) {
                 //console.log(res);
-            
-                for ( var i = 0; i < res.length ; i++ ) {
+
+                for (var i = 0; i < res.length; i++) {
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('Shirts items push ',items.itemsKM);
-            
-            }, function(res) {
+
+            }, function (res) {
                 console.log(res)
             });
         items.trousersKM = itemsFactory
-            .itemResourceKMOS('trousers','khuyenmai')
-            .query(function(res) {
+            .itemResourceKMOS('trousers', 'khuyenmai')
+            .query(function (res) {
                 //console.log(res);
-            
-                for ( var i = 0; i < res.length ; i++ ) {
+
+                for (var i = 0; i < res.length; i++) {
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('Trousers items push ',items.itemsKM);
-            
-            }, function(res) {
+
+            }, function (res) {
                 console.log(res)
             });
-        
-        console.log('After PUSH items in itemsKM', items.itemsKM);
+
         // route Khuyen Mai
-        function routeItem(clas,_id) {
+        function routeItem(clas, _id) {
             //console.log(clas, _id);
-            itemsFactory.routeItem(clas,_id);
+            itemsFactory.routeItem(clas, _id);
         }
-        
+
         //change onsale
-        function changeOnSale(_id,clas,onsale) {
+        function changeOnSale(_id, clas, onsale) {
             //console.log(_id,clas);
-            itemsFactory.changeOnSale(_id,clas,onsale);
+            itemsFactory.changeOnSale(_id, clas, onsale);
         }
-        
+
         //change khuyenmai
-        function changeKM(_id,clas,featured) {
-            itemsFactory.changeKM(_id,clas,featured);
+        function changeKM(_id, clas, featured) {
+            itemsFactory.changeKM(_id, clas, featured);
         }
+        // remove item
+        function removeItem(item, id) {
+            //console.log(item,id);
+            itemsFactory.removeItem(item, id);
+        }
+
     }
 
     function headerCont($localStorage, itemsFactory) {
@@ -217,19 +218,26 @@
 
     }
     /*CONTROLLER AODAI*/
-    function aodaiCont(itemsFactory, $stateParams, $localStorage, $state) {
+    function aodaiCont(itemsFactory, $stateParams, $localStorage, $state,baseURL) {
         //console.log('aodaiController');
         var items = this;
         items.changeInfoItem = changeInfoItem;
         items.infoItem = {};
-        
+        items.rating = [];
+        items.urlFB = '';
+        //console.log(items.urlFB);
+
         items.aodai = itemsFactory
             .aodaiResource()
             .get({
                 aodaiId: $stateParams.id
             }, function (res) {
                 items.aodai = res;
-                //console.log(items.aodai);
+                console.log(items.aodai);
+                for (var i = 0; i < items.aodai.rate; i++) {
+                    items.rating.push(i);
+                }
+                items.urlFB = baseURL + 'aodai/' + items.aodai._id;
             }, function (res) {
                 console.log(res);
             });
@@ -244,26 +252,33 @@
         function buyNow() {
             itemsFactory.buyNow(items.aodai);
         }
-        
-        function changeInfoItem (_id, item,clas) {
-            console.log(_id, item,clas);
-            itemsFactory.changeInfoItem(_id, item,clas);
+
+        function changeInfoItem(_id, item, clas) {
+            console.log(_id, item, clas);
+            itemsFactory.changeInfoItem(_id, item, clas);
         }
-        
+
+
     }
     /*CONTROLLER DRESS*/
-    function dressCont(itemsFactory, $stateParams, $localStorage, $state) {
+    function dressCont(itemsFactory, $stateParams, $localStorage, $state, baseURL) {
         //console.log('dressController');
         var items = this;
         items.changeInfoItem = changeInfoItem;
         items.infoItem = {};
-        
+        items.rating = [];
+        items.urlFB = window.location.href;
+
         items.dres = itemsFactory
             .dressResource()
             .get({
                 dressId: $stateParams.id
             }, function (res) {
                 items.dres = res;
+                for (var i = 0; i < items.dres.rate; i++) {
+                    items.rating.push(i);
+                }
+                items.urlFB = baseURL + 'dres/' + items.dres._id;
             }, function (res) {
                 //console.log('Error');
             });
@@ -279,25 +294,31 @@
             itemsFactory.buyNow(items.dres);
         }
 
-        function changeInfoItem (_id, item,clas) {
+        function changeInfoItem(_id, item, clas) {
             //console.log(_id, item,clas);
-            itemsFactory.changeInfoItem(_id, item,clas);
+            itemsFactory.changeInfoItem(_id, item, clas);
         }
-        
+
     }
     /*CONTROLLER SHIRTS*/
-    function shirtsCont(itemsFactory, $stateParams, $localStorage, $state) {
+    function shirtsCont(itemsFactory, $stateParams, $localStorage, $state, baseURL) {
         //console.log('shirtController');
         var items = this;
         items.changeInfoItem = changeInfoItem;
         items.infoItem = {};
-        
+        items.rating = [];
+        items.urlFB = window.location.href;
+
         items.shirt = itemsFactory
             .shirtsResource()
             .get({
                 shirtId: $stateParams.id
             }, function (res) {
                 items.shirt = res;
+                for (var i = 0; i < items.shirt.rate; i++) {
+                    items.rating.push(i);
+                }
+                items.urlFB = baseURL + 'shirt/' + items.shirt._id;
             }, function (res) {
                 console.log(res);
                 console.log('Error');
@@ -314,25 +335,31 @@
             itemsFactory.buyNow(items.shirt);
         }
 
-        function changeInfoItem (_id, item, clas) {
+        function changeInfoItem(_id, item, clas) {
             //console.log(_id, item,clas);
-            itemsFactory.changeInfoItem(_id, item,clas);
+            itemsFactory.changeInfoItem(_id, item, clas);
         }
-        
+
     }
     /*CONTROLLER TROUSERS*/
-    function trousersCont(itemsFactory, $stateParams, $localStorage, $state) {
+    function trousersCont(itemsFactory, $stateParams, $localStorage, $state, baseURL) {
         //console.log('trouserController');
         var items = this;
         items.changeInfoItem = changeInfoItem;
         items.infoItem = {};
-        
+        items.rating = [];
+        items.urlFB = window.location.href;
+
         items.trouser = itemsFactory
             .trousersResource()
             .get({
                 trouserId: $stateParams.id
             }, function (res) {
                 items.trouser = res;
+                for (var i = 0; i < items.trouser.rate; i++) {
+                    items.rating.push(i);
+                }
+                items.urlFB = baseURL + 'trouser/' + items.trouser._id;
             }, function (res) {
                 console.log('Error');
             });
@@ -348,11 +375,11 @@
             itemsFactory.buyNow(items.trouser);
         }
 
-        function changeInfoItem (_id, item,clas) {
+        function changeInfoItem(_id, item, clas) {
             //console.log(_id, item,clas);
-            itemsFactory.changeInfoItem(_id, item,clas);
+            itemsFactory.changeInfoItem(_id, item, clas);
         }
-        
+
     }
 
 })();

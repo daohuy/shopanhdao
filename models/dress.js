@@ -31,7 +31,7 @@ var dressSchema = new Schema({
         type: Number,
         min: 0,
         max: 5,
-        default : 5
+        default : 4
     },
     size: {
         type: String
@@ -59,6 +59,10 @@ var dressSchema = new Schema({
         default: false
     },
     onSale: {
+        type : Boolean,
+        default : false
+    },
+    abs : {
         type : Boolean,
         default : false
     }

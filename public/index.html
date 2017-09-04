@@ -64,6 +64,10 @@
 
     <!--./SCRIPT-->
 
+    <!--SOCIAL BUTTON-->
+    <link rel="stylesheet" href="styles/social-button/bootstrap-social.css">
+    <!--./SOCIAL BUTTON-->
+
     <!--ZOOM IMAGE-->
     <script src="/script/xzoom/xzoom.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/script/xzoom/xzoom.css" media="all">
@@ -82,7 +86,57 @@
     <div ui-view='content'></div>
 
     <div ui-view='footer'></div>
+    
+    <div id="fb-root"></div>
+    <!--facebook messenger-->
+    <div id="cfacebook">
+        <a href="javascript:;" class="chat_fb" onclick="return:false;"><i class="fa fa-facebook-square"></i> Gửi Tin Nhắn </a>
+        <div class="fchat">
+            <div class="fb-page" data-tabs="messages" data-href="https://www.facebook.com/Shop-Anh-%C4%90%C3%A0o-264560140258596" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+        </div>
+    </div>
+    <!--./facebook messenger-->
+    <!--click on top-->
+    <button onclick="topFunction()" id="myBtn" title="Go to top"> 
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </button>
 
+    <script>
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+            document.documentElement.scrollTop = 0; // For IE and Firefox
+        }
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=907525526089636";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        jQuery(document).ready(function() {
+            jQuery(".chat_fb").click(function() {
+                jQuery('.fchat').toggle('slow');
+            });
+        });
+
+    </script>
+    <!--./click on top-->
 </body>
 
 </html>

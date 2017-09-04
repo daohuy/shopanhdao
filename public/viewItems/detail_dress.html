@@ -56,10 +56,13 @@
                 <tr>
                     <th>Đánh Giá</th>
                     <td>
-                        <i class="fa fa-star" aria-hidden="true" ng-repeat="star in rating"></i>
+                        <i ng-repeat="i in items.rating" class="fa fa-star" aria-hidden="true"></i>
                     </td>
                 </tr>
             </table>
+            
+            <div class="fb-like" data-href="{{items.urlFB}}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            
             <!--./TABLE RIGHT INFORMATION-->
             <div class="row center_decor">
 
@@ -70,27 +73,15 @@
             </div>
         </div>
         <!--===BODY===-->
-        <div class="col-sm-9 body_details">
-            <ul class="nav nav-tabs nav_details">
-                <li class="active"><a data-toggle="tab" data-target="#thong_tin">Thông Tin Sản Phẩm</a></li>
-                <li><a data-toggle="tab" data-target="#danh_gia">Đánh Giá Khách Hàng</a></li>
-            </ul>
-            <div class="tab-content">
-                <!--===THONG TIN===-->
-                <div id="thong_tin" class="tab-pane fade in active border_tab_detail">
-                    <p class="description">{{items.dres.description}}</p>
-                    <img class="img-thumbnail" ng-repeat="img in items.dres.image" ng-src="{{img}}
-                    ">
-                </div>
-                <!--===DANH GIA===-->
-                <div id="danh_gia" class="tab-pane fade">
-                    <h3>ĐÁNH GIÀ KHÁCH HÀNG</h3>
-                </div>
-            </div>
-        </div>
-        <!--===LINK===-->
-        <div class="col-sm-3 body_link">
-            <h4 style="text-align:center">Sản Phẩm Nổi Bật</h4>
+        <!-- <div class="col-sm-12">
+            <h4 style="text-align:center">Sản Phẩm Cung Loai</h4>
+         
+        </div> -->
+        
+        <div class="col-sm-12">
+            <!--Comment-->
+                <div class="fb-comments" data-href="{{items.urlFB}}" data-numposts="5" data-mobile></div>
+            <!--./Comment-->
         </div>
     </div>
 </div>

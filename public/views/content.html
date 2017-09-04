@@ -1,40 +1,3 @@
-<!--CHANGE PAGE-->
-<!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    Indicators
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
-
-    Wrapper for slides
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="/img/jumpotron.jpg" alt="...">
-            <div class="carousel-caption">
-                ...
-            </div>
-        </div>
-        <div class="item">
-            <img src="/img/jumpotron.jpg" alt="...">
-            <div class="carousel-caption">
-                ...
-            </div>
-        </div>
-        ...
-    </div>
-
-    Controls
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div> -->
-<!--./CHANGE PAGE-->
 <ol class="breadcrumb">
     <li>
         <a ui-sref="home"> <i class="fa fa-home" aria-hidden="true"></i> Trang Chủ </a>
@@ -44,64 +7,70 @@
 <!--HOME PAGE-->
 <div class="container">
     <div class="row border_10">
-        <!--BREADCRUMB-->
-
         <!--====Body===-->
+        
         <!--====KHUYEN MAI====-->
         <div class="col-sm-12 border_bottom">
-
+            <!--TITTLE-->
             <span class="line">
                 <h3 class="center_decor">
-                        <a ui-sref="home.aodai"> <span> KHUYẾN MÃI </span> </a>
+                    <a> <span> KHUYẾN MÃI </span> </a>
             </h3>
             </span>
-            <div class="animated fadeIn col-sm-3 center" ng-repeat="i in items.itemsKM | limitTo:20">
-                <div class="border_10 div_item">
+            <!--./TITTLE-->
+            <!--ITEM-->
+            <div class="animated fadeIn col-sm-3" ng-repeat="i in items.itemsKM | limitTo:20">
+                <div class="border_10 center">
+                    <!--IMAGE-->
                     <div class="landscape">
                         <a ng-click="items.routeItem(i.class,i._id)">
                             <img class="img-thumbnail" ng-src="{{i.image[0]}}" src="">
                         </a>
                     </div>
-
-                    <a ng-click="items.routeItem(i.class,i._id)" class="center_decor">
+                    <!--./IMAGE-->
+                    <!--TITTLE AND PRICE-->
+                    <span ng-click="items.routeItem(i.class,i._id)" class="center_decor">
                         <h4> {{i.tittle}} </h4>
-                    </a>
+                    </span>
                     <p style="text-align:center">
-                        <!--featured :  true-->
-                        <!--price_sale-->
+
                         <span class="price_sale">
                             {{i.price_sale | currency:"":0}} VND 
                         </span>
                         <br>
-                        <!--price-->
+
                         <i class="fa fa-money" aria-hidden="true"></i> :
                         <span class="price">
                             {{i.price | currency:"":0}} VND 
                         </span>
-                        
                     </p>
+                    <!--TITTLE AND PRICE-->
                 </div>
-
             </div>
+            <!--./ITEM-->
         </div>
         <!--====KHUYEN MAI====-->
 
         <!--====AODAI====-->
         <div class="col-sm-12 border_bottom">
-            <!-- TITTLE AODAI -->
+            <!--TITTLE-->
             <span class="line">
                 <h3 class="center_decor">
-                        <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
+                    <a ui-sref="home.aodai"> <span>ÁO DÀI</span> </a>
             </h3>
             </span>
-            <div class="animated fadeIn col-sm-3 center" ng-repeat="ad in items.aodaisOSale | limitTo:20">
-                <div class="border_10 div_item">
+            <!--./TITTLE-->
+            <!--ITEM-->
+            <div class="animated fadeIn col-sm-3" ng-repeat="ad in items.aodaisOSale | limitTo:20">
+                <div class="border_10 center">
+                    <!--IMAGE-->
                     <div class="landscape">
                         <a ui-sref="home.aodai.detail({id: ad._id})">
                             <img class="img-thumbnail" ng-src="{{ad.image[0]}}" src="">
                         </a>
                     </div>
-
+                    <!--./IMAGE-->
+                    <!--TITTLE AND PRICE-->
                     <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
                         <h4> {{ad.tittle}} </h4>
                     </a>
@@ -109,29 +78,34 @@
                         <!--Featured : false-->
                         <i class="fa fa-money" aria-hidden="true"></i> : <span class="price">{{ad.price | currency:"":0}} VND </span>
                     </p>
+                    <!--TITTLE AND PRICE-->
                 </div>
-
             </div>
-
+            <!--./ITEM-->
         </div>
+
         <!--====AODAI====-->
 
         <!--====DRESS====-->
         <div class="col-sm-12 border_bottom">
+            <!--TITTLE-->
             <span class="line">
-                    <h3 class="center_decor">
-                        <a ui-sref="home.dress"> <span> ĐẦM </span> </a>
+                <h3 class="center_decor">
+                    <a ui-sref="home.dress"> <span> ĐẦM </span> </a>
             </h3>
             </span>
-
-            <div class="animated fadeIn col-sm-3 center" ng-repeat="dres in items.dressOSale | limitTo:20">
-                <div class="border_10 div_item">
+            <!--./TITTLE-->
+            <!--ITEM-->
+            <div class="animated fadeIn col-sm-3" ng-repeat="dres in items.dressOSale | limitTo:20">
+                <div class="border_10 center">
+                    <!--IMAGE-->
                     <div class="landscape">
                         <a ui-sref="home.dress.detail({id: dres._id})">
                             <img class="img-thumbnail" ng-src="{{dres.image[0]}}">
                         </a>
                     </div>
-
+                    <!--./IMAGE-->
+                    <!--TITTLE AND PRICE-->
                     <a class="center_decor" ui-sref="home.dress.detail({id: dres._id})">
                         <h4> {{dres.tittle}} </h4>
                     </a>
@@ -139,29 +113,33 @@
                         <span><i class="fa fa-money" aria-hidden="true"></i></span>
                         <span class="price">{{dres.price | currency:"":0}} VND </span>
                     </p>
+                    <!--TITTLE AND PRICE-->
                 </div>
-
             </div>
-
+            <!--./ITEM-->
         </div>
         <!--====DRESS====-->
 
         <!--====SHIRTS====-->
         <div class="col-sm-12 border_bottom">
+            <!--TITTLE-->
             <span class="line">
-                    <h3 class="center_decor">
-                        <a ui-sref="home.shirts"> <span>ÁO</span> </a>
+                <h3 class="center_decor">
+                    <a ui-sref="home.shirts"> <span>ÁO</span> </a>
             </h3>
             </span>
-
-            <div class="animated fadeIn col-sm-3 center" ng-repeat="shirt in items.shirtsOSale | limitTo:20">
-                <div class="border_10 div_item">
+            <!--./TITTLE-->
+            <!--ITEM-->
+            <div class="animated fadeIn col-sm-3" ng-repeat="shirt in items.shirtsOSale | limitTo:20">
+                <div class="border_10 center">
+                    <!--IMAGE-->
                     <div class="landscape">
                         <a ui-sref="home.shirts.detail({id: shirt._id})">
                             <img class="img-thumbnail" ng-src="{{shirt.image[0]}}">
                         </a>
                     </div>
-
+                    <!--./IMAGE-->
+                    <!--TITTLE AND PRICE-->
                     <a class="center_decor" ui-sref="home.shirts.detail({id: shirt._id})">
                         <h4> {{shirt.tittle}} </h4>
                     </a>
@@ -171,78 +149,66 @@
                         <span class="price">{{shirt.price | currency:"":0}} VND </span>
 
                     </p>
+                    <!--TITTLE AND PRICE-->
                 </div>
-
             </div>
-
+            <!--./ITEM-->
         </div>
+
         <!--====SHIRTS====-->
 
         <!--===TROUSERS===-->
         <div class="col-sm-12 border_bottom">
+            <!--TITTLE-->
             <span class="line">
-                    <h3 class="center_decor">
-                        <a ui-sref="home.trousers"> <span>QUẦN</span> </a>
+                <h3 class="center_decor">
+                    <a ui-sref="home.trousers"> <span>QUẦN</span> </a>
             </h3>
             </span>
-
-            <div class="animated fadeIn col-sm-3 center" ng-repeat="trouser in items.trousersOSale | limitTo:20">
-                <div class="border_10 div_item">
+            <!--./TITTLE-->
+            <!--ITEM-->
+            <div class="animated fadeIn col-sm-3" ng-repeat="trouser in items.trousersOSale | limitTo:20">
+                <div class="border_10 center">
+                    <!--IMAGE-->
                     <div class="landscape">
                         <a ui-sref="home.trousers.detail({id: trouser._id})">
                             <img class="img-thumbnail" ng-src="{{trouser.image[0]}}">
                         </a>
                     </div>
-
+                    <!--./IMAGE-->
+                    <!--TITTLE AND PRICE-->
                     <a class="center_decor" ui-sref="home.trousers.detail({id: trouser._id})">
                         <h4> {{trouser.tittle}} </h4>
                     </a>
                     <p style="text-align:center">
                         <span><i class="fa fa-money" aria-hidden="true"></i></span>
                         <span class="price">{{trouser.price | currency:"":0}} VND </span>
-
                     </p>
+                    <!--TITTLE AND PRICE-->
                 </div>
-
             </div>
-
-
+            <!--./ITEM-->
         </div>
         <!--===TROUSERS===-->
+
         <!--===./body===-->
-        <!--./Row-->
     </div>
 </div>
 <!--./HOME PAGE-->
 
-<!--====Facebook and Khuyen Mai====-->
+<!--====Facebook====-->
 <div class="container">
+
     <div class="row border_10">
-        <!--Fan Page-->
-        <div class="col-sm-4">
-            <div class="fb-page" data-href="https://www.facebook.com/M&#x1ef9;-ph&#x1ea9;m-Collagen-Nh&#x1ead;t-1688056831406288/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/M&#x1ef9;-ph&#x1ea9;m-Collagen-Nh&#x1ead;t-1688056831406288/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/M&#x1ef9;-ph&#x1ea9;m-Collagen-Nh&#x1ead;t-1688056831406288/">Mỹ phẩm Collagen Nhật</a></blockquote>
-            </div>
+
+        <div class="col-sm-4 col-sm-12">
+            <div class="fb-page" data-href="https://www.facebook.com/Shop-Anh-&#x110;&#xe0;o-264560140258596/" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Shop-Anh-&#x110;&#xe0;o-264560140258596/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Shop-Anh-&#x110;&#xe0;o-264560140258596/">Shop Anh Đào</a></blockquote></div>
         </div>
-        <!--Comment-->
-        <div class="col-sm-8">
-            <div class="fb-comments" data-href="https://shopanhdao.ml/comment" data-numposts="2"></div>
+        
+        <div class="col-sm-8 col-sm-12">
+            <div class="fb-comments" data-href="http://www.shopanhdao.com/commentsFB/" data-numposts="5" data-mobile></div>
         </div>
+        
     </div>
-
-    
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=907525526089636";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-    </script>
-
 </div>
-<!--.====/Facebook and Khuyen Mai====-->
+<!--.====/Facebook====-->

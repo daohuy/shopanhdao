@@ -5,7 +5,7 @@
         .module('myApp')
         //.constant("baseURL", "http://localhost:8080/")
         //.constant("baseURL", "http://35.202.183.187:8080/")
-        .constant("baseURL", "http://shopanhdao.ml/")
+        //.constant("baseURL", "http://shopanhdao.ml/")
         .factory('userFactory', userFac);
 
     function userFac(baseURL, $resource, $localStorage, $http, $state, Upload) {

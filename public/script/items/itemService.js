@@ -5,7 +5,7 @@
         // URL : https://shopanhdao-174606.appspot.com/
         //.constant("baseURL", "http://localhost:8080/") // url api server mongodb
         //.constant("baseURL", "http://35.202.183.187:8080/") // url api server mongodb
-        .constant("baseURL", "http://shopanhdao.ml/") // url api server mongodb
+        //.constant("baseURL", "http://shopanhdao.ml/") // url api server mongodb
         .factory('itemsFactory', itemsFac);
 
     function itemsFac($localStorage, $resource, $state, baseURL, Upload) {
@@ -593,22 +593,14 @@
                                     message: 'Đã Cập Nhật Sản Phẩm !',
                                     backdrop: true
                                 });
-                                $state.go('home.listItems.aodaiDetail', {
-                                    id: _id
-                                }, {
-                                    reload: true
-                                });
+                                location.reload();
                             }, function (res) {
                                 console.log(res);
                                 bootbox.alert({
                                     message: 'Thay Đổi Thất Bại Mời Thử Lại !',
                                     backdrop: true
                                 });
-                                $state.go('home.listItems.aodaiDetail', {
-                                    id: _id
-                                }, {
-                                    reload: true
-                                });
+                                location.reload();
                             })
 
                         } else if (clas == 'Áo') {

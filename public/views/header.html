@@ -8,13 +8,10 @@
             <span class="navBrand">A</span>
             <span class="navBrand">O</span>
         </a>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
-            </button>
     </div>
-    <div class="log_in">
+
+    <!--Login route desktop-->
+    <div class="log_in hidden-xs">
         <ul>
             <li ng-show="!items.signIn">
                 <a id="lo_gin" ui-sref="home.login"> L O G  I N </a>
@@ -28,15 +25,40 @@
                 <a id="item_bag" role="button" data-toggle="modal" data-target="#bag">
                     <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                     <span class="badge"> {{items.BAG.length}} </span>
-                    
+
                 </a>
             </li>
         </ul>
     </div>
+    <!--navbar mobile-->
+    <div id="mySidenav" class="sidenav center">
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="center" ng-show="!items.signIn" id="lo_gin" ui-sref="home.login"> L O G  I N </a>
+
+        <a ng-show="items.signIn" id="login" ui-sref="home.mainPage">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{items.username}}
+        </a>
+        <a ng-show="items.haveBag" id="item_bag" role="button" data-toggle="modal" data-target="#bag">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            <span class="badge"> {{items.BAG.length}} </span>
+        </a>
+
+        <p class="border_bottom"></p>
+        <a ui-sref="home"> Trang Chủ </a>
+        <a ui-sref="home.aodai"> Áo Dài </a>
+        <a ui-sref="home.dress"> Đầm </a>
+        <a ui-sref="home.trousers"> Quần </a>
+        <a ui-sref="home.shirts"> Áo </a>
+
+    </div>
 
 </div>
-
-<div id="out" class="container">
+<!--route desktop -->
+<div id="out" class="container hidden-xs">
     <div id="in" class="row">
         <ul class="nav navbar-nav">
             <li>
@@ -55,66 +77,9 @@
     </div>
 </div>
 
-<!--===Navbar===-->
-<!-- <nav class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" ui-sref="home" ng-click="checkState()">
-                <span class="navBrand">A</span>
-                <span class="navBrand">N</span>
-                <span class="navBrand">H</span>
-                <span class="navBrand">D</span>
-                <span class="navBrand">A</span>
-                <span class="navBrand">O</span>
-            </a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
-            </button>
-        </div>
+<!-- Use any element to open the sidenav -->
 
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a ui-sref="home.aodai"> ÁO DÀI </a>
-                </li>
-                <li>
-                    <a ui-sref="home.dress"> ĐẦM </a>
-                </li>
-                <li>
-                    <a ui-sref="home.trousers"> QUẦN </a>
-                </li>
-                <li>
-                    <a ui-sref="home.shirts"> ÁO </a>
-                </li>
-            </ul>
-            BAG
-            <ul ng-show="items.haveBag" class="nav navbar-nav navbar-right">
-                <li>
-                    <a role="button" data-toggle="modal" data-target="#bag">
-                        <i class="fa fa-shopping-basket" aria-hidden="true"></i> Giỏ Hàng
-                        <span class="badge"> {{items.BAG.length}} </span>
-                    </a>
-                </li>
-            </ul>
-            USER
-            <ul class="nav navbar-nav navbar-right">
-                <li ng-show="!items.signIn">
-                    <a ui-sref="home.login">
-                        <span class="glyphicon glyphicon-log-in"></span> Login</a>
-                </li>
-                <li ng-show="items.signIn">
-                    <a ui-sref="home.mainPage"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{items.username}} </a>
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-
-</nav> -->
-<!--===/Navbar===-->
+<button id="fixButton" class="btn btn-black-xs visible-xs" onclick="openNav()"> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> </button>
 
 <!--===SHIP===-->
 <!-- <div class="container">
@@ -174,3 +139,16 @@
 </div>
 
 <!--User Modal-->
+
+<script>
+    /* Set the width of the side navigation to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "150px";
+    }
+
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+</script>

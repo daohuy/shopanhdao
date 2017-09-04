@@ -49,7 +49,16 @@
                     <th>Size</th>
                     <td> {{items.aodai.size}} </td>
                 </tr>
+                <tr>
+                    <th>Đánh Giá</th>
+                    <td>
+                        <i ng-repeat="i in items.rating" class="fa fa-star" aria-hidden="true"></i>
+                    </td>
+                </tr>
             </table>
+            
+            <div class="fb-like" data-href="{{items.urlFB}}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            
             <div class="row center_decor">
 
                 <button type="button" class="btn btn-black" ng-click="items.shopping()"> <p class="center_decor">GIỎ HÀNG</p> </button>
@@ -58,25 +67,19 @@
 
             </div>
         </div>
-        <div class="col-sm-9 body_details">
-            <ul class="nav nav-tabs nav_details">
-                <li class="active"><a data-toggle="tab" data-target="#thong_tin">Thông Tin Sản Phẩm</a></li>
-                <li><a data-toggle="tab" data-target="#danh_gia">Đánh Giá Khách Hàng</a></li>
-            </ul>
-            <div class="tab-content">
-                <div id="thong_tin" class="tab-pane fade in active border_tab_detail">
-                    <p class="description">{{items.aodai.description}}</p>
-                    <img class="img-thumbnail" ng-repeat="img in items.aodai.image" ng-src="{{img}}
-                    ">
-                </div>
-                <div id="danh_gia" class="tab-pane fade">
-                    <h3>ĐÁNH GIÀ KHÁCH HÀNG</h3>
-                </div>
-            </div>
+        
+        <!-- <div class="col-sm-12">
+            <h4 style="text-align:center">Sản Phẩm Cung Loai</h4>
+         
+        </div> -->
+        
+        <div class="col-sm-12">
+            <!--Comment-->
+                <div class="fb-comments" data-href="{{items.urlFB}}" data-numposts="5" data-mobile></div>
+            <!--./Comment-->
         </div>
-        <div class="col-sm-3 body_link">
-            <h4 style="text-align:center">Sản Phẩm Nổi Bật</h4>
-        </div>
+
+        
     </div>
 </div>
 <!--./DETAILS SAN PHAM-->
@@ -85,7 +88,8 @@
     $('.xzoom, .xzoom-gallery').xzoom({
         position: 'lens',
         lensShape: 'circle',
-        tint: '#333', Xoffset: 5
+        tint: '#333',
+        Xoffset: 5
     });
 
 </script>

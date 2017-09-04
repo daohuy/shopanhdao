@@ -3,9 +3,9 @@
 
     angular
         .module('myApp', ['ui.router', 'ngResource', 'ngStorage', 'permission', 'permission.ui', 'ngFileUpload'])
-        .constant("baseURL", "http://localhost:8080/") // url api server mongodb
+        //.constant("baseURL", "http://localhost:8080/") // url api server mongodb
         //.constant("baseURL", "http://35.202.183.187:8080/") // url api server mongodb
-        //.constant("baseURL", "http://shopanhdao.ml/") // url api server mongodb
+        .constant("baseURL", "http://www.shopanhdao.com/") // url api server mongodb
         .run(run)
         .config(config)
 

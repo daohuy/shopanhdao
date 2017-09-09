@@ -13,11 +13,12 @@
         var items = this;
         items.removeItem = removeItem;
         items.itemsKM = [];
+        items.itemsKMShow = false;
         items.routeItem = routeItem;
         items.changeOnSale = changeOnSale;
         items.changeKM = changeKM;
-
-        // get all items
+        
+        // get all items ADMIN only
         items.aodais = itemsFactory
             .aodaiResource()
             .query(function (res) {
@@ -88,7 +89,8 @@
             }, function (res) {
                 console.log(res)
             });
-        // Danh Muc Khuyen Mai
+        
+        // ========Danh Muc Khuyen Mai==========
         items.aodaisKM = itemsFactory
             .itemResourceKMOS('aodai', 'khuyenmai')
             .query(function (res) {
@@ -98,7 +100,7 @@
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('AODAI items push ',items.itemsKM);
-
+                
             }, function (res) {
                 console.log(res)
             });
@@ -111,7 +113,7 @@
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('Dress items push ',items.itemsKM);
-
+                
             }, function (res) {
                 console.log(res)
             });
@@ -124,7 +126,7 @@
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('Shirts items push ',items.itemsKM);
-
+                
             }, function (res) {
                 console.log(res)
             });
@@ -137,11 +139,12 @@
                     items.itemsKM.push(res[i]);
                 }
                 //console.log('Trousers items push ',items.itemsKM);
-
+                
             }, function (res) {
                 console.log(res)
             });
-
+        //=========================================
+        
         // route Khuyen Mai
         function routeItem(clas, _id) {
             //console.log(clas, _id);
@@ -163,8 +166,7 @@
             //console.log(item,id);
             itemsFactory.removeItem(item, id);
         }
-
-    }
+    }   
 
     function headerCont($localStorage, itemsFactory) {
         var items = this;
@@ -238,6 +240,7 @@
                     items.rating.push(i);
                 }
                 items.urlFB = baseURL + 'aodai/' + items.aodai._id;
+                console.log(items.urlFB);
             }, function (res) {
                 console.log(res);
             });

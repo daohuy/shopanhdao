@@ -15,7 +15,7 @@
         </span>
         <!--./TITTLE-->
         <!--ITEM-->
-        <div class="animated fadeIn col-sm-3" ng-repeat="trouser in items.trousersOSale | limitTo:20">
+        <div class="animated fadeIn col-sm-3" ng-repeat="trouser in items.trousersOSale">
             <div class="border_10 center">
                 <!--IMAGE-->
                 <div class="landscape">
@@ -25,9 +25,11 @@
                 </div>
                 <!--./IMAGE-->
                 <!--TITTLE AND PRICE-->
-                <a class="center_decor" ui-sref="home.trousers.detail({id: trouser._id})">
-                    <h4> {{trouser.tittle}} </h4>
-                </a>
+                <div class="tittle">
+                        <a ui-sref="home.trousers.detail({id: trouser._id})" class="center_decor">
+                            <h4> {{trouser.tittle}} </h4>
+                        </a>
+                    </div>
                 <p style="text-align:center">
                     <span><i class="fa fa-money" aria-hidden="true"></i></span>
                     <span class="price">{{trouser.price | currency:"":0}} VND </span>

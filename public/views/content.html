@@ -19,7 +19,7 @@
             </span>
             <!--./TITTLE-->
             <!--ITEM-->
-            <div class="animated fadeIn col-sm-3" ng-repeat="i in items.itemsKM | limitTo:20">
+            <div class="animated fadeIn col-sm-3" ng-repeat="i in items.itemsKM">
                 <div class="border_10 center">
                     <!--IMAGE-->
                     <div class="landscape">
@@ -29,7 +29,7 @@
                     </div>
                     <!--./IMAGE-->
                     <!--TITTLE AND PRICE-->
-                    <span ng-click="items.routeItem(i.class,i._id)" class="center_decor">
+                    <span ng-click="items.routeItem(i.class,i._id)" class="center_decor tittle">
                         <h4> {{i.tittle}} </h4>
                     </span>
                     <p style="text-align:center">
@@ -71,9 +71,11 @@
                     </div>
                     <!--./IMAGE-->
                     <!--TITTLE AND PRICE-->
-                    <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
-                        <h4> {{ad.tittle}} </h4>
-                    </a>
+                    <div class="tittle">
+                        <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
+                            <h4> {{ad.tittle}} </h4>
+                        </a>
+                    </div>
                     <p style="text-align:center">
                         <!--Featured : false-->
                         <i class="fa fa-money" aria-hidden="true"></i> : <span class="price">{{ad.price | currency:"":0}} VND </span>
@@ -106,9 +108,11 @@
                     </div>
                     <!--./IMAGE-->
                     <!--TITTLE AND PRICE-->
-                    <a class="center_decor" ui-sref="home.dress.detail({id: dres._id})">
-                        <h4> {{dres.tittle}} </h4>
-                    </a>
+                    <div class="tittle">
+                        <a ui-sref="home.dress.detail({id: dres._id})" class="center_decor">
+                            <h4> {{dres.tittle}} </h4>
+                        </a>
+                    </div>
                     <p style="text-align:center">
                         <span><i class="fa fa-money" aria-hidden="true"></i></span>
                         <span class="price">{{dres.price | currency:"":0}} VND </span>
@@ -140,10 +144,11 @@
                     </div>
                     <!--./IMAGE-->
                     <!--TITTLE AND PRICE-->
-                    <a class="center_decor" ui-sref="home.shirts.detail({id: shirt._id})">
-                        <h4> {{shirt.tittle}} </h4>
-                    </a>
-
+                    <div class="tittle">
+                        <a ui-sref="home.shirts.detail({id: shirt._id})" class="center_decor">
+                            <h4> {{shirt.tittle}} </h4>
+                        </a>
+                    </div>
                     <p style="text-align:center">
                         <span><i class="fa fa-money" aria-hidden="true"></i></span>
                         <span class="price">{{shirt.price | currency:"":0}} VND </span>
@@ -177,9 +182,11 @@
                     </div>
                     <!--./IMAGE-->
                     <!--TITTLE AND PRICE-->
-                    <a class="center_decor" ui-sref="home.trousers.detail({id: trouser._id})">
-                        <h4> {{trouser.tittle}} </h4>
-                    </a>
+                    <div class="tittle">
+                        <a ui-sref="home.trousers.detail({id: trouser._id})" class="center_decor">
+                            <h4> {{trouser.tittle}} </h4>
+                        </a>
+                    </div>
                     <p style="text-align:center">
                         <span><i class="fa fa-money" aria-hidden="true"></i></span>
                         <span class="price">{{trouser.price | currency:"":0}} VND </span>

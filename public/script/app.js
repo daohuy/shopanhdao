@@ -214,6 +214,11 @@
                         controller: 'aodaiController',
                         controllerAs: 'items'
                     }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
                 }
             })
             
@@ -233,6 +238,11 @@
                         templateUrl: '/viewUser/detail_dress.html',
                         controller: 'dressController',
                         controllerAs: 'items'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
                     }
                 }
             })
@@ -254,6 +264,11 @@
                         controller: 'shirtsController',
                         controllerAs: 'items'
                     }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
+                    }
                 }
             })
         
@@ -273,6 +288,11 @@
                         templateUrl: '/viewUser/detail_trouser.html',
                         controller: 'trousersController',
                         controllerAs: 'items'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: 'signIn'
                     }
                 }
             })
@@ -366,10 +386,10 @@
 
         if ($localStorage.userToken) {
             $http.defaults.headers.common['authentication'] = $localStorage.userToken.token;
-            //console.log('Token after add $http authentication : ', $http.defaults.headers.common['authentication']);
+            
         }
 
-        /*$rootScope.checkState = function () {
+        $rootScope.checkState = function () {
             //console.log($state.current.name);
             if ($state.current.name === 'home') {
                 $state.go('home', {}, {
@@ -377,7 +397,7 @@
                 });
             }
         }
-        */
+        
         // auto scroll toppage
         $rootScope.$on("$locationChangeSuccess", function () {
             $anchorScroll();

@@ -168,7 +168,9 @@ img {
     max-width: 240px;
     display: inline-block;
 }
-
+.tittle {
+    height: 55px;
+}
 .square {
     height: 75px;
     width: 75px;

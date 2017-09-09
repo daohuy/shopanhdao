@@ -14,7 +14,7 @@
         </span>
         <!--./TITTLE-->
         <!--ITEM-->
-        <div class="animated fadeIn col-sm-3" ng-repeat="shirt in items.shirtsOSale | limitTo:20">
+        <div class="animated fadeIn col-sm-3" ng-repeat="shirt in items.shirtsOSale">
             <div class="border_10 center">
                 <!--IMAGE-->
                 <div class="landscape">
@@ -24,9 +24,11 @@
                 </div>
                 <!--./IMAGE-->
                 <!--TITTLE AND PRICE-->
-                <a class="center_decor" ui-sref="home.shirts.detail({id: shirt._id})">
-                    <h4> {{shirt.tittle}} </h4>
-                </a>
+                <div class="tittle">
+                        <a ui-sref="home.shirts.detail({id: shirt._id})" class="center_decor">
+                            <h4> {{shirt.tittle}} </h4>
+                        </a>
+                    </div>
 
                 <p style="text-align:center">
                     <span><i class="fa fa-money" aria-hidden="true"></i></span>

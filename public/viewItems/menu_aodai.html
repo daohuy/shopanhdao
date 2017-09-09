@@ -13,7 +13,7 @@
         </span>
         <!--./TITTLE-->
         <!--ITEM-->
-        <div class="animated fadeIn col-sm-3" ng-repeat="ad in items.aodaisOSale | limitTo:20">
+        <div class="animated fadeIn col-sm-3" ng-repeat="ad in items.aodaisOSale">
             <div class="border_10 center">
                 <!--IMAGE-->
                 <div class="landscape">
@@ -23,9 +23,11 @@
                 </div>
                 <!--./IMAGE-->
                 <!--TITTLE AND PRICE-->
-                <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
-                    <h4> {{ad.tittle}} </h4>
-                </a>
+                <div class="tittle">
+                        <a ui-sref="home.aodai.detail({id: ad._id})" class="center_decor">
+                            <h4> {{ad.tittle}} </h4>
+                        </a>
+                    </div>
                 <p style="text-align:center">
                     <!--Featured : false-->
                     <i class="fa fa-money" aria-hidden="true"></i> : <span class="price">{{ad.price | currency:"":0}} VND </span>
